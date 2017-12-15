@@ -12,7 +12,7 @@
 @interface customTabbar()
 @property (nonatomic, strong) NSMutableArray *tabBarButtons;
 @property (nonatomic, weak) tabbarButton *selectedButton;
-
+@property (nonatomic,weak)UIButton *plusButton;
 @end
 @implementation customTabbar
 
@@ -30,10 +30,26 @@
     if (self) {
         self.backgroundColor = BGCOLOR;
 
+        //添加一个“+”按钮
+        UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [plusButton setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_os7"] forState:UIControlStateNormal];
+        [plusButton setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_highlighted_os7"] forState:UIControlStateHighlighted];
+        
+        [plusButton setImage:[UIImage imageNamed:@"tabbar_compose_icon_add_os7"] forState:UIControlStateNormal];
+        [plusButton setImage:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted_os7"] forState:UIControlStateHighlighted];
+        [self addSubview:plusButton];
+        plusButton.bounds = CGRectMake(0, 0, plusButton.currentBackgroundImage.size.width, plusButton.currentBackgroundImage.size.height);
+        self.plusButton = plusButton;
+        [self.plusButton addTarget:self action:@selector(plusButtonClick) forControlEvents:UIControlEventTouchDown];
+
     }
     return self;
 }
 
+-(void)plusButtonClick{
+    NSLog(@"我点击了加号按钮");
+    
+}
 
 /**
  *  对按钮进行赋值
@@ -80,21 +96,28 @@
 {
     [super layoutSubviews];
 
-    // 按钮的frame数据
-    CGFloat buttonH = self.frame.size.height;
-    CGFloat buttonW = self.frame.size.width / self.subviews.count;
+    //调整“+”按钮的frame
+    CGFloat h = self.frame.size.height;
+    CGFloat w = self.frame.size.width;
+    self.plusButton.center = CGPointMake(w * 0.5, h * 0.5);
+    
+    //tabbar按钮的位置
+    CGFloat buttonW = w/self.subviews.count;
+    CGFloat buttonH = h;
     CGFloat buttonY = 0;
     
-    for (int index = 0; index<self.tabBarButtons.count; index++)
-    {
-        // 1.取出按钮
+    for (int index = 0; index <self.tabBarButtons.count; index ++) {
+        //取出按钮
         tabbarButton *button = self.tabBarButtons[index];
         
-        // 2.设置按钮的frame
-        CGFloat buttonX = index * buttonW;
-        button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+        //设置按钮的frame
+        CGFloat buttonX =  index *buttonW;
+        if (index >1) {
+            buttonX +=buttonW;
+        }
         
-        // 3.绑定tag
+        button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+        //绑定tag
         button.tag = index;
     }
 }
