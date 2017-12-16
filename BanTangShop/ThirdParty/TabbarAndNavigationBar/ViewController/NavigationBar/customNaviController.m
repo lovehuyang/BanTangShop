@@ -67,6 +67,8 @@
  */
 + (void)setupNavBarTheme
 {
+    // 隐藏导航栏底部黑线
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     //设置导航栏文字的颜色
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     //设置导航栏背景颜色
@@ -74,7 +76,6 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18.0f], NSFontAttributeName, nil]];
     //设置导航栏的颜色
     [[UINavigationBar appearance] setBackgroundColor:Color_Theme];
-    
 }
 
 //重写push后返回按钮的文字,文字可以为空字符串.

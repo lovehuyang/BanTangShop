@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+@interface RootViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 /**
  *  菊花过渡动画

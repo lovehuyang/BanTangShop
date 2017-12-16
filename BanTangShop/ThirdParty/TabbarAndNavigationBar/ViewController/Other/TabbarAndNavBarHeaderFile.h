@@ -22,7 +22,6 @@
 
 #define ScrW [UIScreen mainScreen].bounds.size.width
 #define ScrH [UIScreen mainScreen].bounds.size.height
-#define StatusHight [GlobalTools sharedInstance].getStatusHight//状态栏高度
 
 /** 设置颜色16进制值 */
 #define HXYGetColor(colorValue)   [UIColor colorWithHexString:colorValue]

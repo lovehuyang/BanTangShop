@@ -41,6 +41,12 @@
 		0996FFCA1FE3C1210090016B /* BanTangShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFC91FE3C1210090016B /* BanTangShopUITests.m */; };
 		09D956221FE4B7830012E309 /* customTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956211FE4B7830012E309 /* customTabbar.m */; };
 		09D956261FE4D2980012E309 /* PlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956251FE4D2980012E309 /* PlusButton.m */; };
+		09D9562A1FE4E5900012E309 /* GlobalTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956291FE4E5900012E309 /* GlobalTools.m */; };
+		09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9563C1FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m */; };
+		09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9563E1FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m */; };
+		09D956471FE4F4490012E309 /* JElasticPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956401FE4F4490012E309 /* JElasticPullToRefreshView.m */; };
+		09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956421FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m */; };
+		09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +141,19 @@
 		09D956231FE4C5210012E309 /* ConfigHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigHeader.h; sourceTree = "<group>"; };
 		09D956241FE4D2980012E309 /* PlusButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlusButton.h; sourceTree = "<group>"; };
 		09D956251FE4D2980012E309 /* PlusButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlusButton.m; sourceTree = "<group>"; };
+		09D956281FE4E5900012E309 /* GlobalTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalTools.h; sourceTree = "<group>"; };
+		09D956291FE4E5900012E309 /* GlobalTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalTools.m; sourceTree = "<group>"; };
+		09D9563A1FE4F4490012E309 /* JElasticPullToRefreshConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JElasticPullToRefreshConstants.h; sourceTree = "<group>"; };
+		09D9563B1FE4F4490012E309 /* JElasticPullToRefreshLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JElasticPullToRefreshLoadingView.h; sourceTree = "<group>"; };
+		09D9563C1FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JElasticPullToRefreshLoadingView.m; sourceTree = "<group>"; };
+		09D9563D1FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JElasticPullToRefreshLoadingViewCircle.h; sourceTree = "<group>"; };
+		09D9563E1FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JElasticPullToRefreshLoadingViewCircle.m; sourceTree = "<group>"; };
+		09D9563F1FE4F4490012E309 /* JElasticPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JElasticPullToRefreshView.h; sourceTree = "<group>"; };
+		09D956401FE4F4490012E309 /* JElasticPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JElasticPullToRefreshView.m; sourceTree = "<group>"; };
+		09D956411FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+JElasticPullToRefresh.h"; sourceTree = "<group>"; };
+		09D956421FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+JElasticPullToRefresh.m"; sourceTree = "<group>"; };
+		09D956431FE4F4490012E309 /* UIView+JElasticPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JElasticPullToRefresh.h"; sourceTree = "<group>"; };
+		09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JElasticPullToRefresh.m"; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -384,6 +403,7 @@
 		0996005A1FE3CA5E0090016B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				09D956271FE4E5780012E309 /* GlobalTools */,
 				0996005B1FE3CA5E0090016B /* ViewToolKit */,
 			);
 			path = Tools;
@@ -503,6 +523,7 @@
 		0996FFD71FE3C60F0090016B /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				09D956391FE4F4490012E309 /* JElasticPullToRefresh */,
 				099600141FE3C7AC0090016B /* TabbarAndNavigationBar */,
 			);
 			name = ThirdParty;
@@ -613,6 +634,33 @@
 				099600071FE3C6F50090016B /* View */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		09D956271FE4E5780012E309 /* GlobalTools */ = {
+			isa = PBXGroup;
+			children = (
+				09D956281FE4E5900012E309 /* GlobalTools.h */,
+				09D956291FE4E5900012E309 /* GlobalTools.m */,
+			);
+			path = GlobalTools;
+			sourceTree = "<group>";
+		};
+		09D956391FE4F4490012E309 /* JElasticPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				09D9563A1FE4F4490012E309 /* JElasticPullToRefreshConstants.h */,
+				09D9563B1FE4F4490012E309 /* JElasticPullToRefreshLoadingView.h */,
+				09D9563C1FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m */,
+				09D9563D1FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.h */,
+				09D9563E1FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m */,
+				09D9563F1FE4F4490012E309 /* JElasticPullToRefreshView.h */,
+				09D956401FE4F4490012E309 /* JElasticPullToRefreshView.m */,
+				09D956411FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.h */,
+				09D956421FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m */,
+				09D956431FE4F4490012E309 /* UIView+JElasticPullToRefresh.h */,
+				09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */,
+			);
+			path = JElasticPullToRefresh;
 			sourceTree = "<group>";
 		};
 		2FB956AB2D940BCA46FE862E /* Frameworks */ = {
@@ -830,20 +878,26 @@
 				099600491FE3C7AC0090016B /* UIColor+HXY.m in Sources */,
 				0996004A1FE3C7AC0090016B /* UIImage+LYZ.m in Sources */,
 				09D956261FE4D2980012E309 /* PlusButton.m in Sources */,
+				09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */,
 				0996004F1FE3C7AD0090016B /* LanchModel.m in Sources */,
 				099600511FE3C7AD0090016B /* LaunchView.m in Sources */,
 				0996FFB51FE3C1210090016B /* main.m in Sources */,
 				0996FFA71FE3C1210090016B /* AppDelegate.m in Sources */,
 				099600661FE3CCE90090016B /* RecommendViewController.m in Sources */,
 				099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */,
+				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
 				0996004B1FE3C7AD0090016B /* UILabel+LYZ.m in Sources */,
 				099600561FE3C7AD0090016B /* systemTabbar.m in Sources */,
 				099600471FE3C7AC0090016B /* NSString+isoEncoding.m in Sources */,
 				0996004D1FE3C7AD0090016B /* SetupTools.m in Sources */,
 				099600121FE3C6F50090016B /* NextViewController.m in Sources */,
 				0996004C1FE3C7AD0090016B /* UIView+Extension.m in Sources */,
+				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,
+				09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */,
+				09D9562A1FE4E5900012E309 /* GlobalTools.m in Sources */,
+				09D956471FE4F4490012E309 /* JElasticPullToRefreshView.m in Sources */,
 				099600531FE3C7AD0090016B /* NewFeatureViewController.m in Sources */,
 				099600571FE3C7AD0090016B /* tabbarBadgeButton.m in Sources */,
 				0996005E1FE3CA5E0090016B /* ViewFactory.m in Sources */,
