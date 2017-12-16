@@ -8,11 +8,12 @@
 
 #import "customTabbar.h"
 #import "tabbarButton.h"
+#import "PlusButton.h"
 
 @interface customTabbar()
 @property (nonatomic, strong) NSMutableArray *tabBarButtons;
 @property (nonatomic, weak) tabbarButton *selectedButton;
-@property (nonatomic,weak)UIButton *plusButton;
+@property (nonatomic,weak)PlusButton *plusButton;
 @end
 @implementation customTabbar
 
@@ -28,24 +29,43 @@
     
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = BGCOLOR;
+        self.backgroundColor = [UIColor whiteColor];
 
         //添加一个“+”按钮
-        UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [plusButton setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_os7"] forState:UIControlStateNormal];
-        [plusButton setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_highlighted_os7"] forState:UIControlStateHighlighted];
-        
-        [plusButton setImage:[UIImage imageNamed:@"tabbar_compose_icon_add_os7"] forState:UIControlStateNormal];
-        [plusButton setImage:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted_os7"] forState:UIControlStateHighlighted];
+        PlusButton *plusButton = [PlusButton buttonWithType:UIButtonTypeCustom];
+        [plusButton setImage:[UIImage imageNamed:@"post_animate_add"] forState:UIControlStateNormal];
+        [plusButton setImage:[UIImage imageNamed:@"post_animate_add"] forState:UIControlStateHighlighted];
         [self addSubview:plusButton];
-        plusButton.bounds = CGRectMake(0, 0, plusButton.currentBackgroundImage.size.width, plusButton.currentBackgroundImage.size.height);
+        [plusButton setBackgroundColor:[UIColor whiteColor]];
+        plusButton.bounds = CGRectMake(0, 0, 60, 60);
+        plusButton.layer.cornerRadius = 30;
+//        plusButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//        plusButton.layer.borderWidth = 1;
+        plusButton.layer.masksToBounds = YES;
         self.plusButton = plusButton;
         [self.plusButton addTarget:self action:@selector(plusButtonClick) forControlEvents:UIControlEventTouchDown];
+        [self drawCircle];
 
     }
     return self;
 }
-
+- (void)drawCircle{
+    //设置路径
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    //第一个参数是起点，是圆形的圆心
+    //第二个参数是半径
+    //第三个参数是起始弧度
+    //第四个参数是结束弧度
+    //第五个参数是传入yes是顺时针,no为顺时针，下面的另外一种实现方法的参数意思也是一致
+    //path addArcWithCenter:<#(CGPoint)#> radius:<#(CGFloat)#> startAngle:<#(CGFloat)#> endAngle:<#(CGFloat)#> clockwise:<#(BOOL)#>
+    
+    
+    [path addArcWithCenter:CGPointMake(self.plusButton.centerX,self.plusButton.centerY) radius:10 startAngle:0 endAngle:M_PI_2 clockwise:NO];
+    
+    //渲染
+    [path stroke];
+}
 -(void)plusButtonClick{
     NSLog(@"我点击了加号按钮");
     
@@ -99,7 +119,7 @@
     //调整“+”按钮的frame
     CGFloat h = self.frame.size.height;
     CGFloat w = self.frame.size.width;
-    self.plusButton.center = CGPointMake(w * 0.5, h * 0.5);
+    self.plusButton.center = CGPointMake(w * 0.5, h - 35);
     
     //tabbar按钮的位置
     CGFloat buttonW = w/self.subviews.count;

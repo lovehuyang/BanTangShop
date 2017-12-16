@@ -41,10 +41,10 @@
     [self setupCustomTabbar];
     [self setupAllChildViewControllers];
     
-    // 添加定时器，读取未读消息数
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkUnreadCount) userInfo:nil repeats:YES];
-    // 把定时器添加到子线程，防止阻塞主线程
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//    // 添加定时器，读取未读消息数
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkUnreadCount) userInfo:nil repeats:YES];
+//    // 把定时器添加到子线程，防止阻塞主线程
+//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
 }
 

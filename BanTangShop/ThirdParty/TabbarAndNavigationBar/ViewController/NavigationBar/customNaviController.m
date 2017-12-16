@@ -70,10 +70,10 @@
     //设置导航栏文字的颜色
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     //设置导航栏背景颜色
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage createImageWithColor:MAIN_COLOR] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage createImageWithColor:Color_Theme] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18.0f], NSFontAttributeName, nil]];
     //设置导航栏的颜色
-    [[UINavigationBar appearance] setBackgroundColor:MAIN_COLOR];
+    [[UINavigationBar appearance] setBackgroundColor:Color_Theme];
     
 }
 

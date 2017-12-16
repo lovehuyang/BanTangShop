@@ -32,7 +32,5 @@
 #define RGBA(a,b,c,d) [UIColor colorWithRed:(a/255.0) green:(b/255.0) blue:(c/255.0) alpha:d]
 
 #define BGCOLOR [UIColor colorWithRed:1.00f green:1.00f blue:1.00f alpha:1.00f]
-//主色调（导航栏）
-#define MAIN_COLOR HXYGetColor(@"#1B82D2")
 
 #endif /* TabbarAndNavBarHeaderFile_h */

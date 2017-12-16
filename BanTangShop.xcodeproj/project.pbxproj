@@ -40,6 +40,7 @@
 		0996FFBF1FE3C1210090016B /* BanTangShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFBE1FE3C1210090016B /* BanTangShopTests.m */; };
 		0996FFCA1FE3C1210090016B /* BanTangShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFC91FE3C1210090016B /* BanTangShopUITests.m */; };
 		09D956221FE4B7830012E309 /* customTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956211FE4B7830012E309 /* customTabbar.m */; };
+		09D956261FE4D2980012E309 /* PlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956251FE4D2980012E309 /* PlusButton.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,9 @@
 		0996FFFB1FE3C6F50090016B /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
 		09D9561E1FE4B6CE0012E309 /* customTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTabbar.h; sourceTree = "<group>"; };
 		09D956211FE4B7830012E309 /* customTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTabbar.m; sourceTree = "<group>"; };
+		09D956231FE4C5210012E309 /* ConfigHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigHeader.h; sourceTree = "<group>"; };
+		09D956241FE4D2980012E309 /* PlusButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlusButton.h; sourceTree = "<group>"; };
+		09D956251FE4D2980012E309 /* PlusButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlusButton.m; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -363,6 +367,8 @@
 		0996003E1FE3C7AC0090016B /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				09D956241FE4D2980012E309 /* PlusButton.h */,
+				09D956251FE4D2980012E309 /* PlusButton.m */,
 				09D9561E1FE4B6CE0012E309 /* customTabbar.h */,
 				09D956211FE4B7830012E309 /* customTabbar.m */,
 				099600411FE3C7AC0090016B /* systemTabbar.h */,
@@ -471,6 +477,7 @@
 				0996FFB31FE3C1210090016B /* Info.plist */,
 				0996FFB41FE3C1210090016B /* main.m */,
 				099600591FE3C8710090016B /* PrefixHeader.pch */,
+				09D956231FE4C5210012E309 /* ConfigHeader.h */,
 			);
 			path = BanTangShop;
 			sourceTree = "<group>";
@@ -822,6 +829,7 @@
 				0996FFAA1FE3C1210090016B /* ViewController.m in Sources */,
 				099600491FE3C7AC0090016B /* UIColor+HXY.m in Sources */,
 				0996004A1FE3C7AC0090016B /* UIImage+LYZ.m in Sources */,
+				09D956261FE4D2980012E309 /* PlusButton.m in Sources */,
 				0996004F1FE3C7AD0090016B /* LanchModel.m in Sources */,
 				099600511FE3C7AD0090016B /* LaunchView.m in Sources */,
 				0996FFB51FE3C1210090016B /* main.m in Sources */,

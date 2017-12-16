@@ -49,7 +49,7 @@
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     nextBtn.frame = CGRectMake((self.view.frame.size.width -100)*0.5f+self.view.frame.size.width *3, self.view.frame.size.height - 100.0f, 100, 40);
     [nextBtn setTitle:@"开始使用" forState:UIControlStateNormal];
-    nextBtn.backgroundColor = MAIN_COLOR;
+    nextBtn.backgroundColor = Color_Theme;
     [nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:nextBtn];
 }
@@ -59,7 +59,7 @@
     pageControl.frame = CGRectMake(0, 0, 100, 20);
     pageControl.numberOfPages = 4;
     [pageControl setCenter:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height-40)];
-    pageControl.currentPageIndicatorTintColor = MAIN_COLOR;
+    pageControl.currentPageIndicatorTintColor = Color_Theme;
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     self.pageControl = pageControl;
     [self.view addSubview:pageControl];
