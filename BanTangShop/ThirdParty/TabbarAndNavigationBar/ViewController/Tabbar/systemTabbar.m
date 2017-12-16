@@ -12,7 +12,7 @@
 #import "FavoriteViewController.h"
 #import "MineViewController.h"
 #import "RecommendViewController.h"
-#import "CustomTabbar.h"
+#import "customTabbar.h"
 #import "UIImage+LYZ.h"
 
 @interface systemTabbar ()<customTabbarDelegate>
@@ -20,7 +20,7 @@
 /**
  *  自定义的tabbar
  */
-@property (nonatomic, weak) CustomTabbar *customTabBar;
+@property (nonatomic, weak) customTabbar *customTabBar;
 // 首页
 @property (nonatomic, weak) HomeViewController *home;
 // 收藏
@@ -63,7 +63,7 @@
 
 - (void)setupCustomTabbar
 {
-    CustomTabbar *customTabBar = [[CustomTabbar alloc] init];
+    customTabbar *customTabBar = [[customTabbar alloc] init];
     customTabBar.frame = self.tabBar.bounds;
     customTabBar.delegate = self;
     customTabBar.backgroundColor = [UIColor whiteColor];
@@ -76,7 +76,7 @@
  *  @param from   原来选中的位置
  *  @param to     最新选中的位置
  */
-- (void)tabBar:(CustomTabbar *)tabBar didSelectedButtonFrom:(NSInteger)from to:(NSInteger)to
+- (void)tabBar:(customTabbar *)tabBar didSelectedButtonFrom:(NSInteger)from to:(NSInteger)to
 {
     self.selectedIndex = to;
 }
