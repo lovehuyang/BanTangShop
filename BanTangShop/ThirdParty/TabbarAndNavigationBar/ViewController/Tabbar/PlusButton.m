@@ -27,7 +27,6 @@
 void drawArc(){
     //获取上下文
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    [[UIColor purpleColor] setFill];
     
     /**
      *
@@ -41,7 +40,8 @@ void drawArc(){
      *
      */
     CGContextAddArc(ctx, 30, 30, 30, -M_PI +M_PI/6.5 , -M_PI/6.5, 0);
-    CGContextSetLineWidth(ctx, 0.4);// 线的宽度
+    CGContextSetLineWidth(ctx, 1);// 线的宽度
+    CGContextSetStrokeColorWithColor(ctx, HXYGetColor(@"#D0D0D9").CGColor);
     CGContextStrokePath(ctx);
 }
 @end
