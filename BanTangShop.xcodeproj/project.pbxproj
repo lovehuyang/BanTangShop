@@ -26,7 +26,6 @@
 		099600521FE3C7AD0090016B /* customNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600351FE3C7AC0090016B /* customNaviController.m */; };
 		099600531FE3C7AD0090016B /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600381FE3C7AC0090016B /* NewFeatureViewController.m */; };
 		099600541FE3C7AD0090016B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996003D1FE3C7AC0090016B /* RootViewController.m */; };
-		099600551FE3C7AD0090016B /* customTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600401FE3C7AC0090016B /* customTabbar.m */; };
 		099600561FE3C7AD0090016B /* systemTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600421FE3C7AC0090016B /* systemTabbar.m */; };
 		099600571FE3C7AD0090016B /* tabbarBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600441FE3C7AC0090016B /* tabbarBadgeButton.m */; };
 		099600581FE3C7AD0090016B /* tabbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600461FE3C7AC0090016B /* tabbarButton.m */; };
@@ -40,6 +39,7 @@
 		0996FFB51FE3C1210090016B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFB41FE3C1210090016B /* main.m */; };
 		0996FFBF1FE3C1210090016B /* BanTangShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFBE1FE3C1210090016B /* BanTangShopTests.m */; };
 		0996FFCA1FE3C1210090016B /* BanTangShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFC91FE3C1210090016B /* BanTangShopUITests.m */; };
+		09D956201FE4B6CE0012E309 /* CustomTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9561F1FE4B6CE0012E309 /* CustomTabbar.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +98,6 @@
 		0996003A1FE3C7AC0090016B /* TabbarAndNavBarHeaderFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarAndNavBarHeaderFile.h; sourceTree = "<group>"; };
 		0996003C1FE3C7AC0090016B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		0996003D1FE3C7AC0090016B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		0996003F1FE3C7AC0090016B /* customTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTabbar.h; sourceTree = "<group>"; };
-		099600401FE3C7AC0090016B /* customTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTabbar.m; sourceTree = "<group>"; };
 		099600411FE3C7AC0090016B /* systemTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = systemTabbar.h; sourceTree = "<group>"; };
 		099600421FE3C7AC0090016B /* systemTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = systemTabbar.m; sourceTree = "<group>"; };
 		099600431FE3C7AC0090016B /* tabbarBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tabbarBadgeButton.h; sourceTree = "<group>"; };
@@ -131,6 +129,8 @@
 		0996FFF41FE3C6F50090016B /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		0996FFFA1FE3C6F50090016B /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
 		0996FFFB1FE3C6F50090016B /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		09D9561E1FE4B6CE0012E309 /* CustomTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabbar.h; sourceTree = "<group>"; };
+		09D9561F1FE4B6CE0012E309 /* CustomTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabbar.m; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -363,8 +363,8 @@
 		0996003E1FE3C7AC0090016B /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				0996003F1FE3C7AC0090016B /* customTabbar.h */,
-				099600401FE3C7AC0090016B /* customTabbar.m */,
+				09D9561E1FE4B6CE0012E309 /* CustomTabbar.h */,
+				09D9561F1FE4B6CE0012E309 /* CustomTabbar.m */,
 				099600411FE3C7AC0090016B /* systemTabbar.h */,
 				099600421FE3C7AC0090016B /* systemTabbar.m */,
 				099600431FE3C7AC0090016B /* tabbarBadgeButton.h */,
@@ -841,8 +841,8 @@
 				0996005E1FE3CA5E0090016B /* ViewFactory.m in Sources */,
 				099600501FE3C7AD0090016B /* LanchViewManger.m in Sources */,
 				099600541FE3C7AD0090016B /* RootViewController.m in Sources */,
+				09D956201FE4B6CE0012E309 /* CustomTabbar.m in Sources */,
 				099600111FE3C6F50090016B /* HomeViewController.m in Sources */,
-				099600551FE3C7AD0090016B /* customTabbar.m in Sources */,
 				099600521FE3C7AD0090016B /* customNaviController.m in Sources */,
 				0996004E1FE3C7AD0090016B /* MBProgressHUD+NHAdd.m in Sources */,
 			);
