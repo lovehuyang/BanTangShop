@@ -1070,6 +1070,7 @@
 			baseConfigurationReference = 87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75WWG8XJE9;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BanTangShop/PrefixHeader.pch";
@@ -1087,6 +1088,7 @@
 			baseConfigurationReference = 01C0DFF1DA618EAD4B655BF4 /* Pods-BanTangShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75WWG8XJE9;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BanTangShop/PrefixHeader.pch";

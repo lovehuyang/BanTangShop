@@ -85,20 +85,20 @@
 {
     // 首页
     HomeViewController *homePageVC = [[HomeViewController alloc] init];
-    [self setupChildViewController:homePageVC title:@"首页" normalImage:[UIImage imageNamed:@"工作台"] selectImage:[UIImage imageNamed:@"工作台1"]];
+    [self setupChildViewController:homePageVC title:@"首页" normalImage:[UIImage imageNamed:@"nav_index_x"] selectImage:[UIImage imageNamed:@"nav_index"]];
     self.home = homePageVC;
     
     //
     FavoriteViewController *favoriteVC = [[FavoriteViewController alloc] init];
-    [self setupChildViewController:favoriteVC title:@"收藏" normalImage:[UIImage imageNamed:@"合同管理"] selectImage:[UIImage imageNamed:@"合同管理1"]];
+    [self setupChildViewController:favoriteVC title:@"收藏" normalImage:[UIImage imageNamed:@"nav_team_x"] selectImage:[UIImage imageNamed:@"nav_team"]];
     self.patientManager = favoriteVC;
     
     RecommendViewController *recommendVC = [[RecommendViewController alloc] init];
-    [self setupChildViewController:recommendVC title:@"精品" normalImage:[UIImage imageNamed:@"用户"] selectImage:[UIImage imageNamed:@"用户1"]];
+    [self setupChildViewController:recommendVC title:@"精品" normalImage:[UIImage imageNamed:@"nav_activity_x"] selectImage:[UIImage imageNamed:@"nav_activity"]];
     self.recommend = recommendVC;
     
     MineViewController *mineVC = [[MineViewController alloc] init];
-    [self setupChildViewController:mineVC title:@"我的" normalImage:[UIImage imageNamed:@"用户"] selectImage:[UIImage imageNamed:@"用户1"]];
+    [self setupChildViewController:mineVC title:@"我的" normalImage:[UIImage imageNamed:@"nav_setup_x"] selectImage:[UIImage imageNamed:@"nav_setup"]];
     self.mine = mineVC;
 }
 

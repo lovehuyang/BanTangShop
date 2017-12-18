@@ -16,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //[[systemTabbar alloc]init]
+    [self setScale];
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[SetupTools sharedInstance]chooseRootViewController];
@@ -24,6 +24,22 @@
     return YES;
 }
 
+- (void)setScale{
+    AppDelegate *myDelegate = [AppDelegate shareInstance]; ;
+    
+    if(ScrH > 480){ // 这里以(iPhone4S)为准
+        myDelegate.autoSizeScaleX = ScrW/320;
+        myDelegate.autoSizeScaleY = ScrH/568;
+    }else{
+        myDelegate.autoSizeScaleX = 1.0;
+        myDelegate.autoSizeScaleY = 1.0;
+    }
+}
+
++ (AppDelegate *)shareInstance
+{
+    return [[UIApplication sharedApplication] delegate];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

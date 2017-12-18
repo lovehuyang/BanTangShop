@@ -72,7 +72,7 @@
 - (UIView *)headView{
     if (!_headView) {
         UIView *headView = [UIView new];
-        headView.frame = CGRectMake(0, 0, ScrW, 180);
+        headView.frame = CGRectMake(0, 0, ScrW, 180 *ScaleY);
         headView.backgroundColor= [UIColor clearColor];
         _headView = headView;
     }

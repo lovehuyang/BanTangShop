@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
++ (AppDelegate *)shareInstance;
 @property (strong, nonatomic) UIWindow *window;
 
+//适配屏幕比例
+@property float autoSizeScaleX;
+@property float autoSizeScaleY;
 
 @end
 

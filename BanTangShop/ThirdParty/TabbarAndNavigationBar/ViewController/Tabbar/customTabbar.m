@@ -33,8 +33,8 @@
 
         //添加一个“+”按钮
         PlusButton *plusButton = [PlusButton buttonWithType:UIButtonTypeCustom];
-        [plusButton setImage:[UIImage imageNamed:@"post_animate_add"] forState:UIControlStateNormal];
-        [plusButton setImage:[UIImage imageNamed:@"post_animate_add"] forState:UIControlStateHighlighted];
+        [plusButton setImage:[UIImage imageNamed:@"activity_ing"] forState:UIControlStateNormal];
+        [plusButton setImage:[UIImage imageNamed:@"activity_ing"] forState:UIControlStateHighlighted];
         [self addSubview:plusButton];
         [plusButton setBackgroundColor:[UIColor whiteColor]];
         plusButton.bounds = CGRectMake(0, 0, 60, 60);

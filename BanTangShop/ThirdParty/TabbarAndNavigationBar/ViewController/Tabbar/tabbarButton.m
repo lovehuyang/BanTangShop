@@ -30,7 +30,7 @@ const CGFloat tabbarBtnScale = 0.4;   /** 底边栏按钮中图片和标题的�
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont systemFontOfSize:11.0f];
         // 设置按钮的颜色
-        [self setTitleColor:Color_Theme forState:UIControlStateNormal];
+        [self setTitleColor:HXYGetColor(@"#777777") forState:UIControlStateNormal];
         [self setTitleColor:Color_Theme forState:UIControlStateSelected];
         // 图标居中
         self.imageView.contentMode = UIViewContentModeBottom;

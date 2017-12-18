@@ -11,6 +11,7 @@
 
 #import "TabbarAndNavBarHeaderFile.h"
 #import "GlobalTools.h"
+#import "AppDelegate.h"
 #import "ViewFactory.h"
 #import "RootViewController.h"
 #import <SDAutoLayout.h>
