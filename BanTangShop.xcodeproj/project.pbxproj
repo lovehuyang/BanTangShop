@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */; };
+		092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA581FE7AEBA009A1BE1 /* MoreButton.m */; };
+		092BBA5C1FE7B1B4009A1BE1 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5B1FE7B1B4009A1BE1 /* HeadView.m */; };
+		092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */; };
+		092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */; };
+		092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA641FE7E41F009A1BE1 /* FoodModel.m */; };
 		0996000F1FE3C6F50090016B /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFF41FE3C6F50090016B /* MineViewController.m */; };
 		099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFFB1FE3C6F50090016B /* FavoriteViewController.m */; };
 		099600111FE3C6F50090016B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600021FE3C6F50090016B /* HomeViewController.m */; };
@@ -69,6 +75,18 @@
 
 /* Begin PBXFileReference section */
 		01C0DFF1DA618EAD4B655BF4 /* Pods-BanTangShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.release.xcconfig"; sourceTree = "<group>"; };
+		092BBA541FE78783009A1BE1 /* HLYNetWorkObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLYNetWorkObject.h; sourceTree = "<group>"; };
+		092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLYNetWorkObject.m; sourceTree = "<group>"; };
+		092BBA571FE7AEBA009A1BE1 /* MoreButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreButton.h; sourceTree = "<group>"; };
+		092BBA581FE7AEBA009A1BE1 /* MoreButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreButton.m; sourceTree = "<group>"; };
+		092BBA5A1FE7B1B4009A1BE1 /* HeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		092BBA5B1FE7B1B4009A1BE1 /* HeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		092BBA5D1FE7C378009A1BE1 /* HomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		092BBA601FE7CBE1009A1BE1 /* FoodListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodListModel.h; sourceTree = "<group>"; };
+		092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodListModel.m; sourceTree = "<group>"; };
+		092BBA631FE7E41F009A1BE1 /* FoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
+		092BBA641FE7E41F009A1BE1 /* FoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
 		099600011FE3C6F50090016B /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		099600021FE3C6F50090016B /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		099600031FE3C6F50090016B /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
@@ -184,6 +202,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092BBA531FE7875E009A1BE1 /* NetWorkTools */ = {
+			isa = PBXGroup;
+			children = (
+				092BBA541FE78783009A1BE1 /* HLYNetWorkObject.h */,
+				092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */,
+			);
+			path = NetWorkTools;
+			sourceTree = "<group>";
+		};
 		099600001FE3C6F50090016B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +225,10 @@
 		099600051FE3C6F50090016B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				092BBA601FE7CBE1009A1BE1 /* FoodListModel.h */,
+				092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */,
+				092BBA631FE7E41F009A1BE1 /* FoodModel.h */,
+				092BBA641FE7E41F009A1BE1 /* FoodModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +243,12 @@
 		099600071FE3C6F50090016B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				092BBA5D1FE7C378009A1BE1 /* HomeTableViewCell.h */,
+				092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */,
+				092BBA5A1FE7B1B4009A1BE1 /* HeadView.h */,
+				092BBA5B1FE7B1B4009A1BE1 /* HeadView.m */,
+				092BBA571FE7AEBA009A1BE1 /* MoreButton.h */,
+				092BBA581FE7AEBA009A1BE1 /* MoreButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +440,7 @@
 		0996005A1FE3CA5E0090016B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				092BBA531FE7875E009A1BE1 /* NetWorkTools */,
 				09D956271FE4E5780012E309 /* GlobalTools */,
 				0996005B1FE3CA5E0090016B /* ViewToolKit */,
 			);
@@ -883,9 +921,12 @@
 				099600511FE3C7AD0090016B /* LaunchView.m in Sources */,
 				0996FFB51FE3C1210090016B /* main.m in Sources */,
 				0996FFA71FE3C1210090016B /* AppDelegate.m in Sources */,
+				092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */,
 				099600661FE3CCE90090016B /* RecommendViewController.m in Sources */,
 				099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */,
+				092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */,
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
+				092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */,
 				0996004B1FE3C7AD0090016B /* UILabel+LYZ.m in Sources */,
 				099600561FE3C7AD0090016B /* systemTabbar.m in Sources */,
 				099600471FE3C7AC0090016B /* NSString+isoEncoding.m in Sources */,
@@ -900,13 +941,16 @@
 				09D956471FE4F4490012E309 /* JElasticPullToRefreshView.m in Sources */,
 				099600531FE3C7AD0090016B /* NewFeatureViewController.m in Sources */,
 				099600571FE3C7AD0090016B /* tabbarBadgeButton.m in Sources */,
+				092BBA5C1FE7B1B4009A1BE1 /* HeadView.m in Sources */,
 				0996005E1FE3CA5E0090016B /* ViewFactory.m in Sources */,
 				099600501FE3C7AD0090016B /* LanchViewManger.m in Sources */,
 				099600541FE3C7AD0090016B /* RootViewController.m in Sources */,
 				09D956221FE4B7830012E309 /* customTabbar.m in Sources */,
+				092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */,
 				099600111FE3C6F50090016B /* HomeViewController.m in Sources */,
 				099600521FE3C7AD0090016B /* customNaviController.m in Sources */,
 				0996004E1FE3C7AD0090016B /* MBProgressHUD+NHAdd.m in Sources */,
+				092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

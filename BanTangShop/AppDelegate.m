@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setScale];
+    NSString*directory=NSHomeDirectory();
+    DLog(@"沙盒目录：===%@",directory);
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[SetupTools sharedInstance]chooseRootViewController];

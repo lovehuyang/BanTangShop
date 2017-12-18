@@ -13,4 +13,9 @@
 + (UIButton *)createButtonWithFrame:(CGRect)frame ImageName:(NSString *)imageName Target:(id)target Action:(SEL)action Title:(NSString *)title;
 + (UIButton *)createSystemButtonWithFrame:(CGRect)frame Target:(id)target Action:(SEL)action Title:(NSString *)title;
 
+/**
+ 创建“更多”按钮
+
+ */
++ (UIButton *)createMoreButtonWithFrame:(CGRect)frame target:(id)target Action:(SEL)action title:(NSString *)title;
 @end

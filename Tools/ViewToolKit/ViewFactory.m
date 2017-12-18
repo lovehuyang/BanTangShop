@@ -29,4 +29,14 @@
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
+
++ (UIButton *)createMoreButtonWithFrame:(CGRect)frame target:(id)target Action:(SEL)action title:(NSString *)title{
+    UIButton*button=[UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame=frame;
+    [button setTitle:@"更多" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"right_icon"] forState:UIControlStateNormal];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
 @end
