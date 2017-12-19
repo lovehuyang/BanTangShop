@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853E31FE89B5300AD9437 /* InfoDBAccess.m */; };
 		092853E71FE89B6A00AD9437 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853E61FE89B6A00AD9437 /* Model.m */; };
+		092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853EB1FE8D88F00AD9437 /* CenterViewController.m */; };
+		092853F21FE8E44100AD9437 /* CustomNavSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853F11FE8E44100AD9437 /* CustomNavSearchBar.m */; };
+		092853F51FE8EEFA00AD9437 /* TopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853F41FE8EEFA00AD9437 /* TopMenuView.m */; };
+		092853F81FE8F49F00AD9437 /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853F71FE8F49F00AD9437 /* MenuButton.m */; };
 		092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */; };
 		092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA581FE7AEBA009A1BE1 /* MoreButton.m */; };
 		092BBA5C1FE7B1B4009A1BE1 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5B1FE7B1B4009A1BE1 /* HeadView.m */; };
@@ -81,6 +85,14 @@
 		092853E31FE89B5300AD9437 /* InfoDBAccess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoDBAccess.m; sourceTree = "<group>"; };
 		092853E51FE89B6A00AD9437 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		092853E61FE89B6A00AD9437 /* Model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		092853EA1FE8D88F00AD9437 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
+		092853EB1FE8D88F00AD9437 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
+		092853F01FE8E44100AD9437 /* CustomNavSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNavSearchBar.h; sourceTree = "<group>"; };
+		092853F11FE8E44100AD9437 /* CustomNavSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavSearchBar.m; sourceTree = "<group>"; };
+		092853F31FE8EEFA00AD9437 /* TopMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopMenuView.h; sourceTree = "<group>"; };
+		092853F41FE8EEFA00AD9437 /* TopMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopMenuView.m; sourceTree = "<group>"; };
+		092853F61FE8F49F00AD9437 /* MenuButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuButton.h; sourceTree = "<group>"; };
+		092853F71FE8F49F00AD9437 /* MenuButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuButton.m; sourceTree = "<group>"; };
 		092BBA541FE78783009A1BE1 /* HLYNetWorkObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLYNetWorkObject.h; sourceTree = "<group>"; };
 		092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLYNetWorkObject.m; sourceTree = "<group>"; };
 		092BBA571FE7AEBA009A1BE1 /* MoreButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreButton.h; sourceTree = "<group>"; };
@@ -215,6 +227,53 @@
 				092853E31FE89B5300AD9437 /* InfoDBAccess.m */,
 			);
 			path = InfoDBAccessTools;
+			sourceTree = "<group>";
+		};
+		092853E81FE8D88F00AD9437 /* CenterView */ = {
+			isa = PBXGroup;
+			children = (
+				092853E91FE8D88F00AD9437 /* Controller */,
+				092853EC1FE8D88F00AD9437 /* Model */,
+				092853ED1FE8D88F00AD9437 /* Other */,
+				092853EE1FE8D88F00AD9437 /* View */,
+			);
+			path = CenterView;
+			sourceTree = "<group>";
+		};
+		092853E91FE8D88F00AD9437 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				092853EA1FE8D88F00AD9437 /* CenterViewController.h */,
+				092853EB1FE8D88F00AD9437 /* CenterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		092853EC1FE8D88F00AD9437 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		092853ED1FE8D88F00AD9437 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		092853EE1FE8D88F00AD9437 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				092853F61FE8F49F00AD9437 /* MenuButton.h */,
+				092853F71FE8F49F00AD9437 /* MenuButton.m */,
+				092853F31FE8EEFA00AD9437 /* TopMenuView.h */,
+				092853F41FE8EEFA00AD9437 /* TopMenuView.m */,
+				092853F01FE8E44100AD9437 /* CustomNavSearchBar.h */,
+				092853F11FE8E44100AD9437 /* CustomNavSearchBar.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		092BBA531FE7875E009A1BE1 /* NetWorkTools */ = {
@@ -589,6 +648,7 @@
 		0996FFD81FE3C6500090016B /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				092853E81FE8D88F00AD9437 /* CenterView */,
 				0996005F1FE3CCBE0090016B /* RecommendView */,
 				0996FFFF1FE3C6F50090016B /* HomeView */,
 				0996FFF81FE3C6F50090016B /* ForumView */,
@@ -955,11 +1015,15 @@
 				092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */,
 				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
+				092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,
+				092853F81FE8F49F00AD9437 /* MenuButton.m in Sources */,
+				092853F51FE8EEFA00AD9437 /* TopMenuView.m in Sources */,
 				09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */,
 				09D9562A1FE4E5900012E309 /* GlobalTools.m in Sources */,
 				09D956471FE4F4490012E309 /* JElasticPullToRefreshView.m in Sources */,
 				099600531FE3C7AD0090016B /* NewFeatureViewController.m in Sources */,
+				092853F21FE8E44100AD9437 /* CustomNavSearchBar.m in Sources */,
 				099600571FE3C7AD0090016B /* tabbarBadgeButton.m in Sources */,
 				092BBA5C1FE7B1B4009A1BE1 /* HeadView.m in Sources */,
 				0996005E1FE3CA5E0090016B /* ViewFactory.m in Sources */,

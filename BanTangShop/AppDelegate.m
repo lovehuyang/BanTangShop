@@ -58,6 +58,14 @@
         }
     } failureBlock:^(NSInteger errCode, NSString *msg) {
     }];
+    // 获取食品品牌信息
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETFOODBRAND successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            Model *model = [Model createModelWithDic:tempDict];
+            [[InfoDBAccess sharedInstance]databaseUpdateTable:Table_FoodBrand_ENUM model:model];
+        }
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+    }];
 }
 + (AppDelegate *)shareInstance
 {

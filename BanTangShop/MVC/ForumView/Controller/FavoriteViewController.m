@@ -7,6 +7,7 @@
 //
 
 #import "FavoriteViewController.h"
+#import "CenterViewController.h"
 
 @interface FavoriteViewController ()
 
@@ -19,19 +20,18 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 生命周期
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushCenterView) name:NOTIFICATION_PUSHCENTERVIEW object:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_PUSHCENTERVIEW object:nil];
 }
-*/
+- (void)pushCenterView{
+    CenterViewController *cvc = [[CenterViewController alloc]init];
+    [self.navigationController pushViewController:cvc animated:YES];
+}
 
 @end

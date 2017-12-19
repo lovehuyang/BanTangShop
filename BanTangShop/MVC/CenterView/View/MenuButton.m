@@ -1,27 +1,25 @@
 //
-//  MoreButton.m
+//  MenuButton.m
 //  BanTangShop
 //
-//  Created by tzsoft on 2017/12/18.
+//  Created by tzsoft on 2017/12/19.
 //  Copyright © 2017年 HLY. All rights reserved.
 //
 
-#import "MoreButton.h"
-#define IMAGEW 10
+#import "MenuButton.h"
+#define IMAGEW 12
+#define IMAGEH 10
 
-@implementation MoreButton
-+(instancetype)moreButton{
-    return [[self alloc]init];
-}
--(id)initWithFrame:(CGRect)frame{
-    
-    self = [super initWithFrame:frame];
-    if (self) {
+@implementation MenuButton
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
         self.titleLabel.font = [UIFont systemFontOfSize:13];
         self.backgroundColor = [UIColor whiteColor];
         [self setTitleColor:Color_Text_Gray forState:UIControlStateNormal];
-        [self setImage:[UIImage imageNamed:@"right_icon"] forState:UIControlStateNormal];
-        [self setTitle:@"更多" forState:UIControlStateNormal];
+        [self setTitleColor:Color_Theme forState:UIControlStateSelected];
+        [self setImage:[UIImage imageNamed:@"up_gray"] forState:UIControlStateNormal];
+         [self setImage:[UIImage imageNamed:@"up_orange"] forState:UIControlStateSelected];
     }
     return self;
 }
@@ -31,7 +29,7 @@
     
     CGFloat imageY = self.frame.size.height/2 - IMAGEW/2;
     CGFloat imageW = IMAGEW;
-    CGFloat imageH = IMAGEW;
+    CGFloat imageH = IMAGEH;
     CGFloat imageX = contentRect.size.width - imageW;
     return CGRectMake(imageX, imageY, imageW, imageH);
 }
@@ -44,4 +42,5 @@
     CGFloat titleX = 0;
     return CGRectMake(titleX, titleY, titleW, titleH);
 }
+
 @end

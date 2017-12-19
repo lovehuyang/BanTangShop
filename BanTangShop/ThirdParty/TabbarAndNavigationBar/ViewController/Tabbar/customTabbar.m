@@ -39,11 +39,9 @@
         [plusButton setBackgroundColor:[UIColor whiteColor]];
         plusButton.bounds = CGRectMake(0, 0, 60, 60);
         plusButton.layer.cornerRadius = 30;
-//        plusButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//        plusButton.layer.borderWidth = 1;
         plusButton.layer.masksToBounds = YES;
         self.plusButton = plusButton;
-        [self.plusButton addTarget:self action:@selector(plusButtonClick) forControlEvents:UIControlEventTouchDown];
+        [self.plusButton addTarget:self action:@selector(plusButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [self drawCircle];
 
     }
@@ -58,17 +56,13 @@
     //第三个参数是起始弧度
     //第四个参数是结束弧度
     //第五个参数是传入yes是顺时针,no为顺时针，下面的另外一种实现方法的参数意思也是一致
-    //path addArcWithCenter:<#(CGPoint)#> radius:<#(CGFloat)#> startAngle:<#(CGFloat)#> endAngle:<#(CGFloat)#> clockwise:<#(BOOL)#>
-    
-    
     [path addArcWithCenter:CGPointMake(self.plusButton.centerX,self.plusButton.centerY) radius:10 startAngle:0 endAngle:M_PI_2 clockwise:NO];
-    
     //渲染
     [path stroke];
 }
 -(void)plusButtonClick{
-    NSLog(@"我点击了加号按钮");
-    
+    DLog(@"我点击了加号按钮");
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_PUSHCENTERVIEW object:nil];
 }
 
 /**

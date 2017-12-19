@@ -17,6 +17,7 @@
 typedef NS_ENUM(NSInteger , TableName) {
     Table_FoodFlavour_ENUM,//食品口味表
     Table_FoodCatagory_ENUM,// 食品类别表
+    Table_FoodBrand_ENUM,// 食品品牌表
 };
 
 @interface InfoDBAccess : NSObject
@@ -35,4 +36,11 @@ typedef NS_ENUM(NSInteger , TableName) {
  @return 信息模型
  */
 - (Model *)getInfoFromTable:(TableName)table andId:(NSString *)Id;
+/**
+ 获取表中所有数据
+ 
+ @param table table的类型
+ @return 模型数组
+ */
+- (NSMutableArray *)loadAllInfoTable:(TableName)table;
 @end

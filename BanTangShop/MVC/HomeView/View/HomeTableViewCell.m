@@ -124,7 +124,6 @@
     _flavourLab.textColor = [UIColor grayColor];
     _flavourLab.font = [UIFont systemFontOfSize:13];
     [_flavourLab setSingleLineAutoResizeWithMaxWidth:100];
-    
 }
 
 - (void)layoutSubviews{
@@ -135,11 +134,6 @@
     _priceLab.text = [NSString stringWithFormat:@"¥:%@",_food.price_New];
     [self setStartStatus];// 设置星星的状态
     _sealCount.text = [NSString stringWithFormat:@"已售:%@",_food.sell_count];
-    
-    CGRect frame = [self frame];
-    frame.size.height = _sealCount.height_sd;
-    self.frame = frame;
-    [self setupAutoHeightWithBottomView:_sealCount bottomMargin:10];
 }
 
 - (void)setStartStatus{

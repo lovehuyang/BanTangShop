@@ -100,7 +100,7 @@
 
 -(UIBarButtonItem *)creatBackButton
 {
-    return [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"return_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]style:UIBarButtonItemStylePlain target:self action:@selector(popSelf)];
+    return [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"back_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]style:UIBarButtonItemStylePlain target:self action:@selector(popSelf)];
     
 }
 -(void)popSelf

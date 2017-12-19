@@ -11,6 +11,7 @@
 
 #define Table_FoodFlavour @"FoodFlavour"// 食品口味表
 #define Table_FoodCatagory @"FoodCatagory"// 食品类别表
+#define Table_FoodBRAND @"FoodBrand"// 食品品牌表
 
 @interface InfoDBAccess()
 @property (nonatomic, strong) FMDatabase *dataBase;
@@ -66,6 +67,7 @@
     
     [self createFoodFlavourTable];// 创建食品口味表
     [self createFoodCatagoryTable];// 创建食品类别表
+    [self createFoodBrandTable];// 创建食品品牌表
 }
 
 #pragma mark - 创建表
@@ -86,7 +88,10 @@
 {
     [self createTable:Table_FoodCatagory sql:@"CREATE table FoodCatagory (Id TEXT,name TEXT)"];
 }
-
+#pragma mark - 创建食品品牌表
+- (void)createFoodBrandTable{
+    [self createTable:Table_FoodBRAND sql:@"CREATE table FoodBrand (Id TEXT,name TEXT)"];
+}
 #pragma mark - 更新表信息
 /**
  *  更新表信息
@@ -157,10 +162,46 @@
     return model;
 }
 
+#pragma mark - 获取表中所有数据
+/**
+ 获取表中所有数据
+
+ @param table table的类型
+ @return 模型数组
+ */
+- (NSMutableArray *)loadAllInfoTable:(TableName)table{
+    NSString *tableName = [self getTableName:table];
+    NSString *rsStr = [NSString stringWithFormat:@"SELECT Id, name FROM %@ ",tableName];
+    FMResultSet * rs = [self.dataBase executeQuery:rsStr];
+    NSMutableArray * tempArr = [[NSMutableArray alloc]init];
+    while ([rs next])
+    {
+        Model *model = [[Model alloc]init];
+        model.ID = [rs stringForColumn:@"Id"];
+        model.name = [rs stringForColumn:@"name"];
+        [tempArr addObject:model];
+    }
+    [rs close];
+    return tempArr;
+}
 #pragma mark - 获取表名
 - (NSString *)getTableName:(TableName)table{
     
-    NSString *tableName = table == Table_FoodFlavour_ENUM?Table_FoodFlavour:Table_FoodCatagory;
+    NSString *tableName = @"";
+    switch (table) {
+        case Table_FoodBrand_ENUM:
+            tableName = Table_FoodBRAND;
+            break;
+        case Table_FoodCatagory_ENUM:
+            tableName = Table_FoodCatagory;
+            break;
+        case Table_FoodFlavour_ENUM:
+            tableName = Table_FoodFlavour;
+            break;
+        
+        default:
+            break;
+    }
     return tableName;
 }
 @end

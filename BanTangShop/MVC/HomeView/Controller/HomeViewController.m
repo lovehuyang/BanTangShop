@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "NextViewController.h"
+#import "CenterViewController.h"
 #import "UIScrollView+JElasticPullToRefresh.h"// 下拉刷新
 #import "SDCycleScrollView.h"// 轮播图
 #import "HomeTableViewCell.h"
@@ -198,11 +199,6 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 120 ;
-//    Class currentClass = [HomeTableViewCell class];
-//
-//    FoodListModel *model = [self.dataArr objectAtIndex:indexPath.row];
-//
-//    return [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"food" cellClass:currentClass contentViewWidth:ScrW];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -245,7 +241,15 @@
 }
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
-    
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushCenterView) name:NOTIFICATION_PUSHCENTERVIEW object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_PUSHCENTERVIEW object:nil];
+}
+- (void)pushCenterView{
+    CenterViewController *cvc = [[CenterViewController alloc]init];
+    [self.navigationController pushViewController:cvc animated:YES];
 }
 @end
