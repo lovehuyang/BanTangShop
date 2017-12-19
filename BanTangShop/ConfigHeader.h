@@ -11,6 +11,8 @@
 
 #define URL_BASEIP @"http://101.132.191.36"
 #define URL_GETBANNERS @"/shop/getbanners"//获取banner轮播图
+#define URL_GETFOODCATAGORY @"/shop/getFoodCatagory"// 获取食品类别
+#define URL_GETFOODFLAVOUR @"/shop/getFoodFlavour"// 获取食品口味
 #define URL_GETRECOMMENDS @"/shop/getrecommends"//获取推荐食品
 #define URL_GETSELLTOPFOODSUMMARY @"/shop/getSellTopFoodSummary"//获取销售排行食品列表
 #define URL_GETFOODDETAILBYID @"/shop/getFoodDetailById"//获取食品详情(通过ID)

@@ -71,12 +71,10 @@
 - (void)getBannerData{
     
     [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETBANNERS successBlock:^(id requestData, NSDictionary *dataDict) {
-        DLog(@"");
         [self.bannerArr removeAllObjects];
         [self.bannerArr addObjectsFromArray:(NSArray *)dataDict];
         [self loadScrollViewData];// 加载轮播图数据
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        DLog(@"");
     }];
 };
 
@@ -84,18 +82,15 @@
 - (void)getRecommends{
     
     [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETRECOMMENDS successBlock:^(id requestData, NSDictionary *dataDict) {
-        DLog(@"%@",dataDict);
         [self.recommendArr removeAllObjects];
         [self.recommendArr addObjectsFromArray:(NSArray *)dataDict];
         [self createRecommendUI];// 创建推荐食品的UI
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        DLog(@"");
     }];
 }
 #pragma mark - 获取销售排行食品列表
 - (void)getSellTopFoodSummary{
     [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETSELLTOPFOODSUMMARY successBlock:^(id requestData, NSDictionary *dataDict) {
-        DLog(@"%@",dataDict);
         [self.dataArr removeAllObjects];
         for (NSDictionary *tempDict in (NSArray *)dataDict) {
             FoodListModel *food = [FoodListModel createModelWithDic:tempDict];
@@ -104,7 +99,6 @@
         [self.tableView stopLoading];
         [self.tableView reloadData];
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        DLog(@"");
         [self.tableView stopLoading];
     }];
 }
@@ -149,6 +143,7 @@
         headView.moreBtnClick = ^(NSString *title) {
             DLog(@"%@组的更多按钮",title);
         };
+
         [self.headView addSubview:headView];
         
         _recommendView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, H_BANNER + 30 * ScaleX, ScrW, H_CELL - 30 *ScaleX)];
@@ -194,6 +189,7 @@
     if (cell == nil) {
         cell = [[HomeTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:homeCell];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.food = [self.dataArr objectAtIndex:indexPath.row];
     return cell;
 }
@@ -201,7 +197,12 @@
     return self.dataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    return 120 ;
+//    Class currentClass = [HomeTableViewCell class];
+//
+//    FoodListModel *model = [self.dataArr objectAtIndex:indexPath.row];
+//
+//    return [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"food" cellClass:currentClass contentViewWidth:ScrW];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -209,6 +210,9 @@
     backView.frame = CGRectMake(0, 0,ScrW, 40 *ScaleX);
     backView.backgroundColor = Color_Back_Gray;
     HeadView *headView = [[HeadView alloc]initWithFrame:CGRectMake(0, 10 *ScaleX, ScrW, 30 *ScaleX) title:@"销量排行"];
+    headView.moreBtnClick = ^(NSString *title) {
+        DLog(@"%@",title);
+    };
     [backView addSubview:headView];
     return backView;
 }
@@ -234,6 +238,7 @@
         
     });
 }
+
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     DLog(@"去吃吧");

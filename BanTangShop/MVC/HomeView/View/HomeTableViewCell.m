@@ -16,11 +16,13 @@
     UIView *_starBackView;// 存放星星的容器
     UILabel *_contentLab;
     UILabel *_priceLab;
-    UILabel *_classLab;
+    UILabel *_catagoryLab;// 分类
+    UILabel *_flavourLab;// 口味
     UILabel *_sealCount;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.backgroundColor = [UIColor whiteColor];
         [self setupSubViews];
     }
     return self;
@@ -43,7 +45,7 @@
     .topEqualToView(_imgView)
     .widthIs(75)
     .heightIs(25);
-    _starBackView.backgroundColor = [UIColor grayColor];
+    _starBackView.backgroundColor = [UIColor whiteColor];
     CGFloat star_w = 15;
     for (int i = 0; i < 5; i ++) {
         UIButton *tempBtn = [UIButton new];
@@ -66,7 +68,7 @@
     .rightSpaceToView(_starBackView, 5);
     _foodNameLab.font = [UIFont boldSystemFontOfSize:14];
     _foodNameLab.textColor = Color_Theme;
-    _foodNameLab.backgroundColor = [UIColor redColor];
+    _foodNameLab.backgroundColor = [UIColor whiteColor];
     
     _contentLab = [UILabel new];
     [self.contentView addSubview:_contentLab];
@@ -75,7 +77,7 @@
     .leftEqualToView(_foodNameLab)
     .widthRatioToView(_foodNameLab, 1)
     .heightRatioToView(_foodNameLab, 1.6);
-    _contentLab.font = [UIFont systemFontOfSize:14];
+    _contentLab.font = [UIFont systemFontOfSize:13];
     _contentLab.numberOfLines = 0;
     _contentLab.textAlignment = NSTextAlignmentLeft;
     
@@ -84,11 +86,22 @@
     _priceLab.sd_layout
     .leftEqualToView(_contentLab)
     .topSpaceToView(_contentLab, 0)
-    .heightRatioToView(_foodNameLab, 1);
-    [_priceLab setSingleLineAutoResizeWithMaxWidth:150];
+    .heightRatioToView(_foodNameLab, 1)
+    .autoWidthRatio(0);
     _priceLab.textColor = Color_Theme;
-    _priceLab.font = [UIFont systemFontOfSize:14];
-    _priceLab.backgroundColor = [UIColor blueColor];
+    _priceLab.font = [UIFont systemFontOfSize:13];
+    [_priceLab setSingleLineAutoResizeWithMaxWidth:100];
+    
+    _catagoryLab = [UILabel new];
+    [self.contentView addSubview:_catagoryLab];
+    _catagoryLab.sd_layout
+    .leftSpaceToView(_priceLab, 0)
+    .topEqualToView(_priceLab)
+    .bottomEqualToView(_priceLab)
+    .autoWidthRatio(0);
+    _catagoryLab.textColor = [UIColor grayColor];
+    _catagoryLab.font= [UIFont systemFontOfSize:13];
+    [_catagoryLab setSingleLineAutoResizeWithMaxWidth:100];
     
     _sealCount = [UILabel new];
     [self.contentView addSubview:_sealCount];
@@ -98,7 +111,20 @@
     .heightRatioToView(_priceLab, 1);
     [_sealCount setSingleLineAutoResizeWithMaxWidth:100];
     _sealCount.textColor = [UIColor grayColor];
-    _sealCount.font = [UIFont systemFontOfSize:14];
+    _sealCount.font = [UIFont systemFontOfSize:13];
+    
+    // 口味
+    _flavourLab = [UILabel new];
+    [self.contentView addSubview:_flavourLab];
+    _flavourLab.sd_layout
+    .rightSpaceToView(_sealCount, 0)
+    .topEqualToView(_sealCount)
+    .bottomEqualToView(_sealCount)
+    .autoWidthRatio(0);
+    _flavourLab.textColor = [UIColor grayColor];
+    _flavourLab.font = [UIFont systemFontOfSize:13];
+    [_flavourLab setSingleLineAutoResizeWithMaxWidth:100];
+    
 }
 
 - (void)layoutSubviews{
@@ -106,9 +132,14 @@
     [_imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_BASEIP,_food.avatar]] placeholderImage:[UIImage imageNamed:@"common_image_empty"]];
     _foodNameLab.text = _food.foodName;
     _contentLab.text = _food.content;
-    _priceLab.text = [NSString stringWithFormat:@"￥:%@",_food.price_New];
+    _priceLab.text = [NSString stringWithFormat:@"¥:%@",_food.price_New];
     [self setStartStatus];// 设置星星的状态
     _sealCount.text = [NSString stringWithFormat:@"已售:%@",_food.sell_count];
+    
+    CGRect frame = [self frame];
+    frame.size.height = _sealCount.height_sd;
+    self.frame = frame;
+    [self setupAutoHeightWithBottomView:_sealCount bottomMargin:10];
 }
 
 - (void)setStartStatus{
@@ -122,17 +153,25 @@
 
 -(void)setFood:(FoodListModel *)food{
     _food = food;
-    [self getFoodDetailById];// 获取详情
+    [self getFoodCatagory];// 获取食品分类
+    [self getFoodFlavour];// 获取食品口味
+}
+// 获取食品分类
+- (void)getFoodCatagory{
+    Model *model = [[InfoDBAccess sharedInstance]getInfoFromTable:Table_FoodCatagory_ENUM andId:[_food.catagory stringValue]];
+    _catagoryLab.text = [NSString stringWithFormat:@"|%@",model.name];
+}
+// 获取食品口味
+- (void)getFoodFlavour{
+    Model *model = [[InfoDBAccess sharedInstance]getInfoFromTable:Table_FoodFlavour_ENUM andId:[_food.flavor stringValue]];
+    _flavourLab.text = [NSString stringWithFormat:@"%@|",model.name];
 }
 
-
 - (void)getFoodDetailById{
-    NSDictionary *paraDict = @{@"foodId":_food.Id};
+    NSDictionary *paraDict = @{@"foodId":_food.ID};
     [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETFOODDETAILBYID successBlock:^(id requestData, NSDictionary *dataDict) {
-        DLog(@"%@",dataDict);
         
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        DLog(@"");
         
     }];
 }

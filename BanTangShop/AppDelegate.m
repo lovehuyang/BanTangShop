@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Model.h"
 
 @interface AppDelegate ()
 
@@ -17,8 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setScale];
-    NSString*directory=NSHomeDirectory();
-    DLog(@"沙盒目录：===%@",directory);
+    [self setupConfigInfo];// 初始化配置信息
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[SetupTools sharedInstance]chooseRootViewController];
@@ -38,6 +39,26 @@
     }
 }
 
+- (void)setupConfigInfo{
+    // 创建数据库
+    [[InfoDBAccess sharedInstance] openDatabaseWithAppName:@"ChiQuBa"];
+    // 获取食品口味信息
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETFOODFLAVOUR successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            Model *model = [Model createModelWithDic:tempDict];
+            [[InfoDBAccess sharedInstance]databaseUpdateTable:Table_FoodFlavour_ENUM model:model];
+        }
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+    }];
+    // 获取食品分类信息
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETFOODCATAGORY successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            Model *model = [Model createModelWithDic:tempDict];
+            [[InfoDBAccess sharedInstance]databaseUpdateTable:Table_FoodCatagory_ENUM model:model];
+        }
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+    }];
+}
 + (AppDelegate *)shareInstance
 {
     return [[UIApplication sharedApplication] delegate];

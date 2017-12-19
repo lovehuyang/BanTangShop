@@ -1,17 +1,17 @@
 //
-//  FoodModel.m
+//  Model.m
 //  BanTangShop
 //
-//  Created by tzsoft on 2017/12/18.
+//  Created by tzsoft on 2017/12/19.
 //  Copyright © 2017年 HLY. All rights reserved.
 //
 
-#import "FoodListModel.h"
+#import "Model.h"
 
-@implementation FoodListModel
+@implementation Model
 + (id)createModelWithDic:(NSDictionary *)dic
 {
-    return [[FoodListModel alloc] initWithDic:dic];
+    return [[Model alloc] initWithDic:dic];
 }
 
 - (id)initWithDic:(NSDictionary *)dic {
@@ -24,10 +24,7 @@
     
     if([key isEqualToString:@"id"])
     {
-        self.ID = value;
-    }else if ([key isEqualToString:@"newPrice"]){
-        self.price_New = value;
+        self.ID = [NSString stringWithFormat:@"%@",value];
     }
 }
-
 @end

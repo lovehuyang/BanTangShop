@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface FoodListModel : NSObject
-@property (nonatomic ,strong) NSNumber *Id;
+@property (nonatomic ,strong) NSString *ID;
 @property (nonatomic ,strong) NSString *foodName;
 @property (nonatomic ,strong) NSString *content;
 @property (nonatomic ,strong) NSNumber *click_count;

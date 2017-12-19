@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853E31FE89B5300AD9437 /* InfoDBAccess.m */; };
+		092853E71FE89B6A00AD9437 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853E61FE89B6A00AD9437 /* Model.m */; };
 		092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */; };
 		092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA581FE7AEBA009A1BE1 /* MoreButton.m */; };
 		092BBA5C1FE7B1B4009A1BE1 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5B1FE7B1B4009A1BE1 /* HeadView.m */; };
@@ -75,6 +77,10 @@
 
 /* Begin PBXFileReference section */
 		01C0DFF1DA618EAD4B655BF4 /* Pods-BanTangShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.release.xcconfig"; sourceTree = "<group>"; };
+		092853E21FE89B5300AD9437 /* InfoDBAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoDBAccess.h; sourceTree = "<group>"; };
+		092853E31FE89B5300AD9437 /* InfoDBAccess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoDBAccess.m; sourceTree = "<group>"; };
+		092853E51FE89B6A00AD9437 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		092853E61FE89B6A00AD9437 /* Model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		092BBA541FE78783009A1BE1 /* HLYNetWorkObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLYNetWorkObject.h; sourceTree = "<group>"; };
 		092BBA551FE78783009A1BE1 /* HLYNetWorkObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLYNetWorkObject.m; sourceTree = "<group>"; };
 		092BBA571FE7AEBA009A1BE1 /* MoreButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreButton.h; sourceTree = "<group>"; };
@@ -202,6 +208,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092853E11FE89B2500AD9437 /* InfoDBAccessTools */ = {
+			isa = PBXGroup;
+			children = (
+				092853E21FE89B5300AD9437 /* InfoDBAccess.h */,
+				092853E31FE89B5300AD9437 /* InfoDBAccess.m */,
+			);
+			path = InfoDBAccessTools;
+			sourceTree = "<group>";
+		};
 		092BBA531FE7875E009A1BE1 /* NetWorkTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +244,8 @@
 				092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */,
 				092BBA631FE7E41F009A1BE1 /* FoodModel.h */,
 				092BBA641FE7E41F009A1BE1 /* FoodModel.m */,
+				092853E51FE89B6A00AD9437 /* Model.h */,
+				092853E61FE89B6A00AD9437 /* Model.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -440,6 +457,7 @@
 		0996005A1FE3CA5E0090016B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				092853E11FE89B2500AD9437 /* InfoDBAccessTools */,
 				092BBA531FE7875E009A1BE1 /* NetWorkTools */,
 				09D956271FE4E5780012E309 /* GlobalTools */,
 				0996005B1FE3CA5E0090016B /* ViewToolKit */,
@@ -910,6 +928,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092853E71FE89B6A00AD9437 /* Model.m in Sources */,
 				099600131FE3C6F50090016B /* LoginViewController.m in Sources */,
 				099600581FE3C7AD0090016B /* tabbarButton.m in Sources */,
 				0996FFAA1FE3C1210090016B /* ViewController.m in Sources */,
@@ -933,6 +952,7 @@
 				0996004D1FE3C7AD0090016B /* SetupTools.m in Sources */,
 				099600121FE3C6F50090016B /* NextViewController.m in Sources */,
 				0996004C1FE3C7AD0090016B /* UIView+Extension.m in Sources */,
+				092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */,
 				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,

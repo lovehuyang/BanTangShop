@@ -52,13 +52,11 @@
         [manager GET:urlString parameters:paramDict progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            DLog(@"%@",responseObject);
             // 统一处理请求数据
             [self dealwithreturnDataWithRequestData:responseObject successBlock:successBlock faileBlock:failureBlock];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             failureBlock(error.code,@"网络请求失败，请稍后重试");
-            
         }];
     }
 }

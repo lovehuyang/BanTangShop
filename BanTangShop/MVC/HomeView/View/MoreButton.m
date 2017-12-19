@@ -17,7 +17,7 @@
     
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.titleLabel.font = [UIFont systemFontOfSize:13];
         self.backgroundColor = [UIColor whiteColor];
         [self setTitleColor:HXYGetColor(@"#7F7F7F") forState:UIControlStateNormal];
         [self setImage:[UIImage imageNamed:@"right_icon"] forState:UIControlStateNormal];
