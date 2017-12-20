@@ -188,7 +188,7 @@
 #pragma mark - 分页获取食品列表(多条件)
 - (void)getFoodListPage{
     NSString *page = [NSString stringWithFormat:@"%d",_page];
-    NSDictionary *paraDict = @{@"keyword":_keyword,@"catagory":_catagory,@"brand":_brand,@"flavor":_flavor,@"page":page};
+    NSDictionary *paraDict = @{@"keyword":_keyword,@"catagory":_catagory,@"brand":_brand,@"flavour":_flavor,@"page":page};
     [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETFOODLISTPAGE successBlock:^(id requestData, NSDictionary *dataDict) {
         [MBProgressHUDTools hideHUD];
         _haveNextPage =  [requestData[@"isHasNext"] boolValue];

@@ -12,6 +12,7 @@
 #define Table_FoodFlavour @"FoodFlavour"// 食品口味表
 #define Table_FoodCatagory @"FoodCatagory"// 食品类别表
 #define Table_FoodBRAND @"FoodBrand"// 食品品牌表
+#define Table_USERINFO @"UserInfo"// 用户信息表
 
 @interface InfoDBAccess()
 @property (nonatomic, strong) FMDatabase *dataBase;
@@ -68,6 +69,7 @@
     [self createFoodFlavourTable];// 创建食品口味表
     [self createFoodCatagoryTable];// 创建食品类别表
     [self createFoodBrandTable];// 创建食品品牌表
+    [self createUserInfoTable];// 创建用户信息表
 }
 
 #pragma mark - 创建表
@@ -92,9 +94,13 @@
 - (void)createFoodBrandTable{
     [self createTable:Table_FoodBRAND sql:@"CREATE table FoodBrand (Id TEXT,name TEXT)"];
 }
-#pragma mark - 更新表信息
+#pragma mark - 创建用户信息表
+- (void)createUserInfoTable{
+    [self createTable:Table_USERINFO sql:@"CREATE table UserInfo (Id TEXT,username TEXT,password TEXT,nickname TEXT,avatar TEXT,date_joined TEXT,qq TEXT,wx TEXT,sex TEXT,realname TEXT,phone TEXT)"];
+}
+#pragma mark - 更新商品信息表
 /**
- *  更新表信息
+ *  更新商品信息表
  */
 - (void)databaseUpdateTable:(TableName)table model:(Model *)model{
     // 判断数据库中是否有该条数据(存在则更新，不存在则插入)
@@ -112,10 +118,29 @@
     }
 }
 
+/**
+ 更新用户信息表
+
+ @param model 用户信息模型
+ */
+- (void)databaseUserInfoTable:(UserModel *)model{
+    // 判断数据库中是否有该条数据(存在则更新，不存在则插入)
+    BOOL isExist = [self isExistInfoJudgeId:model.user_Id];
+    if(isExist)
+    {
+        NSString *dbStr = [NSString stringWithFormat:@"update %@ set username =? ,password = ?,nickname = ?,avatar = ?,date_joined = ?,qq = ?,wx = ?,sex = ?,realname = ?,phone = ? where Id = ?",Table_USERINFO];
+        [self.dataBase executeUpdate:dbStr,model.username,model.password,model.nickname,model.avatar,model.date_joined,model.qq,model.wx,model.sex,model.realname,model.phone,model.user_Id];
+    }
+    else
+    {
+        NSString *dbStr = [NSString stringWithFormat:@"INSERT INTO %@(Id, username,password,nickname,avatar,date_joined,qq,wx,sex,realname,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?)",Table_USERINFO];
+        [self.dataBase executeUpdate:dbStr,model.user_Id, model.username,model.password,model.nickname,model.avatar,model.date_joined,model.qq,model.wx,model.sex,model.realname,model.phone];
+    }
+}
 
 #pragma mark - 判断表中是否有该条数据
 /**
- 判断表中是否有该条数据
+ 判断商品信息表中是否有该条数据
 
  @param Id Id
  @param table 表名
@@ -140,9 +165,32 @@
     return isExist;
 }
 
+/**
+ 判断用户信息表中是否有该条数据
+
+ @param Id 用户ID
+ @return yes:存在；No：不存在
+ */
+- (BOOL)isExistInfoJudgeId:(NSString *)Id
+{
+    NSString *rsStr = [NSString stringWithFormat:@"SELECT Id FROM %@",Table_USERINFO];
+    FMResultSet *rs = [self.dataBase executeQuery:rsStr];
+    BOOL isExist = NO;
+    while ([rs next])
+    {
+        NSString *IdDB = [rs stringForColumnIndex:0];
+        if([IdDB isEqualToString:Id])
+        {
+            isExist = YES;
+            return isExist ;
+        }
+    }
+    [rs close];
+    return isExist;
+}
 #pragma mark - 根据 Id 获取表信息
 /**
- 根据 Id 获取表信息
+ 根据 Id 获取商品表信息
  
  @param Id Id
  @return 信息模型
@@ -157,6 +205,36 @@
         int columnIndex = 0;
         model.ID = [rs stringForColumnIndex:columnIndex]; columnIndex++;
         model.name = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+    }
+    [rs close];
+    return model;
+}
+
+/**
+ 根据 Id 获取用户表信息
+
+ @param userId 用户Id
+ @return 信息模型
+ */
+- (UserModel *)getInfoFromUserInfoTable:(NSString *)userId{
+    NSString *rsStr = [NSString stringWithFormat:@"SELECT Id, username,password, nickname,avatar,date_joined,qq,wx,sex,realname,phone FROM %@ where Id = ?",Table_USERINFO];
+    FMResultSet *rs = [self.dataBase executeQuery:rsStr,userId];
+    UserModel *model = [[UserModel alloc]init];
+    while ([rs next])
+    {
+        int columnIndex = 0;
+        model.user_Id = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.username = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.password = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.nickname = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.avatar = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.date_joined = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.qq = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.wx = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.sex = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.realname = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        model.phone = [rs stringForColumnIndex:columnIndex]; columnIndex++;
+        
     }
     [rs close];
     return model;

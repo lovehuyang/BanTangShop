@@ -68,6 +68,7 @@
 		09D956471FE4F4490012E309 /* JElasticPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956401FE4F4490012E309 /* JElasticPullToRefreshView.m */; };
 		09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956421FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m */; };
 		09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */; };
+		09DA61971FEA6443007780E7 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DA61961FEA6443007780E7 /* UserModel.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -209,6 +210,8 @@
 		09D956421FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+JElasticPullToRefresh.m"; sourceTree = "<group>"; };
 		09D956431FE4F4490012E309 /* UIView+JElasticPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JElasticPullToRefresh.h"; sourceTree = "<group>"; };
 		09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JElasticPullToRefresh.m"; sourceTree = "<group>"; };
+		09DA61951FEA6443007780E7 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		09DA61961FEA6443007780E7 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -396,6 +399,8 @@
 		0996000C1FE3C6F50090016B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09DA61951FEA6443007780E7 /* UserModel.h */,
+				09DA61961FEA6443007780E7 /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1071,6 +1076,7 @@
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
 				092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,
+				09DA61971FEA6443007780E7 /* UserModel.m in Sources */,
 				092853F81FE8F49F00AD9437 /* MenuButton.m in Sources */,
 				092853F51FE8EEFA00AD9437 /* TopMenuView.m in Sources */,
 				09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */,

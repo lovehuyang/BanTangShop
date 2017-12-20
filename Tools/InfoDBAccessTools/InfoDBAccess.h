@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Model.h"
 #import "FMDB.h"
-
+#import "UserModel.h"
 
 /**
 表名
@@ -26,9 +26,15 @@ typedef NS_ENUM(NSInteger , TableName) {
 - (void)openDatabaseWithAppName:(NSString*)appName;
 
 /**
- *  更新表信息
+ *  更新商品信息表信息
  */
 - (void)databaseUpdateTable:(TableName)table model:(Model *)model;
+/**
+ 更新用户信息表
+ 
+ @param model 用户信息模型
+ */
+- (void)databaseUserInfoTable:(UserModel *)model;
 /**
  根据 Id 获取表信息
  
@@ -43,4 +49,12 @@ typedef NS_ENUM(NSInteger , TableName) {
  @return 模型数组
  */
 - (NSMutableArray *)loadAllInfoTable:(TableName)table;
+
+/**
+ 根据 Id 获取用户表信息
+ 
+ @param userId 用户Id
+ @return 信息模型
+ */
+- (UserModel *)getInfoFromUserInfoTable:(NSString *)userId;
 @end
