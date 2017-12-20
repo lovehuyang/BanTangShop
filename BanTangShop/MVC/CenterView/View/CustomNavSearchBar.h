@@ -10,6 +10,4 @@
 
 @interface CustomNavSearchBar : UITextField
 - (instancetype)initWithFrame:(CGRect)frame placeholder:(NSString *)placeholder;
-
-@property (nonatomic ,strong) void(^searchBarText)(NSString *searchText);
 @end

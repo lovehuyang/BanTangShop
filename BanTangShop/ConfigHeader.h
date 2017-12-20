@@ -16,6 +16,7 @@
 #define URL_GETFOODBRAND @"/shop/getFoodBrand"// 获取食品品牌
 #define URL_GETRECOMMENDS @"/shop/getrecommends"//获取推荐食品
 #define URL_GETSELLTOPFOODSUMMARY @"/shop/getSellTopFoodSummary"//获取销售排行食品列表
+#define URL_GETFOODLISTPAGE @"/shop/getFoodListPage"// 分页获取食品列表(多条件)
 #define URL_GETFOODDETAILBYID @"/shop/getFoodDetailById"//获取食品详情(通过ID)
 // 主题色
 #define Color_Theme HXYGetColor(@"#BD0220")//

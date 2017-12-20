@@ -8,26 +8,35 @@
 
 #import "CenterViewController.h"
 #import "CustomNavSearchBar.h"
+#import "HomeTableViewCell.h"
+#import "MBProgressHUDTools.h"
 #import "TopMenuView.h"
 #import "MenuButton.h"
+#import "FoodListModel.h"
 
 #define SEARCHBAR_H  30 //搜索框的高度
 #define MENU_H  35 *ScaleX  //菜单栏的高度
 #define CELL_H 35 *ScaleX// menuTableView每个cell的高度
 
-@interface CenterViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface CenterViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
-    NSString *_searchText;// 搜索框内容
+    NSString *_keyword;// 插叙关键字
+    NSString *_catagory;// 类别
+    NSString *_brand;// 品牌
+    NSString *_flavor;// 口味
+    int _page;// 页码
+    BOOL _haveNextPage;// 是否还有下一页数据
 }
+@property (nonatomic ,strong)CustomNavSearchBar *textFieled;// 导航栏搜索框
 @property (nonatomic ,strong)NSArray *menuTitleArr;// 菜单栏:品牌、类别、口味标题数组
 @property (nonatomic ,strong)MenuButton *brandBtn;
 @property (nonatomic ,strong)MenuButton *categoryBtn;
 @property (nonatomic ,strong)MenuButton *flavourBtn;
-
-@property (nonatomic ,strong)UITableView *menuTableView;//菜单栏下拉的tableview
 @property (nonatomic ,strong)UIView *backView;// 黑色半透明背景
+@property (nonatomic ,strong)UITableView *menuTableView;//菜单栏下拉的tableview
 @property (nonatomic ,strong)NSMutableArray *menuDataArr;// 菜单栏的数据源
 @property (nonatomic ,strong)UITableView *tableView;
+@property (nonatomic ,strong)NSMutableArray *dataArr;// 列表的数据源
 @property (nonatomic ,strong)NSMutableArray *categoryArr;// 食品类别
 @property (nonatomic ,strong)NSMutableArray *flavourArr; // 食品口味
 @property (nonatomic ,strong)NSMutableArray *barndArr;// 食品品牌
@@ -37,10 +46,9 @@
 - (instancetype)init{
     if (self = [super init]) {
         CustomNavSearchBar *textFieled = [[CustomNavSearchBar alloc]initWithFrame:CGRectMake(0, 0, ScrW  , SEARCHBAR_H) placeholder:@"输入食品关键字"];
-        textFieled.searchBarText = ^(NSString *searchText) {
-            _searchText = searchText;
-        };
-        self.navigationItem.titleView = textFieled;
+        textFieled.delegate = self;
+        self.textFieled = textFieled;
+        self.navigationItem.titleView = self.textFieled;
         UIBarButtonItem *navItem = [[UIBarButtonItem alloc]initWithTitle:@"查找" style:UIBarButtonItemStylePlain target:self action:@selector(searchBtnClick)];
         self.navigationItem.rightBarButtonItem = navItem;
     }
@@ -48,17 +56,22 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _page = 1;
+    _keyword = @"";
+    _brand = @"0";
+    _catagory = @"0";
+    _flavor = @"0";
+    _haveNextPage = YES;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self createTopMenuView];
-    [self.view addSubview:self.menuTableView];
+    [self.view addSubview:self.tableView];
     [self.view addSubview:self.backView];
-    self.backView.hidden = YES;
-    
-    UILabel *tempLab = [UILabel new];
-    tempLab.frame = CGRectMake(90, MENU_H + 30, 200, 300);
-    tempLab.text = @"就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃就知道吃";
-    tempLab.numberOfLines = 0;
-//    [self.view addSubview:tempLab];
+    [self.view addSubview:self.menuTableView];
+    [self getFoodListPage];
+    [self addRefreashAndLoadMore];// 添加刷新和加载更多
+    [MBProgressHUDTools showLoadingHudWithtitle:nil];
 }
 
 #pragma mark - 懒加载
@@ -71,6 +84,9 @@
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, MENU_H, ScrW, ScrH - High_NavAndStatus - MENU_H) style:UITableViewStylePlain];
+        _tableView.tableFooterView = [UIView new];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
     }
     return _tableView;
 }
@@ -80,6 +96,7 @@
         _menuTableView.tableFooterView = [UIView new];
         _menuTableView.delegate = self;
         _menuTableView.dataSource = self;
+        _menuTableView.hidden = YES;
     }
     return _menuTableView;
 }
@@ -88,7 +105,7 @@
         _backView = [UIView new];
         _backView.backgroundColor = [UIColor blackColor];
         _backView.alpha = 0.5;
-        _backView.frame = CGRectMake(0, 0, ScrW, ScrH);
+        _backView.frame = CGRectMake(0, MENU_H, ScrW, ScrH - MENU_H - High_NavAndStatus);
         _backView.hidden = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapBackView)];
         [_backView addGestureRecognizer:tap];
@@ -132,37 +149,141 @@
     }
     return _menuDataArr;
 }
+
+- (NSMutableArray *)dataArr{
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
+#pragma mark - 刷新和加载更多
+- (void)addRefreashAndLoadMore{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.dataArr removeAllObjects];
+        _page = 1;
+        [self getFoodListPage];
+    }];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        if (_haveNextPage) {
+            _page ++;
+            [self getFoodListPage];
+        }else{
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+    }];
+}
+
+#pragma mark - tableview重新加载数据
+- (void)tableViewReloadData{
+    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+}
+#pragma mark - menuTableView重新加载数据
+- (void)menuTableViewReloadData{
+    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
+    [self.menuTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - 分页获取食品列表(多条件)
+- (void)getFoodListPage{
+    NSString *page = [NSString stringWithFormat:@"%d",_page];
+    NSDictionary *paraDict = @{@"keyword":_keyword,@"catagory":_catagory,@"brand":_brand,@"flavor":_flavor,@"page":page};
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETFOODLISTPAGE successBlock:^(id requestData, NSDictionary *dataDict) {
+        [MBProgressHUDTools hideHUD];
+        _haveNextPage =  [requestData[@"isHasNext"] boolValue];
+        NSArray *dataArr = (NSArray *)dataDict;
+        
+        if (dataArr.count == 0) {
+            [MBProgressHUDTools showTipMessageHudWithtitle:@"暂无数据"];
+        }else{
+            for (NSDictionary *tempDict in dataArr) {
+                FoodListModel *food = [FoodListModel createModelWithDic:tempDict];
+                [self.dataArr addObject:food];
+            }
+        }
+        [self tableViewReloadData];
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        [MBProgressHUDTools hideHUD];
+        [MBProgressHUDTools showTipMessageHudWithtitle:msg];
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+}
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *menuCell = @"menuCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCell];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:menuCell];
+    if (tableView == self.menuTableView) {
+        static NSString *menuCell = @"menuCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCell];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:menuCell];
+        }
+        cell.backgroundColor = [UIColor whiteColor];
+        Model *model = [self.menuDataArr objectAtIndex:indexPath.row];
+        cell.textLabel.text = model.name;
+        return cell;
+        
+    }else{
+        
+        static NSString *homeCell =@"homeCell";
+        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCell];
+        if (cell == nil) {
+            cell = [[HomeTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:homeCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.food = [self.dataArr objectAtIndex:indexPath.row];
+        return cell;
     }
-    cell.backgroundColor = [UIColor whiteColor];
-    Model *model = [self.menuDataArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = model.name;
-    return cell;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.menuDataArr.count;
+    if (tableView == self.menuTableView) {
+        return self.menuDataArr.count;
+    }else{
+        return self.dataArr.count;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CELL_H;
+    
+    if (tableView == self.menuTableView) {
+        return CELL_H;
+    }else{
+        return 120 ;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    Model *model = [self.menuDataArr objectAtIndex:indexPath.row];
-    if (self.brandBtn.selected) {
-        [self.brandBtn setTitle:model.name forState:UIControlStateNormal];
-        [self updateMenuBtnStatus:self.brandBtn];
-    }else if (self.categoryBtn.selected) {
-        [self.categoryBtn setTitle:model.name forState:UIControlStateNormal];
-        [self updateMenuBtnStatus:self.categoryBtn];
-    }else if (self.flavourBtn.selected) {
-        [self.flavourBtn setTitle:model.name forState:UIControlStateNormal];
-        [self updateMenuBtnStatus:self.flavourBtn];
+    if (tableView == self.menuTableView) {
+        _haveNextPage = YES;
+        [self.dataArr removeAllObjects];
+        Model *model = [self.menuDataArr objectAtIndex:indexPath.row];
+        if (self.brandBtn.selected) {
+            [self.brandBtn setTitle:model.name forState:UIControlStateNormal];
+            [self updateMenuBtnStatus:self.brandBtn];
+            _brand = model.ID;
+        }else if (self.categoryBtn.selected) {
+            [self.categoryBtn setTitle:model.name forState:UIControlStateNormal];
+            [self updateMenuBtnStatus:self.categoryBtn];
+            _catagory = model.ID;
+        }else if (self.flavourBtn.selected) {
+            [self.flavourBtn setTitle:model.name forState:UIControlStateNormal];
+            [self updateMenuBtnStatus:self.flavourBtn];
+            _flavor = model.ID;
+        }
+        [self tapBackView];
+        _page = 1;
+        [MBProgressHUDTools showLoadingHudWithtitle:nil];
+        [self getFoodListPage];
     }
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self tapBackView];
+    return YES;
 }
 
 #pragma mark - 创建顶部菜单栏
@@ -198,11 +319,22 @@
     menuBtn.frame = CGRectMake(0, 0, btnSize.width +15, menuBtn.frame.size.height);
     menuBtn.center = CGPointMake( W/2,menuBtn.center.y);
 }
-#pragma mark - 点击事件
+
+#pragma mark - 导航栏查询按钮点击事件
 - (void)searchBtnClick{
-    DLog(@"查找内容：%@",_searchText);
+    _page = 1;
+    _keyword = self.textFieled.text;
+    _haveNextPage = YES;
+    [self.dataArr removeAllObjects];
+    [self tapBackView];
+    [self getFoodListPage];
+    [MBProgressHUDTools showLoadingHudWithtitle:nil];
 }
+
+#pragma mark - 下拉菜单的展开与折叠
+
 - (void)menuBtnClick:(MenuButton *)btn{
+    [self.textFieled resignFirstResponder];
     [self.menuDataArr removeAllObjects];
     if (btn == self.brandBtn) {
         self.brandBtn.selected = !self.brandBtn.selected;
@@ -219,7 +351,6 @@
     }
     if (btn.selected == YES) {
         
-        [self.menuTableView setHidden:NO];
         switch (btn.tag - 100) {
             case 0:
                 [self.menuDataArr addObjectsFromArray:self.barndArr];
@@ -234,25 +365,43 @@
             default:
                 break;
         }
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, MENU_H, ScrW, CELL_H *self.menuDataArr.count);
-            self.backView.frame = CGRectMake(0, CGRectGetMaxY(self.menuTableView.frame), ScrW, ScrH);
+        self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, MENU_H, ScrW, CELL_H *self.menuDataArr.count);
+        [self menuTableViewReloadData];
+        [UIView animateWithDuration:0.1 animations:^{
+            self.backView.alpha = 0.5;
+            self.menuTableView.alpha = 1;
+        } completion:^(BOOL finished) {
+            self.backView.hidden = NO;
+            self.menuTableView.hidden = NO;;
         }];
         
     }else{
-        
-        [self.menuTableView setHidden:YES];
+        [self.menuDataArr removeAllObjects];
+        [self menuTableViewReloadData];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.backView.alpha = 0;
+            self.menuTableView.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.backView.hidden = YES;
+            self.menuTableView.hidden = YES;
+        }];
     }
-    self.backView.hidden = self.menuTableView.hidden;
-    [self.menuTableView reloadData];
 }
 
+#pragma mark - 点击黑色半透明背景
 - (void)tapBackView{
     self.categoryBtn.selected = NO;
     self.brandBtn.selected = NO;
     self.flavourBtn.selected = NO;
-    self.menuTableView.hidden = YES;
-    self.backView.hidden = YES;
+    
+    [self.menuDataArr removeAllObjects];
+    [self menuTableViewReloadData];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.backView.alpha = 0;
+        self.menuTableView.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.backView.hidden = YES;
+        self.menuTableView.hidden = YES;
+    }];
 }
 @end

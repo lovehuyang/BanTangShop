@@ -16,6 +16,7 @@
         self.backgroundColor = [UIColor whiteColor];
         self.layer.cornerRadius = 3;
         self.layer.masksToBounds = YES;
+        self.delegate = self;
         self.placeholder = placeholder;
         self.font = [UIFont systemFontOfSize:13];
         self.textAlignment = NSTextAlignmentLeft;
@@ -23,13 +24,9 @@
         self.leftView = [self addLefttViewWithImgName:@"search_icon" withSuperViewHight:self.frame.size.height];
         self.leftViewMode = UITextFieldViewModeAlways;
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
-        [self addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
+//        [self addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
     }
     return self;
-}
-
-- (void) textFieldDidChange{
-    self.searchBarText(self.text);
 }
 
 -(UIView *)addLefttViewWithImgName:(NSString *)iconName withSuperViewHight:(CGFloat )hight{

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09234FB31FEA3B1F00C01E03 /* MBProgressHUDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 09234FB21FEA3B1F00C01E03 /* MBProgressHUDTools.m */; };
+		09234FBD1FEA408C00C01E03 /* MBHUD_Error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FB51FEA408C00C01E03 /* MBHUD_Error@2x.png */; };
+		09234FBE1FEA408C00C01E03 /* MBHUD_Error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FB61FEA408C00C01E03 /* MBHUD_Error@3x.png */; };
+		09234FBF1FEA408C00C01E03 /* MBHUD_Info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FB71FEA408C00C01E03 /* MBHUD_Info@2x.png */; };
+		09234FC01FEA408C00C01E03 /* MBHUD_Info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FB81FEA408C00C01E03 /* MBHUD_Info@3x.png */; };
+		09234FC11FEA408C00C01E03 /* MBHUD_Success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FB91FEA408C00C01E03 /* MBHUD_Success@2x.png */; };
+		09234FC21FEA408C00C01E03 /* MBHUD_Success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FBA1FEA408C00C01E03 /* MBHUD_Success@3x.png */; };
+		09234FC31FEA408C00C01E03 /* MBHUD_Warn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FBB1FEA408C00C01E03 /* MBHUD_Warn@2x.png */; };
+		09234FC41FEA408C00C01E03 /* MBHUD_Warn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09234FBC1FEA408C00C01E03 /* MBHUD_Warn@3x.png */; };
 		092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853E31FE89B5300AD9437 /* InfoDBAccess.m */; };
 		092853E71FE89B6A00AD9437 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853E61FE89B6A00AD9437 /* Model.m */; };
 		092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092853EB1FE8D88F00AD9437 /* CenterViewController.m */; };
@@ -81,6 +90,16 @@
 
 /* Begin PBXFileReference section */
 		01C0DFF1DA618EAD4B655BF4 /* Pods-BanTangShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.release.xcconfig"; sourceTree = "<group>"; };
+		09234FB11FEA3B1F00C01E03 /* MBProgressHUDTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDTools.h; sourceTree = "<group>"; };
+		09234FB21FEA3B1F00C01E03 /* MBProgressHUDTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUDTools.m; sourceTree = "<group>"; };
+		09234FB51FEA408C00C01E03 /* MBHUD_Error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Error@2x.png"; sourceTree = "<group>"; };
+		09234FB61FEA408C00C01E03 /* MBHUD_Error@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Error@3x.png"; sourceTree = "<group>"; };
+		09234FB71FEA408C00C01E03 /* MBHUD_Info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Info@2x.png"; sourceTree = "<group>"; };
+		09234FB81FEA408C00C01E03 /* MBHUD_Info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Info@3x.png"; sourceTree = "<group>"; };
+		09234FB91FEA408C00C01E03 /* MBHUD_Success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Success@2x.png"; sourceTree = "<group>"; };
+		09234FBA1FEA408C00C01E03 /* MBHUD_Success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Success@3x.png"; sourceTree = "<group>"; };
+		09234FBB1FEA408C00C01E03 /* MBHUD_Warn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Warn@2x.png"; sourceTree = "<group>"; };
+		09234FBC1FEA408C00C01E03 /* MBHUD_Warn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MBHUD_Warn@3x.png"; sourceTree = "<group>"; };
 		092853E21FE89B5300AD9437 /* InfoDBAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoDBAccess.h; sourceTree = "<group>"; };
 		092853E31FE89B5300AD9437 /* InfoDBAccess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoDBAccess.m; sourceTree = "<group>"; };
 		092853E51FE89B6A00AD9437 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
@@ -220,6 +239,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09234FB01FEA3AF200C01E03 /* MBProgressHUDTools */ = {
+			isa = PBXGroup;
+			children = (
+				09234FB41FEA408C00C01E03 /* Images */,
+				09234FB11FEA3B1F00C01E03 /* MBProgressHUDTools.h */,
+				09234FB21FEA3B1F00C01E03 /* MBProgressHUDTools.m */,
+			);
+			path = MBProgressHUDTools;
+			sourceTree = "<group>";
+		};
+		09234FB41FEA408C00C01E03 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				09234FB51FEA408C00C01E03 /* MBHUD_Error@2x.png */,
+				09234FB61FEA408C00C01E03 /* MBHUD_Error@3x.png */,
+				09234FB71FEA408C00C01E03 /* MBHUD_Info@2x.png */,
+				09234FB81FEA408C00C01E03 /* MBHUD_Info@3x.png */,
+				09234FB91FEA408C00C01E03 /* MBHUD_Success@2x.png */,
+				09234FBA1FEA408C00C01E03 /* MBHUD_Success@3x.png */,
+				09234FBB1FEA408C00C01E03 /* MBHUD_Warn@2x.png */,
+				09234FBC1FEA408C00C01E03 /* MBHUD_Warn@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		092853E11FE89B2500AD9437 /* InfoDBAccessTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +560,7 @@
 		0996005A1FE3CA5E0090016B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				09234FB01FEA3AF200C01E03 /* MBProgressHUDTools */,
 				092853E11FE89B2500AD9437 /* InfoDBAccessTools */,
 				092BBA531FE7875E009A1BE1 /* NetWorkTools */,
 				09D956271FE4E5780012E309 /* GlobalTools */,
@@ -905,7 +950,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09234FBD1FEA408C00C01E03 /* MBHUD_Error@2x.png in Resources */,
+				09234FC11FEA408C00C01E03 /* MBHUD_Success@2x.png in Resources */,
+				09234FC01FEA408C00C01E03 /* MBHUD_Info@3x.png in Resources */,
+				09234FBF1FEA408C00C01E03 /* MBHUD_Info@2x.png in Resources */,
+				09234FC41FEA408C00C01E03 /* MBHUD_Warn@3x.png in Resources */,
+				09234FBE1FEA408C00C01E03 /* MBHUD_Error@3x.png in Resources */,
+				09234FC21FEA408C00C01E03 /* MBHUD_Success@3x.png in Resources */,
 				0996FFB21FE3C1210090016B /* LaunchScreen.storyboard in Resources */,
+				09234FC31FEA408C00C01E03 /* MBHUD_Warn@2x.png in Resources */,
 				0996FFAF1FE3C1210090016B /* Assets.xcassets in Resources */,
 				0996FFAD1FE3C1210090016B /* Main.storyboard in Resources */,
 			);
@@ -993,6 +1046,7 @@
 				099600581FE3C7AD0090016B /* tabbarButton.m in Sources */,
 				0996FFAA1FE3C1210090016B /* ViewController.m in Sources */,
 				099600491FE3C7AC0090016B /* UIColor+HXY.m in Sources */,
+				09234FB31FEA3B1F00C01E03 /* MBProgressHUDTools.m in Sources */,
 				0996004A1FE3C7AC0090016B /* UIImage+LYZ.m in Sources */,
 				09D956261FE4D2980012E309 /* PlusButton.m in Sources */,
 				09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */,
