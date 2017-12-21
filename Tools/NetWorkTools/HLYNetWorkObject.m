@@ -73,7 +73,7 @@
     if ([requestData isKindOfClass:[NSDictionary class]]) {
         
         NSDictionary *requestDic =(NSDictionary *)requestData;
-        BOOL state = [requestData[@"ret"] boolValue];       //APP 接口约定的返回数据成功或者失败的标志,比如requestDatat[@"state"]
+        BOOL state = [requestData[@"ret"] boolValue];//APP 接口约定的返回数据成功或者失败的标志
         NSString *errMsg = requestData[@"msg"];
         
         if (state){

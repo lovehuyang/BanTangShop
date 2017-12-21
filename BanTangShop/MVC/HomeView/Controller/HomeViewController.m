@@ -61,7 +61,7 @@
         titleLab.frame = CGRectMake(x_img, CGRectGetMaxY(imgView.frame), W_Img, 20 *ScaleX);
         [self.recommendView addSubview:titleLab];
         titleLab.textAlignment = NSTextAlignmentCenter;
-        titleLab.font = [UIFont systemFontOfSize:11];
+        titleLab.font = [UIFont systemFontOfSize:13];
         titleLab.textColor = Color_Theme;
         titleLab.text = dataDict[@"foodName"];
     }
@@ -242,14 +242,11 @@
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushCenterView) name:NOTIFICATION_PUSHCENTERVIEW object:nil];
+    
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_PUSHCENTERVIEW object:nil];
+    
 }
-- (void)pushCenterView{
-    CenterViewController *cvc = [[CenterViewController alloc]init];
-    [self.navigationController pushViewController:cvc animated:YES];
-}
+
 @end

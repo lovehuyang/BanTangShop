@@ -66,7 +66,7 @@
     .topEqualToView(_imgView)
     .heightRatioToView(_starBackView, 1)
     .rightSpaceToView(_starBackView, 5);
-    _foodNameLab.font = [UIFont boldSystemFontOfSize:14];
+    _foodNameLab.font = [UIFont boldSystemFontOfSize:15];
     _foodNameLab.textColor = Color_Theme;
     _foodNameLab.backgroundColor = [UIColor whiteColor];
     
@@ -77,7 +77,7 @@
     .leftEqualToView(_foodNameLab)
     .widthRatioToView(_foodNameLab, 1)
     .heightRatioToView(_foodNameLab, 1.6);
-    _contentLab.font = [UIFont systemFontOfSize:13];
+    _contentLab.font = [UIFont systemFontOfSize:14];
     _contentLab.numberOfLines = 0;
     _contentLab.textAlignment = NSTextAlignmentLeft;
     
@@ -89,7 +89,7 @@
     .heightRatioToView(_foodNameLab, 1)
     .autoWidthRatio(0);
     _priceLab.textColor = Color_Theme;
-    _priceLab.font = [UIFont systemFontOfSize:13];
+    _priceLab.font = [UIFont systemFontOfSize:14];
     [_priceLab setSingleLineAutoResizeWithMaxWidth:100];
     
     _catagoryLab = [UILabel new];
@@ -100,7 +100,7 @@
     .bottomEqualToView(_priceLab)
     .autoWidthRatio(0);
     _catagoryLab.textColor = [UIColor grayColor];
-    _catagoryLab.font= [UIFont systemFontOfSize:13];
+    _catagoryLab.font= [UIFont systemFontOfSize:14];
     [_catagoryLab setSingleLineAutoResizeWithMaxWidth:100];
     
     _sealCount = [UILabel new];
@@ -111,7 +111,7 @@
     .heightRatioToView(_priceLab, 1);
     [_sealCount setSingleLineAutoResizeWithMaxWidth:100];
     _sealCount.textColor = [UIColor grayColor];
-    _sealCount.font = [UIFont systemFontOfSize:13];
+    _sealCount.font = [UIFont systemFontOfSize:14];
     
     // 口味
     _flavourLab = [UILabel new];
@@ -122,7 +122,7 @@
     .bottomEqualToView(_sealCount)
     .autoWidthRatio(0);
     _flavourLab.textColor = [UIColor grayColor];
-    _flavourLab.font = [UIFont systemFontOfSize:13];
+    _flavourLab.font = [UIFont systemFontOfSize:14];
     [_flavourLab setSingleLineAutoResizeWithMaxWidth:100];
 }
 

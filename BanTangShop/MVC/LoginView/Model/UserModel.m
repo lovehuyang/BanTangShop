@@ -24,7 +24,7 @@
     
     if([key isEqualToString:@"id"])
     {
-        self.user_Id = (NSString *)value;
+        self.user_Id = [value stringValue];
     }
 }
 @end

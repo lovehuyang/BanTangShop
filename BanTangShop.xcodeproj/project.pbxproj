@@ -28,6 +28,13 @@
 		092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */; };
 		092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */; };
 		092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA641FE7E41F009A1BE1 /* FoodModel.m */; };
+		097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C801FEB632B001C7723 /* LoginTextField.m */; };
+		097C5C881FEBB230001C7723 /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C861FEBB230001C7723 /* UILabel+ContentSize.m */; };
+		097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C8A1FEBB2F3001C7723 /* EnsureAlterView.m */; };
+		097C5C8E1FEBBF5A001C7723 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C8D1FEBBF5A001C7723 /* RegisterViewController.m */; };
+		097C5C911FEBC322001C7723 /* CustomNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C901FEBC322001C7723 /* CustomNavView.m */; };
+		097C5C941FEBC6F1001C7723 /* SelectSexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C931FEBC6F1001C7723 /* SelectSexView.m */; };
+		097C5C971FEBD64D001C7723 /* RegisterTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C961FEBD64C001C7723 /* RegisterTextField.m */; };
 		0996000F1FE3C6F50090016B /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFF41FE3C6F50090016B /* MineViewController.m */; };
 		099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFFB1FE3C6F50090016B /* FavoriteViewController.m */; };
 		099600111FE3C6F50090016B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600021FE3C6F50090016B /* HomeViewController.m */; };
@@ -125,6 +132,21 @@
 		092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodListModel.m; sourceTree = "<group>"; };
 		092BBA631FE7E41F009A1BE1 /* FoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
 		092BBA641FE7E41F009A1BE1 /* FoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		097C5C7F1FEB632B001C7723 /* LoginTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginTextField.h; sourceTree = "<group>"; };
+		097C5C801FEB632B001C7723 /* LoginTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginTextField.m; sourceTree = "<group>"; };
+		097C5C821FEB7B24001C7723 /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
+		097C5C861FEBB230001C7723 /* UILabel+ContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ContentSize.m"; sourceTree = "<group>"; };
+		097C5C871FEBB230001C7723 /* UILabel+ContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ContentSize.h"; sourceTree = "<group>"; };
+		097C5C891FEBB2F3001C7723 /* EnsureAlterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureAlterView.h; sourceTree = "<group>"; };
+		097C5C8A1FEBB2F3001C7723 /* EnsureAlterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnsureAlterView.m; sourceTree = "<group>"; };
+		097C5C8C1FEBBF5A001C7723 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		097C5C8D1FEBBF5A001C7723 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		097C5C8F1FEBC322001C7723 /* CustomNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNavView.h; sourceTree = "<group>"; };
+		097C5C901FEBC322001C7723 /* CustomNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavView.m; sourceTree = "<group>"; };
+		097C5C921FEBC6F1001C7723 /* SelectSexView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectSexView.h; sourceTree = "<group>"; };
+		097C5C931FEBC6F1001C7723 /* SelectSexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectSexView.m; sourceTree = "<group>"; };
+		097C5C951FEBD64C001C7723 /* RegisterTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTextField.h; sourceTree = "<group>"; };
+		097C5C961FEBD64C001C7723 /* RegisterTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTextField.m; sourceTree = "<group>"; };
 		099600011FE3C6F50090016B /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		099600021FE3C6F50090016B /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		099600031FE3C6F50090016B /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
@@ -392,6 +414,8 @@
 			children = (
 				0996000A1FE3C6F50090016B /* LoginViewController.h */,
 				0996000B1FE3C6F50090016B /* LoginViewController.m */,
+				097C5C8C1FEBBF5A001C7723 /* RegisterViewController.h */,
+				097C5C8D1FEBBF5A001C7723 /* RegisterViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -408,6 +432,8 @@
 		0996000D1FE3C6F50090016B /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				097C5C871FEBB230001C7723 /* UILabel+ContentSize.h */,
+				097C5C861FEBB230001C7723 /* UILabel+ContentSize.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -415,6 +441,16 @@
 		0996000E1FE3C6F50090016B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				097C5C891FEBB2F3001C7723 /* EnsureAlterView.h */,
+				097C5C8A1FEBB2F3001C7723 /* EnsureAlterView.m */,
+				097C5C7F1FEB632B001C7723 /* LoginTextField.h */,
+				097C5C801FEB632B001C7723 /* LoginTextField.m */,
+				097C5C8F1FEBC322001C7723 /* CustomNavView.h */,
+				097C5C901FEBC322001C7723 /* CustomNavView.m */,
+				097C5C921FEBC6F1001C7723 /* SelectSexView.h */,
+				097C5C931FEBC6F1001C7723 /* SelectSexView.m */,
+				097C5C951FEBD64C001C7723 /* RegisterTextField.h */,
+				097C5C961FEBD64C001C7723 /* RegisterTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -663,6 +699,7 @@
 				0996FFB41FE3C1210090016B /* main.m */,
 				099600591FE3C8710090016B /* PrefixHeader.pch */,
 				09D956231FE4C5210012E309 /* ConfigHeader.h */,
+				097C5C821FEB7B24001C7723 /* Frame.h */,
 			);
 			path = BanTangShop;
 			sourceTree = "<group>";
@@ -1053,19 +1090,24 @@
 				099600491FE3C7AC0090016B /* UIColor+HXY.m in Sources */,
 				09234FB31FEA3B1F00C01E03 /* MBProgressHUDTools.m in Sources */,
 				0996004A1FE3C7AC0090016B /* UIImage+LYZ.m in Sources */,
+				097C5C941FEBC6F1001C7723 /* SelectSexView.m in Sources */,
 				09D956261FE4D2980012E309 /* PlusButton.m in Sources */,
 				09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */,
 				0996004F1FE3C7AD0090016B /* LanchModel.m in Sources */,
 				099600511FE3C7AD0090016B /* LaunchView.m in Sources */,
 				0996FFB51FE3C1210090016B /* main.m in Sources */,
 				0996FFA71FE3C1210090016B /* AppDelegate.m in Sources */,
+				097C5C8E1FEBBF5A001C7723 /* RegisterViewController.m in Sources */,
 				092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */,
 				099600661FE3CCE90090016B /* RecommendViewController.m in Sources */,
 				099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */,
 				092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */,
+				097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */,
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
 				092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */,
+				097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */,
 				0996004B1FE3C7AD0090016B /* UILabel+LYZ.m in Sources */,
+				097C5C911FEBC322001C7723 /* CustomNavView.m in Sources */,
 				099600561FE3C7AD0090016B /* systemTabbar.m in Sources */,
 				099600471FE3C7AC0090016B /* NSString+isoEncoding.m in Sources */,
 				0996004D1FE3C7AD0090016B /* SetupTools.m in Sources */,
@@ -1075,6 +1117,7 @@
 				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
 				092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */,
+				097C5C881FEBB230001C7723 /* UILabel+ContentSize.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,
 				09DA61971FEA6443007780E7 /* UserModel.m in Sources */,
 				092853F81FE8F49F00AD9437 /* MenuButton.m in Sources */,
@@ -1092,6 +1135,7 @@
 				09D956221FE4B7830012E309 /* customTabbar.m in Sources */,
 				092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */,
 				099600111FE3C6F50090016B /* HomeViewController.m in Sources */,
+				097C5C971FEBD64D001C7723 /* RegisterTextField.m in Sources */,
 				099600521FE3C7AD0090016B /* customNaviController.m in Sources */,
 				0996004E1FE3C7AD0090016B /* MBProgressHUD+NHAdd.m in Sources */,
 				092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */,

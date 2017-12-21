@@ -17,6 +17,7 @@
 #import <SDAutoLayout.h>
 #import <AFNetworking.h>
 #import "ConfigHeader.h"
+#import "Frame.h"
 #import <SDImageCache.h>
 #import <SDImageCacheConfig.h>
 #import <Reachability.h>
@@ -24,6 +25,8 @@
 #import "InfoDBAccess.h"
 #import <MJRefresh.h>
 #import "UserModel.h"
+#import "MBProgressHUDTools.h"
+#import "EnsureAlterView.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

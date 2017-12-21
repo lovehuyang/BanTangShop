@@ -9,6 +9,7 @@
 #import "customTabbar.h"
 #import "tabbarButton.h"
 #import "PlusButton.h"
+#import "CenterViewController.h"
 
 @interface customTabbar()
 @property (nonatomic, strong) NSMutableArray *tabBarButtons;
@@ -62,7 +63,10 @@
 }
 -(void)plusButtonClick{
     DLog(@"我点击了加号按钮");
-    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_PUSHCENTERVIEW object:nil];
+    UIViewController *tempVC = [GlobalTools getCurrentUIVC];
+    CenterViewController *cvc = [[CenterViewController alloc]init];
+    [tempVC.navigationController pushViewController:cvc animated:YES];
+
 }
 
 /**
