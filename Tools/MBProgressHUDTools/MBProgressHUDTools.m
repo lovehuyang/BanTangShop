@@ -12,6 +12,7 @@
 + (void)showLoadingHudWithtitle:(NSString *)title{
     
 //    UIView  *view = winddows? (UIView*)[UIApplication sharedApplication].delegate.window:[self getCurrentUIVC].view;
+    [self hideHUD];
     UIView  *view =  (UIView*)[UIApplication sharedApplication].delegate.window;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.label.text=title?title:@"加载中...";
@@ -19,6 +20,7 @@
 }
 
 + (void)showTipMessageHudWithtitle:(NSString *)title{
+    [self hideHUD];
     UIView  *view =  (UIView*)[UIApplication sharedApplication].delegate.window;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.label.text=title;
@@ -28,6 +30,7 @@
     [hud hideAnimated:YES afterDelay:2];
 }
 + (void)showSuccessHudWithtitle:(NSString *)title{
+    [self hideHUD];
     UIView  *view =  (UIView*)[UIApplication sharedApplication].delegate.window;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MBHUD_Success"]];
@@ -39,6 +42,7 @@
 }
 
 + (void)showWarningHudWithtitle:(NSString *)title{
+    [self hideHUD];
     UIView  *view =  (UIView*)[UIApplication sharedApplication].delegate.window;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MBHUD_Warn"]];

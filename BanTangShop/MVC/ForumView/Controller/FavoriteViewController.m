@@ -7,7 +7,7 @@
 //
 
 #import "FavoriteViewController.h"
-#import "CenterViewController.h"
+#import "FoodsDetailController.h"
 #import "HomeTableViewCell.h"
 #import "FoodListModel.h"
 
@@ -46,7 +46,6 @@
        
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
-        [MBProgressHUDTools hideHUD];
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
     }];
 }
@@ -101,7 +100,10 @@
     return 120 ;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    FoodListModel *food = [self.dataArr objectAtIndex:indexPath.row];
+    FoodsDetailController *fdvc =[[FoodsDetailController alloc]init];
+    fdvc.foodId = food.ID;
+    [self.navigationController pushViewController:fdvc animated:YES];
 }
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{

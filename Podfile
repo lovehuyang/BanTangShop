@@ -6,12 +6,11 @@ target "BanTangShop" do
     pod 'SDCycleScrollView'   
     pod 'SDAutoLayout'
     pod 'IQKeyboardManager'
-    pod 'LBXScan/LBXNative'
-    pod 'LBXScan/UI'
     pod 'MBProgressHUD'
     pod 'MJRefresh'
     pod 'MJExtension'
     pod 'FMDB'
     pod 'mob_smssdk'
+    pod 'WRNavigationBar','~>1.0.9’
 
 end

@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "NextViewController.h"
 #import "CenterViewController.h"
+#import "FoodsDetailController.h"
 #import "UIScrollView+JElasticPullToRefresh.h"// 下拉刷新
 #import "SDCycleScrollView.h"// 轮播图
 #import "HomeTableViewCell.h"
@@ -180,7 +181,6 @@
         headView.backgroundColor= [UIColor clearColor];
         _headView = headView;
     }
-    
     return _headView;
 }
 #pragma mark - 代理 UITableViewDelegate, UITableViewDataSource
@@ -201,6 +201,13 @@
     return 120 ;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FoodListModel *food = [self.dataArr objectAtIndex:indexPath.row];
+    FoodsDetailController *fdvc =[[FoodsDetailController alloc]init];
+    fdvc.foodId = food.ID;
+    [self.navigationController pushViewController:fdvc animated:YES];
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *backView = [UIView new];
     backView.frame = CGRectMake(0, 0,ScrW, 40 *ScaleX);
@@ -219,6 +226,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
+
 #pragma mark - 加载轮播图数据
 
 - (void)loadScrollViewData{

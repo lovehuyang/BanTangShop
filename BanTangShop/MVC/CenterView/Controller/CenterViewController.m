@@ -207,7 +207,6 @@
         [self.tableView.mj_footer endRefreshing];
 
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        [MBProgressHUDTools hideHUD];
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];

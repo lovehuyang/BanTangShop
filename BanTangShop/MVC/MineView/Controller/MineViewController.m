@@ -230,7 +230,6 @@
             [MBProgressHUDTools showLoadingHudWithtitle:@"正在退出..."];
             
             [NSTimer scheduledTimerWithTimeInterval:1 repeats:NO block:^(NSTimer * _Nonnull timer) {
-                [MBProgressHUDTools hideHUD];
                 [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_EXIT object:nil];// 退出通知
                 [MBProgressHUDTools showTipMessageHudWithtitle:@"退出成功！"];
             }];

@@ -24,7 +24,7 @@
     
     if([key isEqualToString:@"id"])
     {
-        self.Id = value;
+        self.ID = [value stringValue];
     }else if ([key isEqualToString:@"newPrice"]){
         self.price_New = value;
     }

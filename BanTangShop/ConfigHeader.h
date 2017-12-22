@@ -13,6 +13,7 @@
 
 #define URL_EXISTPHONE @"/shop/existphone" //手机号是否可用
 #define URL_REGISTER @"/shop/registUser"//用户注册
+#define URL_LOGINUSER @"/shop/loginuser"// 登录
 #define URL_GETBANNERS @"/shop/getbanners"//获取banner轮播图
 #define URL_GETFOODCATAGORY @"/shop/getFoodCatagory"// 获取食品类别
 #define URL_GETFOODFLAVOUR @"/shop/getFoodFlavour"// 获取食品口味
@@ -20,9 +21,9 @@
 #define URL_GETRECOMMENDS @"/shop/getrecommends"//获取推荐食品
 #define URL_GETSELLTOPFOODSUMMARY @"/shop/getSellTopFoodSummary"//获取销售排行食品列表
 #define URL_GETFOODLISTPAGE @"/shop/getFoodListPage"// 分页获取食品列表(多条件)
-#define URL_GETLIKEFOOD @"/shop/getLikeFood"
+#define URL_GETLIKEFOOD @"/shop/getLikeFood"// 获取收藏食品列表(未分页)
 #define URL_GETFOODDETAILBYID @"/shop/getFoodDetailById"//获取食品详情(通过ID)
-#define URL_LOGINUSER @"/shop/loginuser"// 登录
+#define URL_GETFOODIMAGEBYID @"/shop/getFoodImagesById"// 获取食品轮播图
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色

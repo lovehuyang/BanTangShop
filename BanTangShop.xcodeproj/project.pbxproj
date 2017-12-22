@@ -78,6 +78,8 @@
 		09DA61971FEA6443007780E7 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DA61961FEA6443007780E7 /* UserModel.m */; };
 		09E20F4B1FEC8C6C00AD239C /* RegisterTextField2.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F4A1FEC8C6C00AD239C /* RegisterTextField2.m */; };
 		09E20F561FEC913F00AD239C /* UIImage+HLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F551FEC913F00AD239C /* UIImage+HLY.m */; };
+		09E20F5E1FECB68E00AD239C /* FoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F5D1FECB68E00AD239C /* FoodsDetailController.m */; };
+		09E20F6B1FECF89600AD239C /* CycleBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F6A1FECF89600AD239C /* CycleBottomView.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +242,10 @@
 		09E20F4A1FEC8C6C00AD239C /* RegisterTextField2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTextField2.m; sourceTree = "<group>"; };
 		09E20F541FEC913F00AD239C /* UIImage+HLY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HLY.h"; sourceTree = "<group>"; };
 		09E20F551FEC913F00AD239C /* UIImage+HLY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HLY.m"; sourceTree = "<group>"; };
+		09E20F5C1FECB68E00AD239C /* FoodsDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodsDetailController.h; sourceTree = "<group>"; };
+		09E20F5D1FECB68E00AD239C /* FoodsDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodsDetailController.m; sourceTree = "<group>"; };
+		09E20F691FECF89600AD239C /* CycleBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleBottomView.h; sourceTree = "<group>"; };
+		09E20F6A1FECF89600AD239C /* CycleBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CycleBottomView.m; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -744,6 +750,7 @@
 		0996FFD81FE3C6500090016B /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				09E20F571FECB66600AD239C /* FoodsDetailView */,
 				092853E81FE8D88F00AD9437 /* CenterView */,
 				0996005F1FE3CCBE0090016B /* RecommendView */,
 				0996FFFF1FE3C6F50090016B /* HomeView */,
@@ -882,6 +889,49 @@
 				09E20F551FEC913F00AD239C /* UIImage+HLY.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		09E20F571FECB66600AD239C /* FoodsDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				09E20F581FECB66600AD239C /* Controller */,
+				09E20F591FECB66600AD239C /* Model */,
+				09E20F5A1FECB66600AD239C /* Other */,
+				09E20F5B1FECB66600AD239C /* View */,
+			);
+			path = FoodsDetailView;
+			sourceTree = "<group>";
+		};
+		09E20F581FECB66600AD239C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				09E20F5C1FECB68E00AD239C /* FoodsDetailController.h */,
+				09E20F5D1FECB68E00AD239C /* FoodsDetailController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		09E20F591FECB66600AD239C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09E20F5A1FECB66600AD239C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		09E20F5B1FECB66600AD239C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09E20F691FECF89600AD239C /* CycleBottomView.h */,
+				09E20F6A1FECF89600AD239C /* CycleBottomView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2FB956AB2D940BCA46FE862E /* Frameworks */ = {
@@ -1082,7 +1132,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/LBXScan/LBXScan/UI/CodeScan.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1109,6 +1158,7 @@
 				09234FB31FEA3B1F00C01E03 /* MBProgressHUDTools.m in Sources */,
 				0996004A1FE3C7AC0090016B /* UIImage+LYZ.m in Sources */,
 				097C5C941FEBC6F1001C7723 /* SelectSexView.m in Sources */,
+				09E20F6B1FECF89600AD239C /* CycleBottomView.m in Sources */,
 				09D956261FE4D2980012E309 /* PlusButton.m in Sources */,
 				09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */,
 				0996004F1FE3C7AD0090016B /* LanchModel.m in Sources */,
@@ -1152,6 +1202,7 @@
 				0996005E1FE3CA5E0090016B /* ViewFactory.m in Sources */,
 				099600501FE3C7AD0090016B /* LanchViewManger.m in Sources */,
 				099600541FE3C7AD0090016B /* RootViewController.m in Sources */,
+				09E20F5E1FECB68E00AD239C /* FoodsDetailController.m in Sources */,
 				09D956221FE4B7830012E309 /* customTabbar.m in Sources */,
 				092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */,
 				099600111FE3C6F50090016B /* HomeViewController.m in Sources */,

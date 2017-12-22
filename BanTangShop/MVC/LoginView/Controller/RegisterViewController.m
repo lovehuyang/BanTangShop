@@ -89,7 +89,6 @@
     [HLYNetWorkObject requestWithMethod:GET ParamDict:@{@"username":self.phone_TF.text} url:URL_EXISTPHONE successBlock:^(id requestData, NSDictionary *dataDict) {
         [self getVerificationCode:self.phone_TF.text];// mob发送验证码
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        [MBProgressHUDTools hideHUD];
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
     }];
 }
@@ -102,12 +101,10 @@
         if (!error)
         {
             [self.security_TF openCountdown];
-            [MBProgressHUDTools hideHUD];
             [MBProgressHUDTools showTipMessageHudWithtitle:@"获取验证码成功！"];
         }
         else
         {
-            [MBProgressHUDTools hideHUD];
             [MBProgressHUDTools showTipMessageHudWithtitle:@"获取验证码失败，请稍后重试"];
         }
     }];
@@ -124,7 +121,6 @@
         }
         else
         {
-            [MBProgressHUDTools hideHUD];
             [MBProgressHUDTools showTipMessageHudWithtitle:@"验证码不正确！"];
         }
     }];
@@ -166,7 +162,6 @@
         [WeakAlterView show];
         
     } failureBlock:^(NSInteger errCode, NSString *msg) {
-        [MBProgressHUDTools hideHUD];
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
     }];
 }

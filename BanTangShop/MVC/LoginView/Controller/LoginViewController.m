@@ -123,7 +123,6 @@
         
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         DLog(@"");
-        [MBProgressHUDTools hideHUD];
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
     }];
 }
