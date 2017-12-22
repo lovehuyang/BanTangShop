@@ -12,5 +12,6 @@ target "BanTangShop" do
     pod 'MJRefresh'
     pod 'MJExtension'
     pod 'FMDB'
+    pod 'mob_smssdk'
 
 end

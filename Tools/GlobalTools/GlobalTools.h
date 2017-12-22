@@ -66,6 +66,13 @@
 + (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize;
 
 /**
+ 验证手机号是否可用
+ 
+ @param phone 手机号码
+ @return yes可用
+ */
++ (BOOL)isValidPhone:(NSString *)phone;
+/**
  获取当前屏幕显示的viewcontroller
  
  @return 当前屏幕的控制器

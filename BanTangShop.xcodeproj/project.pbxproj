@@ -76,6 +76,8 @@
 		09D956481FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956421FE4F4490012E309 /* UIScrollView+JElasticPullToRefresh.m */; };
 		09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */; };
 		09DA61971FEA6443007780E7 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DA61961FEA6443007780E7 /* UserModel.m */; };
+		09E20F4B1FEC8C6C00AD239C /* RegisterTextField2.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F4A1FEC8C6C00AD239C /* RegisterTextField2.m */; };
+		09E20F561FEC913F00AD239C /* UIImage+HLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F551FEC913F00AD239C /* UIImage+HLY.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -234,6 +236,10 @@
 		09D956441FE4F4490012E309 /* UIView+JElasticPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JElasticPullToRefresh.m"; sourceTree = "<group>"; };
 		09DA61951FEA6443007780E7 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		09DA61961FEA6443007780E7 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		09E20F491FEC8C6C00AD239C /* RegisterTextField2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTextField2.h; sourceTree = "<group>"; };
+		09E20F4A1FEC8C6C00AD239C /* RegisterTextField2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTextField2.m; sourceTree = "<group>"; };
+		09E20F541FEC913F00AD239C /* UIImage+HLY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HLY.h"; sourceTree = "<group>"; };
+		09E20F551FEC913F00AD239C /* UIImage+HLY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HLY.m"; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -451,6 +457,8 @@
 				097C5C931FEBC6F1001C7723 /* SelectSexView.m */,
 				097C5C951FEBD64C001C7723 /* RegisterTextField.h */,
 				097C5C961FEBD64C001C7723 /* RegisterTextField.m */,
+				09E20F491FEC8C6C00AD239C /* RegisterTextField2.h */,
+				09E20F4A1FEC8C6C00AD239C /* RegisterTextField2.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -601,6 +609,7 @@
 		0996005A1FE3CA5E0090016B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				09E20F4C1FEC8EE300AD239C /* Category */,
 				09234FB01FEA3AF200C01E03 /* MBProgressHUDTools */,
 				092853E11FE89B2500AD9437 /* InfoDBAccessTools */,
 				092BBA531FE7875E009A1BE1 /* NetWorkTools */,
@@ -866,6 +875,15 @@
 			path = JElasticPullToRefresh;
 			sourceTree = "<group>";
 		};
+		09E20F4C1FEC8EE300AD239C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				09E20F541FEC913F00AD239C /* UIImage+HLY.h */,
+				09E20F551FEC913F00AD239C /* UIImage+HLY.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		2FB956AB2D940BCA46FE862E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,6 +1120,7 @@
 				099600661FE3CCE90090016B /* RecommendViewController.m in Sources */,
 				099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */,
 				092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */,
+				09E20F4B1FEC8C6C00AD239C /* RegisterTextField2.m in Sources */,
 				097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */,
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
 				092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */,
@@ -1117,6 +1136,7 @@
 				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
 				092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */,
+				09E20F561FEC913F00AD239C /* UIImage+HLY.m in Sources */,
 				097C5C881FEBB230001C7723 /* UILabel+ContentSize.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,
 				09DA61971FEA6443007780E7 /* UserModel.m in Sources */,
@@ -1338,6 +1358,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75WWG8XJE9;
 				INFOPLIST_FILE = BanTangShopTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.tongzhi.BanTangShopTests;
@@ -1352,6 +1373,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75WWG8XJE9;
 				INFOPLIST_FILE = BanTangShopTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.tongzhi.BanTangShopTests;
@@ -1365,6 +1387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75WWG8XJE9;
 				INFOPLIST_FILE = BanTangShopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.tongzhi.BanTangShopUITests;
@@ -1378,6 +1401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75WWG8XJE9;
 				INFOPLIST_FILE = BanTangShopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.tongzhi.BanTangShopUITests;

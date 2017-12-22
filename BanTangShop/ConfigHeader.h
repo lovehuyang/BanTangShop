@@ -11,6 +11,8 @@
 
 #define URL_BASEIP @"http://101.132.191.36"
 
+#define URL_EXISTPHONE @"/shop/existphone" //手机号是否可用
+#define URL_REGISTER @"/shop/registUser"//用户注册
 #define URL_GETBANNERS @"/shop/getbanners"//获取banner轮播图
 #define URL_GETFOODCATAGORY @"/shop/getFoodCatagory"// 获取食品类别
 #define URL_GETFOODFLAVOUR @"/shop/getFoodFlavour"// 获取食品口味
