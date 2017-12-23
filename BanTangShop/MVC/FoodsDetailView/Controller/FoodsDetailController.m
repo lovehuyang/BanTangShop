@@ -10,9 +10,11 @@
 #import "SDCycleScrollView.h"// 轮播图
 #import "WRNavigationBar.h"
 #import "CycleBottomView.h"
+#import "HeadViewCell1.h"
+#import "HeadViewCell2.h"
 
-#define NAVBAR_COLORCHANGE_POINT (-IMAGE_HEIGHT + High_NavAndStatus*2)
-#define IMAGE_HEIGHT 260 * ScaleX
+#define NAVBAR_COLORCHANGE_POINT (-IMAGE_HEIGHT + High_NavAndStatus *2 )
+#define IMAGE_HEIGHT 340 * ScaleX
 #define SCROLL_DOWN_LIMIT 100
 #define LIMIT_OFFSET_Y -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 #define H_CELL 120*ScaleX// CELL的高度
@@ -20,11 +22,14 @@
 @interface FoodsDetailController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong)UIView *headView;//tableView的头部视图
+@property (nonatomic ,strong) HeadViewCell1 *headViewCell1;//tableView头视图第一组cell
+@property (nonatomic ,strong) HeadViewCell1 *floatView;//漂浮的view
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *imgView;
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;// 轮播图
 @property (nonatomic ,strong) NSArray *bannerArr;// 轮播图数据
 @property (nonatomic ,strong) CycleBottomView *cycleBottomView;// 轮播图底部半透明视图
+@property (nonatomic ,strong) FoodModel *food;// 食品模型
 @end
 
 @implementation FoodsDetailController
@@ -37,14 +42,11 @@
     [self getFoodImagesById];// 获取食品轮播图
     self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-High_NavAndStatus, 0, 0, 0);
     [self.tableView addSubview:self.cycleScrollView];
-    [self.tableView addSubview:self.cycleBottomView];
     [self.view addSubview:self.tableView];
-    
-    [self wr_setNavBarBackgroundAlpha:0];
 }
 
 #pragma mark - 懒加载
-// 创建tableView头视图
+#pragma mark - 创建tableView头视图
 - (UIView *)headView{
     if (!_headView) {
         UIView *headView = [UIView new];
@@ -54,6 +56,7 @@
     }
     return _headView;
 }
+
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScrW, ScrH) style:UITableViewStylePlain];
@@ -72,21 +75,54 @@
         cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
         cycleScrollView.autoScrollTimeInterval = 5;
         cycleScrollView.backgroundColor =[UIColor whiteColor];
+        cycleScrollView.pageControlBottomOffset = 50;
         _cycleScrollView = cycleScrollView;
     }
     return _cycleScrollView;
 }
 
-- (CycleBottomView *)cycleBottomView{
-    if (!_cycleBottomView) {
-        _cycleBottomView = [[CycleBottomView alloc]initWithFrame:CGRectMake(0,  - 55, ScrW, 55 ) model:nil];
-    }
-    return _cycleBottomView;
+#pragma mark - 创建轮播图底部的半透明视图
+- (void)createCycleBottomView{
+    
+    self.cycleBottomView = [[CycleBottomView alloc]initWithFrame:CGRectMake(0,  - 50, ScrW, 50 ) model:self.food];
+    
+    [self.tableView addSubview:self.cycleBottomView];
+}
+#pragma mark - tableView头视图的第一个cell
+- (void)createHeadViewCell1{
+    self.headViewCell1 = [[HeadViewCell1 alloc]initWithFrame:CGRectMake(0, 0, ScrW, 30 *ScaleX) modle:self.food];
+    __weak typeof (self)weakSelf = self;
+    self.headViewCell1.setEnjoyBtnStatus  = ^(BOOL select) {
+        [weakSelf.floatView setEnjoyBtnSelectdd:select];
+    };
+    
+    [self.headView addSubview:self.headViewCell1];
+}
+
+#pragma mark - tableView头视图的第二个cell
+- (void)createHeadViewCell2{
+    HeadViewCell2 *headViewCell2 = [[HeadViewCell2 alloc]initWithFrame:CGRectMake(0, 30 *ScaleX, ScrW, 30 *ScaleX) modle:self.food];
+    [self.headView addSubview:headViewCell2];
+}
+#pragma mark - 顶部悬浮的view
+- (void)createFloatView{
+    self.floatView = [[HeadViewCell1 alloc]initWithFrame:CGRectMake(0, High_NavAndStatus, ScrW, 30 *ScaleX) modle:self.food];
+    __weak typeof (self)weakSelf = self;
+    self.floatView.setEnjoyBtnStatus = ^(BOOL select) {
+        [weakSelf.headViewCell1 setEnjoyBtnSelectdd:select];
+    };
+    self.floatView.hidden = YES;
+    [self.view addSubview:self.floatView];
 }
 #pragma mark - 获取食品详情
 - (void)getFoodDetailById{
     [HLYNetWorkObject requestWithMethod:GET ParamDict:@{@"foodId":self.foodId} url:URL_GETFOODDETAILBYID successBlock:^(id requestData, NSDictionary *dataDict) {
-        DLog(@"");
+        self.food = [FoodModel createModelWithDic:dataDict];
+        [self createCycleBottomView];
+        [self createHeadViewCell1];
+        [self createHeadViewCell2];
+        [self createFloatView];
+        [self.tableView reloadData];
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         DLog(@"");
     }];
@@ -118,7 +154,15 @@
 }
 #pragma mark - 导航栏事件
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGRect rect = [self.view convertRect:self.headView.frame  fromView:self.tableView];
+    
     CGFloat offsetY = scrollView.contentOffset.y;
+    if(rect.origin.y <= High_NavAndStatus){
+        self.floatView.hidden = NO;
+    }else{
+        self.floatView.hidden = YES;
+    }
     
     if (offsetY > NAVBAR_COLORCHANGE_POINT)
     {
@@ -170,4 +214,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark - 生命周期
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self wr_setNavBarBackgroundAlpha:0];
+}
 @end

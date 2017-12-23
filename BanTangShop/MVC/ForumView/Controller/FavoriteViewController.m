@@ -28,8 +28,8 @@
 
 #pragma mark - 获取数据
 - (void)getLikeFood{
-    NSDictionary *paraDict = @{@"username":@"15665889905"};
-    [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETFOODLISTPAGE successBlock:^(id requestData, NSDictionary *dataDict) {
+    NSDictionary *paraDict = @{@"username":[GlobalTools getData:USER_PHONE]};
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETLIKEFOOD successBlock:^(id requestData, NSDictionary *dataDict) {
         [MBProgressHUDTools hideHUD];
         NSArray *dataArr = (NSArray *)dataDict;
         

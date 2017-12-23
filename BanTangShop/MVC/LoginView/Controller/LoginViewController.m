@@ -118,6 +118,7 @@
         [MBProgressHUDTools hideHUD];
         [MBProgressHUDTools showTipMessageHudWithtitle:@"登录成功！"];
         [GlobalTools saveData:model.user_Id key:USER_ID];
+        [GlobalTools saveData:model.username key:USER_PHONE];
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_LOGIN object:nil];
         [self backBtnCkick];
         

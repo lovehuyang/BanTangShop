@@ -24,6 +24,9 @@
 #define URL_GETLIKEFOOD @"/shop/getLikeFood"// 获取收藏食品列表(未分页)
 #define URL_GETFOODDETAILBYID @"/shop/getFoodDetailById"//获取食品详情(通过ID)
 #define URL_GETFOODIMAGEBYID @"/shop/getFoodImagesById"// 获取食品轮播图
+#define URL_ISLIKEFOOD @"/shop/isLikeFood"// 食品是否已收藏
+#define URL_LIKEFOOD @"/shop/likeFood"// 收藏食品
+#define URL_UNLIKEFOOD @"/shop/unLikeFood" //取消收藏
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色

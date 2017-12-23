@@ -85,9 +85,15 @@
     }
     
     [MBProgressHUDTools showLoadingHudWithtitle:@""];
-    // 验证手机号是否可用
+    // 验证手机号是否可用(手机号不可用时才可注册)
     [HLYNetWorkObject requestWithMethod:GET ParamDict:@{@"username":self.phone_TF.text} url:URL_EXISTPHONE successBlock:^(id requestData, NSDictionary *dataDict) {
-        [self getVerificationCode:self.phone_TF.text];// mob发送验证码
+        BOOL isAvailable = [(NSString *)dataDict boolValue];
+        if (isAvailable) {
+            [self getVerificationCode:self.phone_TF.text];// mob发送验证码
+        }else{
+            [MBProgressHUDTools showTipMessageHudWithtitle:requestData[@"msg"]];
+        }
+        
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
     }];
@@ -113,7 +119,7 @@
 #pragma mark - mob提交验证码
 - (void)commitVerificationCode{
   
-    [SMSSDK commitVerificationCode:self.security_TF.text phoneNumber:self.password_TF.text zone:@"86" result:^(NSError *error) {
+    [SMSSDK commitVerificationCode:self.security_TF.text phoneNumber:self.phone_TF.text zone:@"86" result:^(NSError *error) {
         
         if (!error)
         {

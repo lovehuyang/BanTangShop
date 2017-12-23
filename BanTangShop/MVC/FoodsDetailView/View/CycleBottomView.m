@@ -26,11 +26,11 @@
     titleLab.sd_layout
     .leftSpaceToView(self, 10)
     .topEqualToView(self)
-    .heightIs(30)
+    .heightIs(25)
     .autoWidthRatio(0);
-    titleLab.text = @"吃屎";
+    titleLab.text = food.foodName;
     titleLab.textColor = [UIColor whiteColor];
-    [titleLab setSingleLineAutoResizeWithMaxWidth:100];
+    [titleLab setSingleLineAutoResizeWithMaxWidth:300];
     // 星星
     starBackView = [UIView new];
     [self addSubview:starBackView];
@@ -53,7 +53,7 @@
         [tempBtn setBackgroundImage:[UIImage imageNamed:@"img_star_middle_s"] forState:UIControlStateSelected];
         tempBtn.tag = 10 + i;
     }
-    [self setStartStatus:4];
+    [self setStartStatus:[food.stars integerValue]];
     
     // 已售
     UILabel *sell_countLab = [UILabel new];
@@ -65,8 +65,31 @@
     .autoWidthRatio(0);
     sell_countLab.font = [UIFont systemFontOfSize:13];
     sell_countLab.textColor = [UIColor whiteColor];
-    sell_countLab.text= [NSString stringWithFormat:@"已售:%d",5];
-    [sell_countLab setSingleLineAutoResizeWithMaxWidth:100];
+    sell_countLab.text= [NSString stringWithFormat:@"已售:%@",food.sell_count];
+    [sell_countLab setSingleLineAutoResizeWithMaxWidth:200];
+    
+    // 赞
+    UILabel *zan_countLab = [UILabel new];
+    [self addSubview:zan_countLab];
+    zan_countLab.sd_layout
+    .rightSpaceToView(self, 10)
+    .topEqualToView(sell_countLab)
+    .heightRatioToView(sell_countLab, 1);
+    zan_countLab.textColor = [UIColor whiteColor];
+    zan_countLab.font = [UIFont systemFontOfSize:13];
+    zan_countLab.text = [NSString stringWithFormat:@"赞(%@)",food.zan_count];
+    [zan_countLab setSingleLineAutoResizeWithMaxWidth:100];
+    
+    // 赞👍
+    UIImageView *imgView = [UIImageView new];
+    [self addSubview:imgView];
+    imgView.sd_layout
+    .rightSpaceToView(zan_countLab, 5)
+    .widthIs(15)
+    .heightEqualToWidth()
+    .centerYEqualToView(zan_countLab);
+    imgView.contentMode = UIViewContentModeScaleAspectFit;
+    [imgView setImage:[UIImage imageNamed:@"dt_dianzan"]];
 }
 
 #pragma mark - 设置星星的数量

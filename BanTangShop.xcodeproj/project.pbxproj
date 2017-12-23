@@ -28,6 +28,8 @@
 		092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */; };
 		092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */; };
 		092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA641FE7E41F009A1BE1 /* FoodModel.m */; };
+		097B724D1FEDFE2B00775449 /* HeadViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 097B724C1FEDFE2B00775449 /* HeadViewCell1.m */; };
+		097B72501FEE43E500775449 /* HeadViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 097B724F1FEE43E500775449 /* HeadViewCell2.m */; };
 		097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C801FEB632B001C7723 /* LoginTextField.m */; };
 		097C5C881FEBB230001C7723 /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C861FEBB230001C7723 /* UILabel+ContentSize.m */; };
 		097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C8A1FEBB2F3001C7723 /* EnsureAlterView.m */; };
@@ -136,6 +138,10 @@
 		092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodListModel.m; sourceTree = "<group>"; };
 		092BBA631FE7E41F009A1BE1 /* FoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
 		092BBA641FE7E41F009A1BE1 /* FoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		097B724B1FEDFE2B00775449 /* HeadViewCell1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadViewCell1.h; sourceTree = "<group>"; };
+		097B724C1FEDFE2B00775449 /* HeadViewCell1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadViewCell1.m; sourceTree = "<group>"; };
+		097B724E1FEE43E500775449 /* HeadViewCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadViewCell2.h; sourceTree = "<group>"; };
+		097B724F1FEE43E500775449 /* HeadViewCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadViewCell2.m; sourceTree = "<group>"; };
 		097C5C7F1FEB632B001C7723 /* LoginTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginTextField.h; sourceTree = "<group>"; };
 		097C5C801FEB632B001C7723 /* LoginTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginTextField.m; sourceTree = "<group>"; };
 		097C5C821FEB7B24001C7723 /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
@@ -930,6 +936,10 @@
 			children = (
 				09E20F691FECF89600AD239C /* CycleBottomView.h */,
 				09E20F6A1FECF89600AD239C /* CycleBottomView.m */,
+				097B724B1FEDFE2B00775449 /* HeadViewCell1.h */,
+				097B724C1FEDFE2B00775449 /* HeadViewCell1.m */,
+				097B724E1FEE43E500775449 /* HeadViewCell2.h */,
+				097B724F1FEE43E500775449 /* HeadViewCell2.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1153,6 +1163,7 @@
 				092853E71FE89B6A00AD9437 /* Model.m in Sources */,
 				099600131FE3C6F50090016B /* LoginViewController.m in Sources */,
 				099600581FE3C7AD0090016B /* tabbarButton.m in Sources */,
+				097B724D1FEDFE2B00775449 /* HeadViewCell1.m in Sources */,
 				0996FFAA1FE3C1210090016B /* ViewController.m in Sources */,
 				099600491FE3C7AC0090016B /* UIColor+HXY.m in Sources */,
 				09234FB31FEA3B1F00C01E03 /* MBProgressHUDTools.m in Sources */,
@@ -1170,6 +1181,7 @@
 				099600661FE3CCE90090016B /* RecommendViewController.m in Sources */,
 				099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */,
 				092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */,
+				097B72501FEE43E500775449 /* HeadViewCell2.m in Sources */,
 				09E20F4B1FEC8C6C00AD239C /* RegisterTextField2.m in Sources */,
 				097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */,
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,

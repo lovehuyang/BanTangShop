@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FoodModel.h"
 
 @interface CycleBottomView : UIView
 - (instancetype)initWithFrame:(CGRect)frame model:(FoodModel *)food;

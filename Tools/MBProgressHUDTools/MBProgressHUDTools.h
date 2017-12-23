@@ -38,7 +38,6 @@
  */
 + (void)showWarningHudWithtitle:(NSString *)title;
 
-
 /**
  隐藏提示框
  */

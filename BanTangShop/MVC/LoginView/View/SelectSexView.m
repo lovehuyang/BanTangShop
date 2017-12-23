@@ -28,8 +28,8 @@
     boyBtn.frame = CGRectMake(0, CGRectGetMaxY(boyImgView.frame)+ 5, CGRectGetWidth(boyImgView.frame), 25);
     boyBtn.center = CGPointMake(boyImgView.center.x, boyBtn.center.y);
     [boyBtn setTitle:@" 小伙" forState:UIControlStateNormal];
-    [boyBtn setImage:[UIImage imageNamed:@"bt_weixuan"] forState:UIControlStateNormal];
-    [boyBtn setImage:[UIImage imageNamed:@"bt_xuanzhong"] forState:UIControlStateSelected];
+    [boyBtn setImage:[UIImage imageNamed:@"dl_select"] forState:UIControlStateNormal];
+    [boyBtn setImage:[UIImage imageNamed:@"dl_selected"] forState:UIControlStateSelected];
     boyBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     boyBtn.selected = YES;
     boyBtn.tag = 10;
@@ -46,8 +46,8 @@
     girlBtn.frame = CGRectMake(0, CGRectGetMaxY(boyImgView.frame)+5, CGRectGetWidth(boyImgView.frame), 25);
     girlBtn.center = CGPointMake(girlImgView.center.x, girlBtn.center.y);
     [girlBtn setTitle:@" 菇凉" forState:UIControlStateNormal];
-    [girlBtn setImage:[UIImage imageNamed:@"bt_weixuan"] forState:UIControlStateNormal];
-    [girlBtn setImage:[UIImage imageNamed:@"bt_xuanzhong"] forState:UIControlStateSelected];
+    [girlBtn setImage:[UIImage imageNamed:@"dl_select"] forState:UIControlStateNormal];
+    [girlBtn setImage:[UIImage imageNamed:@"dl_selected"] forState:UIControlStateSelected];
     girlBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     girlBtn.tag = 11;
     [girlBtn addTarget:self action:@selector(sexBtnClick:) forControlEvents:UIControlEventTouchUpInside];
