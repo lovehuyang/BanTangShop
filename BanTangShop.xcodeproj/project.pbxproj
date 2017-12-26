@@ -28,6 +28,11 @@
 		092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */; };
 		092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */; };
 		092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA641FE7E41F009A1BE1 /* FoodModel.m */; };
+		095303681FF22BB900D98EFF /* ExpressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 095303671FF22BB900D98EFF /* ExpressInfoCell.m */; };
+		0953036B1FF22DEE00D98EFF /* FoodInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953036A1FF22DEE00D98EFF /* FoodInfoCell.m */; };
+		0953036E1FF23CD600D98EFF /* NSString+HLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953036D1FF23CD600D98EFF /* NSString+HLY.m */; };
+		095303711FF2466500D98EFF /* ShopContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095303701FF2466500D98EFF /* ShopContactsModel.m */; };
+		095303741FF24E7E00D98EFF /* ShopContractsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 095303731FF24E7E00D98EFF /* ShopContractsCell.m */; };
 		097B724D1FEDFE2B00775449 /* HeadViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 097B724C1FEDFE2B00775449 /* HeadViewCell1.m */; };
 		097B72501FEE43E500775449 /* HeadViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 097B724F1FEE43E500775449 /* HeadViewCell2.m */; };
 		097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C801FEB632B001C7723 /* LoginTextField.m */; };
@@ -37,6 +42,8 @@
 		097C5C911FEBC322001C7723 /* CustomNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C901FEBC322001C7723 /* CustomNavView.m */; };
 		097C5C941FEBC6F1001C7723 /* SelectSexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C931FEBC6F1001C7723 /* SelectSexView.m */; };
 		097C5C971FEBD64D001C7723 /* RegisterTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C961FEBD64C001C7723 /* RegisterTextField.m */; };
+		09885F2F1FF08F10000CC0F7 /* FoodDetailCountDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09885F2E1FF08F10000CC0F7 /* FoodDetailCountDownCell.m */; };
+		09885F321FF0E235000CC0F7 /* EventExplainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09885F311FF0E235000CC0F7 /* EventExplainCell.m */; };
 		0996000F1FE3C6F50090016B /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFF41FE3C6F50090016B /* MineViewController.m */; };
 		099600101FE3C6F50090016B /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFFB1FE3C6F50090016B /* FavoriteViewController.m */; };
 		099600111FE3C6F50090016B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099600021FE3C6F50090016B /* HomeViewController.m */; };
@@ -82,6 +89,7 @@
 		09E20F561FEC913F00AD239C /* UIImage+HLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F551FEC913F00AD239C /* UIImage+HLY.m */; };
 		09E20F5E1FECB68E00AD239C /* FoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F5D1FECB68E00AD239C /* FoodsDetailController.m */; };
 		09E20F6B1FECF89600AD239C /* CycleBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E20F6A1FECF89600AD239C /* CycleBottomView.m */; };
+		09F541001FF2612300C3E153 /* ShopContractsCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F540FF1FF2612300C3E153 /* ShopContractsCell2.m */; };
 		F4704CD1CDE335B1776BEE44 /* libPods-BanTangShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +146,16 @@
 		092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodListModel.m; sourceTree = "<group>"; };
 		092BBA631FE7E41F009A1BE1 /* FoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
 		092BBA641FE7E41F009A1BE1 /* FoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		095303661FF22BB900D98EFF /* ExpressInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressInfoCell.h; sourceTree = "<group>"; };
+		095303671FF22BB900D98EFF /* ExpressInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressInfoCell.m; sourceTree = "<group>"; };
+		095303691FF22DEE00D98EFF /* FoodInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodInfoCell.h; sourceTree = "<group>"; };
+		0953036A1FF22DEE00D98EFF /* FoodInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodInfoCell.m; sourceTree = "<group>"; };
+		0953036C1FF23CD600D98EFF /* NSString+HLY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HLY.h"; sourceTree = "<group>"; };
+		0953036D1FF23CD600D98EFF /* NSString+HLY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HLY.m"; sourceTree = "<group>"; };
+		0953036F1FF2466500D98EFF /* ShopContactsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopContactsModel.h; sourceTree = "<group>"; };
+		095303701FF2466500D98EFF /* ShopContactsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopContactsModel.m; sourceTree = "<group>"; };
+		095303721FF24E7E00D98EFF /* ShopContractsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopContractsCell.h; sourceTree = "<group>"; };
+		095303731FF24E7E00D98EFF /* ShopContractsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopContractsCell.m; sourceTree = "<group>"; };
 		097B724B1FEDFE2B00775449 /* HeadViewCell1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadViewCell1.h; sourceTree = "<group>"; };
 		097B724C1FEDFE2B00775449 /* HeadViewCell1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadViewCell1.m; sourceTree = "<group>"; };
 		097B724E1FEE43E500775449 /* HeadViewCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadViewCell2.h; sourceTree = "<group>"; };
@@ -157,6 +175,10 @@
 		097C5C931FEBC6F1001C7723 /* SelectSexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectSexView.m; sourceTree = "<group>"; };
 		097C5C951FEBD64C001C7723 /* RegisterTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTextField.h; sourceTree = "<group>"; };
 		097C5C961FEBD64C001C7723 /* RegisterTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTextField.m; sourceTree = "<group>"; };
+		09885F2D1FF08F10000CC0F7 /* FoodDetailCountDownCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodDetailCountDownCell.h; sourceTree = "<group>"; };
+		09885F2E1FF08F10000CC0F7 /* FoodDetailCountDownCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodDetailCountDownCell.m; sourceTree = "<group>"; };
+		09885F301FF0E235000CC0F7 /* EventExplainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventExplainCell.h; sourceTree = "<group>"; };
+		09885F311FF0E235000CC0F7 /* EventExplainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventExplainCell.m; sourceTree = "<group>"; };
 		099600011FE3C6F50090016B /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		099600021FE3C6F50090016B /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		099600031FE3C6F50090016B /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
@@ -252,6 +274,8 @@
 		09E20F5D1FECB68E00AD239C /* FoodsDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodsDetailController.m; sourceTree = "<group>"; };
 		09E20F691FECF89600AD239C /* CycleBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleBottomView.h; sourceTree = "<group>"; };
 		09E20F6A1FECF89600AD239C /* CycleBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CycleBottomView.m; sourceTree = "<group>"; };
+		09F540FE1FF2612300C3E153 /* ShopContractsCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopContractsCell2.h; sourceTree = "<group>"; };
+		09F540FF1FF2612300C3E153 /* ShopContractsCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopContractsCell2.m; sourceTree = "<group>"; };
 		87DFC8C0A7E1B9524C5D303A /* Pods-BanTangShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanTangShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanTangShop/Pods-BanTangShop.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDBDCFDD57DBC991D787B45 /* libPods-BanTangShop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BanTangShop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -443,6 +467,8 @@
 			children = (
 				09DA61951FEA6443007780E7 /* UserModel.h */,
 				09DA61961FEA6443007780E7 /* UserModel.m */,
+				0953036F1FF2466500D98EFF /* ShopContactsModel.h */,
+				095303701FF2466500D98EFF /* ShopContactsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -893,6 +919,8 @@
 			children = (
 				09E20F541FEC913F00AD239C /* UIImage+HLY.h */,
 				09E20F551FEC913F00AD239C /* UIImage+HLY.m */,
+				0953036C1FF23CD600D98EFF /* NSString+HLY.h */,
+				0953036D1FF23CD600D98EFF /* NSString+HLY.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -940,6 +968,18 @@
 				097B724C1FEDFE2B00775449 /* HeadViewCell1.m */,
 				097B724E1FEE43E500775449 /* HeadViewCell2.h */,
 				097B724F1FEE43E500775449 /* HeadViewCell2.m */,
+				09885F2D1FF08F10000CC0F7 /* FoodDetailCountDownCell.h */,
+				09885F2E1FF08F10000CC0F7 /* FoodDetailCountDownCell.m */,
+				09885F301FF0E235000CC0F7 /* EventExplainCell.h */,
+				09885F311FF0E235000CC0F7 /* EventExplainCell.m */,
+				095303661FF22BB900D98EFF /* ExpressInfoCell.h */,
+				095303671FF22BB900D98EFF /* ExpressInfoCell.m */,
+				095303691FF22DEE00D98EFF /* FoodInfoCell.h */,
+				0953036A1FF22DEE00D98EFF /* FoodInfoCell.m */,
+				095303721FF24E7E00D98EFF /* ShopContractsCell.h */,
+				095303731FF24E7E00D98EFF /* ShopContractsCell.m */,
+				09F540FE1FF2612300C3E153 /* ShopContractsCell2.h */,
+				09F540FF1FF2612300C3E153 /* ShopContractsCell2.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1160,13 +1200,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09885F321FF0E235000CC0F7 /* EventExplainCell.m in Sources */,
+				0953036E1FF23CD600D98EFF /* NSString+HLY.m in Sources */,
 				092853E71FE89B6A00AD9437 /* Model.m in Sources */,
+				095303681FF22BB900D98EFF /* ExpressInfoCell.m in Sources */,
+				0953036B1FF22DEE00D98EFF /* FoodInfoCell.m in Sources */,
 				099600131FE3C6F50090016B /* LoginViewController.m in Sources */,
 				099600581FE3C7AD0090016B /* tabbarButton.m in Sources */,
 				097B724D1FEDFE2B00775449 /* HeadViewCell1.m in Sources */,
 				0996FFAA1FE3C1210090016B /* ViewController.m in Sources */,
 				099600491FE3C7AC0090016B /* UIColor+HXY.m in Sources */,
 				09234FB31FEA3B1F00C01E03 /* MBProgressHUDTools.m in Sources */,
+				09885F2F1FF08F10000CC0F7 /* FoodDetailCountDownCell.m in Sources */,
 				0996004A1FE3C7AC0090016B /* UIImage+LYZ.m in Sources */,
 				097C5C941FEBC6F1001C7723 /* SelectSexView.m in Sources */,
 				09E20F6B1FECF89600AD239C /* CycleBottomView.m in Sources */,
@@ -1187,11 +1232,13 @@
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
 				092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */,
 				097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */,
+				09F541001FF2612300C3E153 /* ShopContractsCell2.m in Sources */,
 				0996004B1FE3C7AD0090016B /* UILabel+LYZ.m in Sources */,
 				097C5C911FEBC322001C7723 /* CustomNavView.m in Sources */,
 				099600561FE3C7AD0090016B /* systemTabbar.m in Sources */,
 				099600471FE3C7AC0090016B /* NSString+isoEncoding.m in Sources */,
 				0996004D1FE3C7AD0090016B /* SetupTools.m in Sources */,
+				095303741FF24E7E00D98EFF /* ShopContractsCell.m in Sources */,
 				099600121FE3C6F50090016B /* NextViewController.m in Sources */,
 				0996004C1FE3C7AD0090016B /* UIView+Extension.m in Sources */,
 				092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */,
@@ -1215,6 +1262,7 @@
 				099600501FE3C7AD0090016B /* LanchViewManger.m in Sources */,
 				099600541FE3C7AD0090016B /* RootViewController.m in Sources */,
 				09E20F5E1FECB68E00AD239C /* FoodsDetailController.m in Sources */,
+				095303711FF2466500D98EFF /* ShopContactsModel.m in Sources */,
 				09D956221FE4B7830012E309 /* customTabbar.m in Sources */,
 				092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */,
 				099600111FE3C6F50090016B /* HomeViewController.m in Sources */,

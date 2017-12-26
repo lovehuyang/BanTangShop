@@ -27,6 +27,9 @@
 #define URL_ISLIKEFOOD @"/shop/isLikeFood"// 食品是否已收藏
 #define URL_LIKEFOOD @"/shop/likeFood"// 收藏食品
 #define URL_UNLIKEFOOD @"/shop/unLikeFood" //取消收藏
+#define URL_GETFOODPACKAGE @"/shop/getFoodPackage"// 获取食品包装单位
+#define URL_GETFOODUNIT @"/shop/getFoodUnit"// 获取食品单位
+#define URL_GETSHOPCONTRACT @"/shop/getShopContacts"// 获取店铺联系人信息
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色
@@ -42,5 +45,6 @@
 // 通知
 #define NOTIFICATION_LOGIN @"Notification_Login"// 登录成功
 #define NOTIFICATION_EXIT @"Notification_Exit"// 退出账号
+#define NOTIFICATION_STOP_COUNT_DOWN @"Notification_Stop_CountDown"// 停止计时
 
 #endif /* ConfigHeader_h */

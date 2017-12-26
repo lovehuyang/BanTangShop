@@ -42,5 +42,7 @@
 @property (nonatomic ,strong) NSNumber *deliverCompany;
 @property (nonatomic ,assign) BOOL is_close;
 
+// 拓展字段
+@property (nonatomic ,strong) NSString *expandStr;
 + (id)createModelWithDic:(NSDictionary *)dic;
 @end

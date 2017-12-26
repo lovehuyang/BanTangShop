@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Model.h"
+#import "ShopContactsModel.h"
 
 @interface AppDelegate ()
 
@@ -66,6 +67,34 @@
         }
     } failureBlock:^(NSInteger errCode, NSString *msg) {
     }];
+    
+    // 获取食品包装单位
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETFOODPACKAGE successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            Model *model = [Model createModelWithDic:tempDict];
+            [[InfoDBAccess sharedInstance]databaseUpdateTable:Table_FoodPackage_ENUM model:model];
+        }
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        DLog(@"");
+    }];
+    // 获取食品单位
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETFOODUNIT successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            Model *model = [Model createModelWithDic:tempDict];
+            [[InfoDBAccess sharedInstance]databaseUpdateTable:Table_FoodUnit_ENUM model:model];
+        }
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        DLog(@"");
+    }];
+    // 获取店铺联系人信息
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:nil url:URL_GETSHOPCONTRACT successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            ShopContactsModel *model = [ShopContactsModel createModelWithDic:tempDict];
+            [[InfoDBAccess sharedInstance]databaseShopContactsTable:model];
+        }
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        DLog(@"");
+    }];
 }
 + (AppDelegate *)shareInstance
 {
@@ -86,6 +115,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    // APP进入前台，刷新食品详情页面（倒计时）
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_STOP_COUNT_DOWN object:nil];
 }
 
 

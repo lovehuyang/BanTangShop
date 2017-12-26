@@ -12,7 +12,10 @@
 #define Table_FoodFlavour @"FoodFlavour"// 食品口味表
 #define Table_FoodCatagory @"FoodCatagory"// 食品类别表
 #define Table_FoodBRAND @"FoodBrand"// 食品品牌表
+#define Table_FoodPACKAGE @"FoodPackage"// 食品包装单位表
+#define Table_FoodUNIT @"FoodUnit"// 食品单位表
 #define Table_USERINFO @"UserInfo"// 用户信息表
+#define Table_ShopContacts @"ShopContacts"// 铺联系人信息表
 
 @interface InfoDBAccess()
 @property (nonatomic, strong) FMDatabase *dataBase;
@@ -69,7 +72,10 @@
     [self createFoodFlavourTable];// 创建食品口味表
     [self createFoodCatagoryTable];// 创建食品类别表
     [self createFoodBrandTable];// 创建食品品牌表
+    [self createFoodPackageTable];// 创建食品包装单位表
+    [self createFoodUnitTable];// 创建食品包装单位表
     [self createUserInfoTable];// 创建用户信息表
+    [self createShopContactsTable];// 创建店铺联系人信息表
 }
 
 #pragma mark - 创建表
@@ -94,9 +100,21 @@
 - (void)createFoodBrandTable{
     [self createTable:Table_FoodBRAND sql:@"CREATE table FoodBrand (Id TEXT,name TEXT)"];
 }
+#pragma mark - 获取食品包装单位
+- (void)createFoodPackageTable{
+    [self createTable:Table_FoodPACKAGE sql:@"CREATE table FoodPackage (Id TEXT,name TEXT)"];
+}
+#pragma mark - 获取食品单位
+- (void)createFoodUnitTable{
+    [self createTable:Table_FoodUNIT sql:@"CREATE table FoodUnit (Id TEXT,name TEXT)"];
+}
 #pragma mark - 创建用户信息表
 - (void)createUserInfoTable{
     [self createTable:Table_USERINFO sql:@"CREATE table UserInfo (Id TEXT,username TEXT,password TEXT,nickname TEXT,avatar TEXT,date_joined TEXT,qq TEXT,wx TEXT,sex TEXT,realname TEXT,phone TEXT)"];
+}
+#pragma mark - 创建店铺联系人信息
+- (void)createShopContactsTable{
+    [self createTable:Table_ShopContacts sql:@"CREATE table ShopContacts (Id TEXT,name TEXT,phone TEXT,avatar TEXT,qq TEXT,sex TEXT,wx TEXT)"];
 }
 #pragma mark - 更新商品信息表
 /**
@@ -118,6 +136,7 @@
     }
 }
 
+#pragma mark - 更新用户信息表
 /**
  更新用户信息表
 
@@ -135,6 +154,27 @@
     {
         NSString *dbStr = [NSString stringWithFormat:@"INSERT INTO %@(Id, username,password,nickname,avatar,date_joined,qq,wx,sex,realname,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?)",Table_USERINFO];
         [self.dataBase executeUpdate:dbStr,model.user_Id, model.username,model.password,model.nickname,model.avatar,model.date_joined,model.qq,model.wx,model.sex,model.realname,model.phone];
+    }
+}
+
+#pragma mark - 更新店铺联系人信息表
+/**
+ 更新用户信息表
+ 
+ @param model 用户信息模型
+ */
+- (void)databaseShopContactsTable:(ShopContactsModel *)model{
+    // 判断数据库中是否有该条数据(存在则更新，不存在则插入)
+    BOOL isExist = [self isExistShopContacts:model.ID];
+    if(isExist)
+    {
+        NSString *dbStr = [NSString stringWithFormat:@"update %@ set name =? ,phone = ?,avatar = ?,qq = ?,sex = ?,wx = ? where Id = ?",Table_ShopContacts];
+        [self.dataBase executeUpdate:dbStr,model.ID , model.name , model.phone , model.avatar , model.qq , model.sex , model.wx];
+    }
+    else
+    {
+        NSString *dbStr = [NSString stringWithFormat:@"INSERT INTO %@(Id, name,phone,avatar,qq,sex,wx) VALUES (?,?,?,?,?,?,?)",Table_ShopContacts];
+        [self.dataBase executeUpdate:dbStr,model.ID,model.name,model.phone,model.avatar,model.qq,model.sex,model.wx];
     }
 }
 
@@ -165,6 +205,7 @@
     return isExist;
 }
 
+#pragma mark - 判断用户信息表中是否有该条数据
 /**
  判断用户信息表中是否有该条数据
 
@@ -174,6 +215,31 @@
 - (BOOL)isExistInfoJudgeId:(NSString *)Id
 {
     NSString *rsStr = [NSString stringWithFormat:@"SELECT Id FROM %@",Table_USERINFO];
+    FMResultSet *rs = [self.dataBase executeQuery:rsStr];
+    BOOL isExist = NO;
+    while ([rs next])
+    {
+        NSString *IdDB = [rs stringForColumnIndex:0];
+        if([IdDB isEqualToString:Id])
+        {
+            isExist = YES;
+            return isExist ;
+        }
+    }
+    [rs close];
+    return isExist;
+}
+
+#pragma mark - 判断店铺联系人信息表中是否有该条数据
+/**
+ 判断店铺联系人信息表中是否有该条数据
+ 
+ @param Id 用户ID
+ @return yes:存在；No：不存在
+ */
+- (BOOL)isExistShopContacts:(NSString *)Id
+{
+    NSString *rsStr = [NSString stringWithFormat:@"SELECT Id FROM %@",Table_ShopContacts];
     FMResultSet *rs = [self.dataBase executeQuery:rsStr];
     BOOL isExist = NO;
     while ([rs next])
@@ -262,6 +328,33 @@
     [rs close];
     return tempArr;
 }
+
+#pragma mark - 获取店铺联系人信息表中所有数据
+/**
+ 获取店铺联系人信息表中所有数据
+
+ @return 模型数组
+ */
+- (NSMutableArray *)loadAllShopContacts{
+
+    NSString *rsStr = [NSString stringWithFormat:@"SELECT Id, name ,phone , avatar , qq , sex , wx FROM %@ ",Table_ShopContacts];
+    FMResultSet * rs = [self.dataBase executeQuery:rsStr];
+    NSMutableArray * tempArr = [[NSMutableArray alloc]init];
+    while ([rs next])
+    {
+        ShopContactsModel *model = [[ShopContactsModel alloc]init];
+        model.ID = [rs stringForColumn:@"Id"];
+        model.name = [rs stringForColumn:@"name"];
+        model.phone = [rs stringForColumn:@"phone"];
+        model.avatar = [rs stringForColumn:@"avatar"];
+        model.qq = [rs stringForColumn:@"qq"];
+        model.sex = [rs stringForColumn:@"sex"];
+        model.wx = [rs stringForColumn:@"wx"];
+        [tempArr addObject:model];
+    }
+    [rs close];
+    return tempArr;
+}
 #pragma mark - 获取表名
 - (NSString *)getTableName:(TableName)table{
     
@@ -275,6 +368,12 @@
             break;
         case Table_FoodFlavour_ENUM:
             tableName = Table_FoodFlavour;
+            break;
+        case Table_FoodPackage_ENUM:
+            tableName = Table_FoodPACKAGE;
+            break;
+        case Table_FoodUnit_ENUM:
+            tableName = Table_FoodUNIT;
             break;
         
         default:

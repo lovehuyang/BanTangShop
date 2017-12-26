@@ -10,8 +10,14 @@
 #import "SDCycleScrollView.h"// 轮播图
 #import "WRNavigationBar.h"
 #import "CycleBottomView.h"
-#import "HeadViewCell1.h"
-#import "HeadViewCell2.h"
+#import "HeadViewCell1.h"// taleview头部显示价格的cell
+#import "HeadViewCell2.h"// taleview头部显示剩余数量的cell
+#import "FoodDetailCountDownCell.h"// 倒计时的cell
+#import "EventExplainCell.h"// 活动说明
+#import "ExpressInfoCell.h"// 包邮说明
+#import "FoodInfoCell.h"// 食品信息
+#import "ShopContractsCell.h"
+#import "ShopContractsCell2.h"
 
 #define NAVBAR_COLORCHANGE_POINT (-IMAGE_HEIGHT + High_NavAndStatus *2 )
 #define IMAGE_HEIGHT 340 * ScaleX
@@ -22,7 +28,7 @@
 @interface FoodsDetailController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong)UIView *headView;//tableView的头部视图
-@property (nonatomic ,strong) HeadViewCell1 *headViewCell1;//tableView头视图第一组cell
+@property (nonatomic ,strong) HeadViewCell1 *headViewCell1;
 @property (nonatomic ,strong) HeadViewCell1 *floatView;//漂浮的view
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *imgView;
@@ -30,6 +36,8 @@
 @property (nonatomic ,strong) NSArray *bannerArr;// 轮播图数据
 @property (nonatomic ,strong) CycleBottomView *cycleBottomView;// 轮播图底部半透明视图
 @property (nonatomic ,strong) FoodModel *food;// 食品模型
+@property (nonatomic ,strong) NSArray *sessionTitleArr;// 每组的标题
+@property (nonatomic ,strong) NSArray *shopContractArr;// 铺联系人信息
 @end
 
 @implementation FoodsDetailController
@@ -38,11 +46,15 @@
     [super viewDidLoad];
     self.title = @"食品详情";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-High_NavAndStatus, 0, 0, 0);
+    [self.view addSubview:self.tableView];
+    [self.tableView addSubview:self.cycleScrollView];
+    self.tableView.alpha = 0;
     [self getFoodDetailById];// 获取食品详情
     [self getFoodImagesById];// 获取食品轮播图
-    self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-High_NavAndStatus, 0, 0, 0);
-    [self.tableView addSubview:self.cycleScrollView];
-    [self.view addSubview:self.tableView];
+    [MBProgressHUDTools showLoadingHudWithtitle:@""];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreashData) name:NOTIFICATION_STOP_COUNT_DOWN object:nil];
+    
 }
 
 #pragma mark - 懒加载
@@ -50,8 +62,7 @@
 - (UIView *)headView{
     if (!_headView) {
         UIView *headView = [UIView new];
-        headView.frame = CGRectMake(0, 0, ScrW, 120);
-        headView.backgroundColor= [UIColor orangeColor];
+        headView.frame = CGRectMake(0, 0, ScrW, 70 *ScaleX);
         _headView = headView;
     }
     return _headView;
@@ -81,6 +92,19 @@
     return _cycleScrollView;
 }
 
+- (NSArray *)sessionTitleArr{
+    if (!_sessionTitleArr) {
+        _sessionTitleArr = [NSArray arrayWithObjects:@"活动倒计时",@"活动说明",@"包邮说明",@"食品信息",@"联系店家",@"食品评论", nil];
+    }
+    return _sessionTitleArr;
+}
+
+- (NSArray *)shopContractArr{
+    if (!_shopContractArr) {
+        _shopContractArr = [[InfoDBAccess sharedInstance] loadAllShopContacts];
+    }
+    return _shopContractArr;
+}
 #pragma mark - 创建轮播图底部的半透明视图
 - (void)createCycleBottomView{
     
@@ -90,7 +114,7 @@
 }
 #pragma mark - tableView头视图的第一个cell
 - (void)createHeadViewCell1{
-    self.headViewCell1 = [[HeadViewCell1 alloc]initWithFrame:CGRectMake(0, 0, ScrW, 30 *ScaleX) modle:self.food];
+    self.headViewCell1 = [[HeadViewCell1 alloc]initWithFrame:CGRectMake(0, 0, ScrW, 35 *ScaleX) modle:self.food];
     __weak typeof (self)weakSelf = self;
     self.headViewCell1.setEnjoyBtnStatus  = ^(BOOL select) {
         [weakSelf.floatView setEnjoyBtnSelectdd:select];
@@ -101,12 +125,12 @@
 
 #pragma mark - tableView头视图的第二个cell
 - (void)createHeadViewCell2{
-    HeadViewCell2 *headViewCell2 = [[HeadViewCell2 alloc]initWithFrame:CGRectMake(0, 30 *ScaleX, ScrW, 30 *ScaleX) modle:self.food];
+    HeadViewCell2 *headViewCell2 = [[HeadViewCell2 alloc]initWithFrame:CGRectMake(0, 35 *ScaleX, ScrW, 35 *ScaleX) modle:self.food];
     [self.headView addSubview:headViewCell2];
 }
 #pragma mark - 顶部悬浮的view
 - (void)createFloatView{
-    self.floatView = [[HeadViewCell1 alloc]initWithFrame:CGRectMake(0, High_NavAndStatus, ScrW, 30 *ScaleX) modle:self.food];
+    self.floatView = [[HeadViewCell1 alloc]initWithFrame:CGRectMake(0, High_NavAndStatus, ScrW, 35 *ScaleX) modle:self.food];
     __weak typeof (self)weakSelf = self;
     self.floatView.setEnjoyBtnStatus = ^(BOOL select) {
         [weakSelf.headViewCell1 setEnjoyBtnSelectdd:select];
@@ -117,14 +141,19 @@
 #pragma mark - 获取食品详情
 - (void)getFoodDetailById{
     [HLYNetWorkObject requestWithMethod:GET ParamDict:@{@"foodId":self.foodId} url:URL_GETFOODDETAILBYID successBlock:^(id requestData, NSDictionary *dataDict) {
+        [MBProgressHUDTools hideHUD];
         self.food = [FoodModel createModelWithDic:dataDict];
         [self createCycleBottomView];
         [self createHeadViewCell1];
         [self createHeadViewCell2];
         [self createFloatView];
+        self.tableView.alpha = 1;
         [self.tableView reloadData];
+
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         DLog(@"");
+        [MBProgressHUDTools showTipMessageHudWithtitle:@"食品信息获取失败"];
+
     }];
 }
 #pragma mark - 获取食品轮播图
@@ -189,34 +218,125 @@
 #pragma mark - tableview delegate / dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return 1;
+            break;
+        case 2:
+            return 1;
+            break;
+        case 3:
+            return 1;
+            break;
+        case 4:
+            return self.shopContractArr.count;
+            break;
+          
+        default:
+            return 2;
+            break;
+    }
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                   reuseIdentifier:nil];
-    NSString *str = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
-    cell.textLabel.text = str;
+    if (indexPath.section == 0) {
+        FoodDetailCountDownCell *cell = [[FoodDetailCountDownCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil  title:self.sessionTitleArr[indexPath.section]];
+        cell.food =self.food;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+        
+    }else if (indexPath.section == 1){
+        
+        EventExplainCell *cell = [[EventExplainCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section]];
+        cell.food = self.food;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        return cell;
+    }else if (indexPath.section == 2){
+        ExpressInfoCell *cell = [[ExpressInfoCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.food = self.food;
+        return cell;
+    }else if (indexPath.section == 3){
+        FoodInfoCell *cell = [[FoodInfoCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section]];
+        cell.food = self.food;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if (indexPath.section == 4){
+        if (indexPath.row == 0) {
+            ShopContractsCell *cell = [[ShopContractsCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section] ];
+            cell.model = self.shopContractArr[indexPath.row];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        ShopContractsCell2 *cell = [[ShopContractsCell2 alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section] ];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model = self.shopContractArr[indexPath.row];
+        return cell;
+    }
+    
+    static NSString *cellMark = @"food";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellMark];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellMark ];
+    }
+    cell.detailTextLabel.text = @"haha";
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    switch (indexPath.section) {
+        case 0:
+            return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[FoodDetailCountDownCell class] contentViewWidth:ScrW];
+            break;
+        case 1 :
+            return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[EventExplainCell class] contentViewWidth:ScrW];
+            break;
+        case 2 :
+            return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[ExpressInfoCell class] contentViewWidth:ScrW];
+            break;
+        case 3 :
+            return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[FoodInfoCell class] contentViewWidth:ScrW];
+            break;
+        case 4 :
+            if (indexPath.row == 0) {
+                return [self.tableView cellHeightForIndexPath:indexPath model:self.shopContractArr[indexPath.row] keyPath:@"model" cellClass:[ShopContractsCell class] contentViewWidth:ScrW];
+            }else{
+                return [self.tableView cellHeightForIndexPath:indexPath model:self.shopContractArr[indexPath.row] keyPath:@"model" cellClass:[ShopContractsCell2 class] contentViewWidth:ScrW];
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
+    return 40 *ScaleX;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.sessionTitleArr.count;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *vc = [UIViewController new];
-    NSString *str = [NSString stringWithFormat:@"WRNavigationBar %zd",indexPath.row];
-    vc.title = str;
-    [self.navigationController pushViewController:vc animated:YES];
+#pragma mark - 接收到通知，刷新页面显示
+- (void)refreashData{
+    [self.tableView reloadData];
 }
 
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self wr_setNavBarBackgroundAlpha:0];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_STOP_COUNT_DOWN object:nil];
 }
 @end

@@ -13,6 +13,7 @@
 #import "TopMenuView.h"
 #import "MenuButton.h"
 #import "FoodListModel.h"
+#import "FoodsDetailController.h"
 
 #define SEARCHBAR_H  30 //搜索框的高度
 #define MENU_H  35 *ScaleX  //菜单栏的高度
@@ -276,6 +277,11 @@
         _page = 1;
         [MBProgressHUDTools showLoadingHudWithtitle:nil];
         [self getFoodListPage];
+    }else{
+        FoodListModel *food = [self.dataArr objectAtIndex:indexPath.row];
+        FoodsDetailController *fdvc =[[FoodsDetailController alloc]init];
+        fdvc.foodId = food.ID;
+        [self.navigationController pushViewController:fdvc animated:YES];
     }
 }
 

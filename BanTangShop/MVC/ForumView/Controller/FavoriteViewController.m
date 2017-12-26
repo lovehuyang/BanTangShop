@@ -28,26 +28,31 @@
 
 #pragma mark - 获取数据
 - (void)getLikeFood{
-    NSDictionary *paraDict = @{@"username":[GlobalTools getData:USER_PHONE]};
-    [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETLIKEFOOD successBlock:^(id requestData, NSDictionary *dataDict) {
-        [MBProgressHUDTools hideHUD];
-        NSArray *dataArr = (NSArray *)dataDict;
-        
-        if (dataArr.count == 0) {
-            [MBProgressHUDTools showTipMessageHudWithtitle:@"暂无数据"];
-        }else{
-            for (NSDictionary *tempDict in dataArr) {
-                FoodListModel *food = [FoodListModel createModelWithDic:tempDict];
-                [self.dataArr addObject:food];
+    if([GlobalTools userIsLogin]){
+        NSDictionary *paraDict = @{@"username":[GlobalTools getData:USER_PHONE]};
+        [HLYNetWorkObject requestWithMethod:GET ParamDict:paraDict url:URL_GETLIKEFOOD successBlock:^(id requestData, NSDictionary *dataDict) {
+            [MBProgressHUDTools hideHUD];
+            NSArray *dataArr = (NSArray *)dataDict;
+            
+            if (dataArr.count == 0) {
+                [MBProgressHUDTools showTipMessageHudWithtitle:@"暂无数据"];
+            }else{
+                for (NSDictionary *tempDict in dataArr) {
+                    FoodListModel *food = [FoodListModel createModelWithDic:tempDict];
+                    [self.dataArr addObject:food];
+                }
             }
-        }
-        [self.tableView.mj_header endRefreshing];
-        [self tableViewReloadData];
-       
-    } failureBlock:^(NSInteger errCode, NSString *msg) {
-        [self.tableView.mj_header endRefreshing];
-        [MBProgressHUDTools showTipMessageHudWithtitle:msg];
-    }];
+            [self.tableView.mj_header endRefreshing];
+            [self tableViewReloadData];
+            
+        } failureBlock:^(NSInteger errCode, NSString *msg) {
+            [self.tableView.mj_header endRefreshing];
+            [MBProgressHUDTools showTipMessageHudWithtitle:msg];
+        }];
+    }else{
+        [MBProgressHUDTools showTipMessageHudWithtitle:@"请先登录！"];
+    }
+    
 }
 #pragma mark - tableview重新加载数据
 - (void)tableViewReloadData{
