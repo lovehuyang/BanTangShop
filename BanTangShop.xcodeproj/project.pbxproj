@@ -76,6 +76,12 @@
 		0996FFB51FE3C1210090016B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFB41FE3C1210090016B /* main.m */; };
 		0996FFBF1FE3C1210090016B /* BanTangShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFBE1FE3C1210090016B /* BanTangShopTests.m */; };
 		0996FFCA1FE3C1210090016B /* BanTangShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996FFC91FE3C1210090016B /* BanTangShopUITests.m */; };
+		09CAEFCB1FF327CD000D5DEF /* NSDate+HLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CAEFCA1FF327CD000D5DEF /* NSDate+HLY.m */; };
+		09CAEFCE1FF337CC000D5DEF /* FoodFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CAEFCD1FF337CC000D5DEF /* FoodFootView.m */; };
+		09CAEFD11FF35142000D5DEF /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CAEFD01FF35142000D5DEF /* CommentModel.m */; };
+		09CAEFD41FF36248000D5DEF /* CommentFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CAEFD31FF36248000D5DEF /* CommentFirstCell.m */; };
+		09CAEFD71FF37102000D5DEF /* CommentOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CAEFD61FF37102000D5DEF /* CommentOtherCell.m */; };
+		09CAEFDA1FF39208000D5DEF /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CAEFD91FF39207000D5DEF /* CommentViewController.m */; };
 		09D956221FE4B7830012E309 /* customTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956211FE4B7830012E309 /* customTabbar.m */; };
 		09D956261FE4D2980012E309 /* PlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956251FE4D2980012E309 /* PlusButton.m */; };
 		09D9562A1FE4E5900012E309 /* GlobalTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D956291FE4E5900012E309 /* GlobalTools.m */; };
@@ -246,6 +252,18 @@
 		0996FFF41FE3C6F50090016B /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		0996FFFA1FE3C6F50090016B /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
 		0996FFFB1FE3C6F50090016B /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		09CAEFC91FF327CD000D5DEF /* NSDate+HLY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+HLY.h"; sourceTree = "<group>"; };
+		09CAEFCA1FF327CD000D5DEF /* NSDate+HLY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HLY.m"; sourceTree = "<group>"; };
+		09CAEFCC1FF337CC000D5DEF /* FoodFootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodFootView.h; sourceTree = "<group>"; };
+		09CAEFCD1FF337CC000D5DEF /* FoodFootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodFootView.m; sourceTree = "<group>"; };
+		09CAEFCF1FF35142000D5DEF /* CommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		09CAEFD01FF35142000D5DEF /* CommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		09CAEFD21FF36248000D5DEF /* CommentFirstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentFirstCell.h; sourceTree = "<group>"; };
+		09CAEFD31FF36248000D5DEF /* CommentFirstCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentFirstCell.m; sourceTree = "<group>"; };
+		09CAEFD51FF37102000D5DEF /* CommentOtherCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentOtherCell.h; sourceTree = "<group>"; };
+		09CAEFD61FF37102000D5DEF /* CommentOtherCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentOtherCell.m; sourceTree = "<group>"; };
+		09CAEFD81FF39207000D5DEF /* CommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		09CAEFD91FF39207000D5DEF /* CommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		09D9561E1FE4B6CE0012E309 /* customTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTabbar.h; sourceTree = "<group>"; };
 		09D956211FE4B7830012E309 /* customTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTabbar.m; sourceTree = "<group>"; };
 		09D956231FE4C5210012E309 /* ConfigHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigHeader.h; sourceTree = "<group>"; };
@@ -917,6 +935,8 @@
 		09E20F4C1FEC8EE300AD239C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				09CAEFC91FF327CD000D5DEF /* NSDate+HLY.h */,
+				09CAEFCA1FF327CD000D5DEF /* NSDate+HLY.m */,
 				09E20F541FEC913F00AD239C /* UIImage+HLY.h */,
 				09E20F551FEC913F00AD239C /* UIImage+HLY.m */,
 				0953036C1FF23CD600D98EFF /* NSString+HLY.h */,
@@ -941,6 +961,8 @@
 			children = (
 				09E20F5C1FECB68E00AD239C /* FoodsDetailController.h */,
 				09E20F5D1FECB68E00AD239C /* FoodsDetailController.m */,
+				09CAEFD81FF39207000D5DEF /* CommentViewController.h */,
+				09CAEFD91FF39207000D5DEF /* CommentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -948,6 +970,8 @@
 		09E20F591FECB66600AD239C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09CAEFCF1FF35142000D5DEF /* CommentModel.h */,
+				09CAEFD01FF35142000D5DEF /* CommentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -968,6 +992,8 @@
 				097B724C1FEDFE2B00775449 /* HeadViewCell1.m */,
 				097B724E1FEE43E500775449 /* HeadViewCell2.h */,
 				097B724F1FEE43E500775449 /* HeadViewCell2.m */,
+				09CAEFCC1FF337CC000D5DEF /* FoodFootView.h */,
+				09CAEFCD1FF337CC000D5DEF /* FoodFootView.m */,
 				09885F2D1FF08F10000CC0F7 /* FoodDetailCountDownCell.h */,
 				09885F2E1FF08F10000CC0F7 /* FoodDetailCountDownCell.m */,
 				09885F301FF0E235000CC0F7 /* EventExplainCell.h */,
@@ -980,6 +1006,10 @@
 				095303731FF24E7E00D98EFF /* ShopContractsCell.m */,
 				09F540FE1FF2612300C3E153 /* ShopContractsCell2.h */,
 				09F540FF1FF2612300C3E153 /* ShopContractsCell2.m */,
+				09CAEFD21FF36248000D5DEF /* CommentFirstCell.h */,
+				09CAEFD31FF36248000D5DEF /* CommentFirstCell.m */,
+				09CAEFD51FF37102000D5DEF /* CommentOtherCell.h */,
+				09CAEFD61FF37102000D5DEF /* CommentOtherCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1200,6 +1230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09CAEFDA1FF39208000D5DEF /* CommentViewController.m in Sources */,
 				09885F321FF0E235000CC0F7 /* EventExplainCell.m in Sources */,
 				0953036E1FF23CD600D98EFF /* NSString+HLY.m in Sources */,
 				092853E71FE89B6A00AD9437 /* Model.m in Sources */,
@@ -1228,11 +1259,13 @@
 				092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */,
 				097B72501FEE43E500775449 /* HeadViewCell2.m in Sources */,
 				09E20F4B1FEC8C6C00AD239C /* RegisterTextField2.m in Sources */,
+				09CAEFCE1FF337CC000D5DEF /* FoodFootView.m in Sources */,
 				097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */,
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
 				092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */,
 				097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */,
 				09F541001FF2612300C3E153 /* ShopContractsCell2.m in Sources */,
+				09CAEFD71FF37102000D5DEF /* CommentOtherCell.m in Sources */,
 				0996004B1FE3C7AD0090016B /* UILabel+LYZ.m in Sources */,
 				097C5C911FEBC322001C7723 /* CustomNavView.m in Sources */,
 				099600561FE3C7AD0090016B /* systemTabbar.m in Sources */,
@@ -1240,6 +1273,7 @@
 				0996004D1FE3C7AD0090016B /* SetupTools.m in Sources */,
 				095303741FF24E7E00D98EFF /* ShopContractsCell.m in Sources */,
 				099600121FE3C6F50090016B /* NextViewController.m in Sources */,
+				09CAEFCB1FF327CD000D5DEF /* NSDate+HLY.m in Sources */,
 				0996004C1FE3C7AD0090016B /* UIView+Extension.m in Sources */,
 				092853E41FE89B5300AD9437 /* InfoDBAccess.m in Sources */,
 				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
@@ -1251,6 +1285,7 @@
 				09DA61971FEA6443007780E7 /* UserModel.m in Sources */,
 				092853F81FE8F49F00AD9437 /* MenuButton.m in Sources */,
 				092853F51FE8EEFA00AD9437 /* TopMenuView.m in Sources */,
+				09CAEFD11FF35142000D5DEF /* CommentModel.m in Sources */,
 				09D956491FE4F4490012E309 /* UIView+JElasticPullToRefresh.m in Sources */,
 				09D9562A1FE4E5900012E309 /* GlobalTools.m in Sources */,
 				09D956471FE4F4490012E309 /* JElasticPullToRefreshView.m in Sources */,
@@ -1263,6 +1298,7 @@
 				099600541FE3C7AD0090016B /* RootViewController.m in Sources */,
 				09E20F5E1FECB68E00AD239C /* FoodsDetailController.m in Sources */,
 				095303711FF2466500D98EFF /* ShopContactsModel.m in Sources */,
+				09CAEFD41FF36248000D5DEF /* CommentFirstCell.m in Sources */,
 				09D956221FE4B7830012E309 /* customTabbar.m in Sources */,
 				092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */,
 				099600111FE3C6F50090016B /* HomeViewController.m in Sources */,

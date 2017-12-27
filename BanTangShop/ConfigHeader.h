@@ -30,6 +30,8 @@
 #define URL_GETFOODPACKAGE @"/shop/getFoodPackage"// 获取食品包装单位
 #define URL_GETFOODUNIT @"/shop/getFoodUnit"// 获取食品单位
 #define URL_GETSHOPCONTRACT @"/shop/getShopContacts"// 获取店铺联系人信息
+#define URL_GETNEWCOMMENTS @"/shop/getNewComments"// 获取最新评论
+#define URL_SUBMITCOMMENT @"/shop/submitComment"// 提交评论
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色

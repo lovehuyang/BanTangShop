@@ -64,7 +64,7 @@
     _catagory = @"0";
     _flavor = @"0";
     _haveNextPage = YES;
-    
+    self.title = @"";
     self.view.backgroundColor = [UIColor whiteColor];
     [self createTopMenuView];
     [self.view addSubview:self.tableView];

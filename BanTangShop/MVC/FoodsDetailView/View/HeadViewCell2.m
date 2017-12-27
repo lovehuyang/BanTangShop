@@ -7,6 +7,7 @@
 //
 
 #import "HeadViewCell2.h"
+#import "NSDate+HLY.h"
 
 @implementation HeadViewCell2
 - (instancetype)initWithFrame:(CGRect)frame modle:(FoodModel *)food{
@@ -54,8 +55,24 @@
     textLab.text = [NSString stringWithFormat:@"剩余数量%@/%@",food.leftNumSell,food.leftNum];
     textLab.font = [UIFont boldSystemFontOfSize:13];
     
+    BOOL actBool = food.actForever;// 活动是否永久有效
+    BOOL actEnd = NO;// 活动是不是已经结束
+    // 活动永久生效、活动结束
+    food.actEndDate =[NSDate getTimeStr:food.actEndDate];
+    DLog(@"活动截止日期：%@",food.actEndDate);
     
-    // 活动永久生效
+    NSDate *startDate = [NSDate date];
+    NSString* dateString = [NSDate getDateString:startDate];
+    DLog(@"现在的时间 === %@",dateString);
+    
+    // 比较两个时间
+    NSInteger aa = [NSDate compareDate:food.actEndDate withDate:dateString];
+    if (aa == 1 || aa == 0) {// 如果活动结束时间和当前时间一样活小于当前时间，则活动结束
+        actEnd = YES;
+        
+    }else{
+        actEnd = NO;
+    }
     UILabel *actForeverLab = [UILabel new];
     [self addSubview:actForeverLab];
     actForeverLab.sd_layout
@@ -65,7 +82,7 @@
     .widthRatioToView(self, 0.5);
     actForeverLab.textAlignment = NSTextAlignmentCenter;
     actForeverLab.font = [UIFont systemFontOfSize:14];
-    actForeverLab.text = food.actForever ? @"活动永久生效":@"活动进行中";
+    actForeverLab.text = food.actForever ? @"活动永久生效":(actEnd?@"活动已结束":@"活动进行中");
 }
 
 #pragma mark - 分割线

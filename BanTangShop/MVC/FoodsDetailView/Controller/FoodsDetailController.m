@@ -8,6 +8,7 @@
 
 #import "FoodsDetailController.h"
 #import "SDCycleScrollView.h"// 轮播图
+#import "CommentViewController.h"// 评论页面
 #import "WRNavigationBar.h"
 #import "CycleBottomView.h"
 #import "HeadViewCell1.h"// taleview头部显示价格的cell
@@ -18,12 +19,17 @@
 #import "FoodInfoCell.h"// 食品信息
 #import "ShopContractsCell.h"
 #import "ShopContractsCell2.h"
+#import "FoodFootView.h"
+#import "CommentModel.h"
+#import "CommentFirstCell.h"
+#import "CommentOtherCell.h"
 
 #define NAVBAR_COLORCHANGE_POINT (-IMAGE_HEIGHT + High_NavAndStatus *2 )
 #define IMAGE_HEIGHT 340 * ScaleX
 #define SCROLL_DOWN_LIMIT 100
 #define LIMIT_OFFSET_Y -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 #define H_CELL 120*ScaleX// CELL的高度
+#define H_FOOTVIEW 75// 底部view的高度
 
 @interface FoodsDetailController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -38,6 +44,8 @@
 @property (nonatomic ,strong) FoodModel *food;// 食品模型
 @property (nonatomic ,strong) NSArray *sessionTitleArr;// 每组的标题
 @property (nonatomic ,strong) NSArray *shopContractArr;// 铺联系人信息
+@property (nonatomic ,strong) NSMutableArray *commentArr;// 评论列表
+@property (nonatomic ,strong) FoodFootView *footView;
 @end
 
 @implementation FoodsDetailController
@@ -49,12 +57,12 @@
     self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-High_NavAndStatus, 0, 0, 0);
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.cycleScrollView];
-    self.tableView.alpha = 0;
+    self.tableView.alpha = 0.01;
     [self getFoodDetailById];// 获取食品详情
     [self getFoodImagesById];// 获取食品轮播图
+    [self getNewComments];// 获取最新评论
     [MBProgressHUDTools showLoadingHudWithtitle:@""];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreashData) name:NOTIFICATION_STOP_COUNT_DOWN object:nil];
-    
 }
 
 #pragma mark - 懒加载
@@ -70,14 +78,35 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScrW, ScrH) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScrW, ScrH - H_FOOTVIEW) style:UITableViewStylePlain];
         _tableView.tableHeaderView = self.headView;
+        _tableView.tableFooterView = [self createTableviewFootView];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.backgroundColor = Color_Back_Gray;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
+- (UIButton *)createTableviewFootView{
+    UIButton *footBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    footBtn.frame = CGRectMake(0, 0, ScrH, 45);
+    footBtn.backgroundColor = [UIColor whiteColor];
+    [footBtn setTitle:@"我要评论" forState:UIControlStateNormal];
+    [footBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [footBtn addTarget:self action:@selector(commentBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    footBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    return footBtn;
+}
 
+- (void)createFootView{
+    if (!_footView) {
+        _footView = [[FoodFootView alloc]init];
+        _footView.frame = CGRectMake(0, ScrH - H_FOOTVIEW, ScrW, H_FOOTVIEW);
+    }
+    _footView.food = self.food;
+    [self.view addSubview:_footView];
+}
 - (SDCycleScrollView *)cycleScrollView{
     if (!_cycleScrollView) {
         //2、创建图片轮播器
@@ -94,7 +123,7 @@
 
 - (NSArray *)sessionTitleArr{
     if (!_sessionTitleArr) {
-        _sessionTitleArr = [NSArray arrayWithObjects:@"活动倒计时",@"活动说明",@"包邮说明",@"食品信息",@"联系店家",@"食品评论", nil];
+        _sessionTitleArr = [NSArray arrayWithObjects:@"活动倒计时",@"活动说明",@"食品信息",@"联系店家",@"食品评论", nil];
     }
     return _sessionTitleArr;
 }
@@ -104,6 +133,13 @@
         _shopContractArr = [[InfoDBAccess sharedInstance] loadAllShopContacts];
     }
     return _shopContractArr;
+}
+
+- (NSMutableArray *)commentArr{
+    if (!_commentArr) {
+        _commentArr = [NSMutableArray array];
+    }
+    return _commentArr;
 }
 #pragma mark - 创建轮播图底部的半透明视图
 - (void)createCycleBottomView{
@@ -149,6 +185,7 @@
         [self createFloatView];
         self.tableView.alpha = 1;
         [self.tableView reloadData];
+        [self createFootView];
 
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         DLog(@"");
@@ -167,6 +204,20 @@
     }];
 }
 
+#pragma mark - 获取最新评论
+- (void)getNewComments{
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:@{@"foodId":self.foodId} url:URL_GETNEWCOMMENTS successBlock:^(id requestData, NSDictionary *dataDict) {
+        for (NSDictionary *tempDict in (NSArray *)dataDict) {
+            CommentModel *model = [CommentModel createModelWithDic:tempDict];
+            [self.commentArr addObject:model];
+        }
+        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:4];
+        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+        DLog(@"");
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        DLog(@"");
+    }];
+}
 #pragma mark - 加载轮播图数据
 - (void)loadScrollViewData{
     
@@ -229,10 +280,10 @@
             return 1;
             break;
         case 3:
-            return 1;
+            return self.shopContractArr.count;
             break;
         case 4:
-            return self.shopContractArr.count;
+            return self.commentArr.count;
             break;
           
         default:
@@ -258,28 +309,60 @@
 
         return cell;
     }else if (indexPath.section == 2){
-        ExpressInfoCell *cell = [[ExpressInfoCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.food = self.food;
-        return cell;
-    }else if (indexPath.section == 3){
         FoodInfoCell *cell = [[FoodInfoCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section]];
         cell.food = self.food;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    }else if (indexPath.section == 4){
+    }else if (indexPath.section == 3){
         if (indexPath.row == 0) {
             ShopContractsCell *cell = [[ShopContractsCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section] ];
             cell.model = self.shopContractArr[indexPath.row];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.makePhoneCalls = ^(NSString *phoneNum) {
+                NSMutableString *str=[[NSMutableString alloc]initWithFormat:@"tel:%@",phoneNum];
+                
+                UIWebView *callWebview = [[UIWebView alloc]init];
+                
+                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+                
+                [self.view addSubview:callWebview];
+            };
             return cell;
         }
         ShopContractsCell2 *cell = [[ShopContractsCell2 alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil title:self.sessionTitleArr[indexPath.section] ];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.model = self.shopContractArr[indexPath.row];
+        cell.makePhoneCalls = ^(NSString *phoneNum) {
+            NSMutableString *str=[[NSMutableString alloc]initWithFormat:@"tel:%@",phoneNum];
+            
+            UIWebView *callWebview = [[UIWebView alloc]init];
+            
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+            
+            [self.view addSubview:callWebview];
+        };
         return cell;
+    }else if (indexPath.section == 4){
+        if (indexPath.row == 0) {
+            static NSString *commentCell = @"commentCell";
+            CommentFirstCell *cell = [tableView dequeueReusableCellWithIdentifier:commentCell];
+            if (cell == nil) {
+                cell = [[CommentFirstCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:commentCell title:self.sessionTitleArr[indexPath.section]];
+                
+            }
+            cell.model = self.commentArr[indexPath.row];
+            return cell;
+        }else{
+            static NSString *commentCell = @"commentCell2";
+            CommentOtherCell *cell = [tableView dequeueReusableCellWithIdentifier:commentCell];
+            if (cell == nil) {
+                cell = [[CommentOtherCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:commentCell];
+                
+            }
+            cell.model = self.commentArr[indexPath.row];
+            return cell;
+        }
     }
-    
     static NSString *cellMark = @"food";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellMark];
@@ -299,16 +382,21 @@
             return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[EventExplainCell class] contentViewWidth:ScrW];
             break;
         case 2 :
-            return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[ExpressInfoCell class] contentViewWidth:ScrW];
-            break;
-        case 3 :
             return [self.tableView cellHeightForIndexPath:indexPath model:self.food keyPath:@"food" cellClass:[FoodInfoCell class] contentViewWidth:ScrW];
             break;
-        case 4 :
+        case 3 :
             if (indexPath.row == 0) {
                 return [self.tableView cellHeightForIndexPath:indexPath model:self.shopContractArr[indexPath.row] keyPath:@"model" cellClass:[ShopContractsCell class] contentViewWidth:ScrW];
             }else{
                 return [self.tableView cellHeightForIndexPath:indexPath model:self.shopContractArr[indexPath.row] keyPath:@"model" cellClass:[ShopContractsCell2 class] contentViewWidth:ScrW];
+            }
+            
+            break;
+        case 4 :
+            if (indexPath.row == 0) {
+                return [self.tableView cellHeightForIndexPath:indexPath model:self.commentArr[indexPath.row] keyPath:@"model" cellClass:[CommentFirstCell class] contentViewWidth:ScrW];
+            }else{
+                return [self.tableView cellHeightForIndexPath:indexPath model:self.commentArr[indexPath.row] keyPath:@"model" cellClass:[CommentOtherCell class] contentViewWidth:ScrW];
             }
             
             break;
@@ -330,6 +418,17 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - 我要评论
+- (void)commentBtnClick{
+    if([GlobalTools userIsLogin]){
+        CommentViewController *cvc = [[CommentViewController alloc]init];
+        cvc.foodId = self.foodId;
+        [self.navigationController pushViewController:cvc animated:YES];
+    }else{
+        [MBProgressHUDTools showTipMessageHudWithtitle:@"请先登录"];
+    }
+    
+}
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

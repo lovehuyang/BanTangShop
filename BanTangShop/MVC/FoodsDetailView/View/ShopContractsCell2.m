@@ -89,10 +89,18 @@
     .heightEqualToWidth();
     [phoneView setImage:[UIImage imageNamed:@"phone_tag"]];
     [self setupAutoHeightWithBottomView:headImgView bottomMargin:10];
+    phoneView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer*tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(makePhone)];
+    [phoneView addGestureRecognizer:tap];
 
 }
 - (void)setModel:(ShopContactsModel *)model{
     _model = model;
     [self setupAllSubViews];
+}
+
+- (void)makePhone{
+    self.makePhoneCalls(_model.phone);
 }
 @end
