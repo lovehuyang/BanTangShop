@@ -34,7 +34,8 @@
     titleLab.textColor = [UIColor blackColor];
     titleLab.font = [UIFont boldSystemFontOfSize:14];
 //    titleLab.backgroundColor = Color_Back_Gray;
-    return  titleLab;
+    self.leftLab = titleLab;
+    return  self.leftLab;
 }
 - (void)drawRect:(CGRect)rect{
     DLog(@"%f",CGRectGetMaxY(self.frame));

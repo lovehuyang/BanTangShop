@@ -10,4 +10,5 @@
 
 @interface RegisterTextField : UITextField
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title placeholder:(NSString *)placeholder;
+@property (nonatomic ,strong) UILabel *leftLab;
 @end

@@ -108,15 +108,27 @@
 - (void)submitComment{
     [_contentView resignFirstResponder];
     [MBProgressHUDTools showLoadingHudWithtitle:@""];
-    NSDictionary *paramDict = @{@"userId":[GlobalTools getData:USER_ID],@"foodId":self.foodId,@"content":_contentView.text,@"userName":[GlobalTools getData:USER_PHONE],@"pId":@"0"};
-    [HLYNetWorkObject requestWithMethod:POST ParamDict:paramDict url:URL_SUBMITCOMMENT successBlock:^(id requestData, NSDictionary *dataDict) {
+    UserModel *model = [[InfoDBAccess sharedInstance]getInfoFromUserInfoTable:[GlobalTools getData:USER_ID]];
+    NSDictionary *paramDict = @{@"username":model.nickname,@"foodId":self.foodId,@"content":_contentView.text,@"userId":model.username,@"pid":@"0"};
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:paramDict url:URL_SUBMITCOMMENT successBlock:^(id requestData, NSDictionary *dataDict) {
         [MBProgressHUDTools showTipMessageHudWithtitle:@"发表评论成功！"];
-        [self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_COMMENT_SUCCESS object:nil];
+        if (@available(iOS 10.0, *)) {
+            [NSTimer scheduledTimerWithTimeInterval:2 repeats:NO block:^(NSTimer * _Nonnull timer) {
+                [self popViewController];
+            }];
+        } else {
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(popViewController) userInfo:nil repeats:NO];
+        }
+        
     } failureBlock:^(NSInteger errCode, NSString *msg) {
         [MBProgressHUDTools showTipMessageHudWithtitle:msg];
     }];
 }
-
+#pragma mark - 返回
+- (void)popViewController{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_contentView resignFirstResponder];
 }

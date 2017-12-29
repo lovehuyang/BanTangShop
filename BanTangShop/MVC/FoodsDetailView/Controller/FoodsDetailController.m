@@ -23,6 +23,7 @@
 #import "CommentModel.h"
 #import "CommentFirstCell.h"
 #import "CommentOtherCell.h"
+#import "CommentListViewController.h"// 评论列表
 
 #define NAVBAR_COLORCHANGE_POINT (-IMAGE_HEIGHT + High_NavAndStatus *2 )
 #define IMAGE_HEIGHT 340 * ScaleX
@@ -53,6 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"食品详情";
+    [self wr_setNavBarBackgroundAlpha:0];
     self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.contentInset = UIEdgeInsetsMake(IMAGE_HEIGHT-High_NavAndStatus, 0, 0, 0);
     [self.view addSubview:self.tableView];
@@ -63,6 +65,7 @@
     [self getNewComments];// 获取最新评论
     [MBProgressHUDTools showLoadingHudWithtitle:@""];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreashData) name:NOTIFICATION_STOP_COUNT_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNewComments) name:NOTIFICATION_COMMENT_SUCCESS object:nil];
 }
 
 #pragma mark - 懒加载
@@ -80,7 +83,6 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScrW, ScrH - H_FOOTVIEW) style:UITableViewStylePlain];
         _tableView.tableHeaderView = self.headView;
-        _tableView.tableFooterView = [self createTableviewFootView];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = Color_Back_Gray;
@@ -88,15 +90,34 @@
     }
     return _tableView;
 }
-- (UIButton *)createTableviewFootView{
-    UIButton *footBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    footBtn.frame = CGRectMake(0, 0, ScrH, 45);
-    footBtn.backgroundColor = [UIColor whiteColor];
-    [footBtn setTitle:@"我要评论" forState:UIControlStateNormal];
-    [footBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [footBtn addTarget:self action:@selector(commentBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    footBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    return footBtn;
+- (UIView *)createTableviewFootViewWithCommentCount:(NSInteger )count{
+    UIView *backView = [UIView new];
+    backView.frame = CGRectMake(0, 0, ScrW, 45);
+    backView.backgroundColor = Color_Back_Gray;
+    UILabel *lineLab = [UILabel new];
+    lineLab.frame = CGRectMake(0, 0, ScrW, 1);
+    lineLab.backgroundColor = Color_Back_Gray;
+    [backView addSubview:lineLab];
+    UIButton *commnetBtn = [UIButton new];
+    commnetBtn.frame = CGRectMake(count>3? ScrW/2:0, 1, count >3?ScrW/2:ScrW,44);
+    [backView addSubview:commnetBtn];
+    commnetBtn.backgroundColor = [UIColor whiteColor];
+    [commnetBtn setTitle:@"我要评论" forState:UIControlStateNormal];
+    [commnetBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    commnetBtn.tag = 10;
+    [commnetBtn addTarget:self action:@selector(commentBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    commnetBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    UIButton *moreBtn = [UIButton new];
+    moreBtn.frame = CGRectMake(0, 1,count > 3?ScrW/2-1:0,44);
+    [backView addSubview:moreBtn];
+    moreBtn.backgroundColor = [UIColor whiteColor];
+    [moreBtn setTitle:[NSString stringWithFormat:@"更多评论(%ld条)",(long)count] forState:UIControlStateNormal];
+    [moreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    moreBtn.tag = 11;
+    [moreBtn addTarget:self action:@selector(commentBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    moreBtn.titleLabel.font = commnetBtn.titleLabel.font;
+    return backView;
 }
 
 - (void)createFootView{
@@ -207,10 +228,12 @@
 #pragma mark - 获取最新评论
 - (void)getNewComments{
     [HLYNetWorkObject requestWithMethod:GET ParamDict:@{@"foodId":self.foodId} url:URL_GETNEWCOMMENTS successBlock:^(id requestData, NSDictionary *dataDict) {
+        [self.commentArr removeAllObjects];
         for (NSDictionary *tempDict in (NSArray *)dataDict) {
             CommentModel *model = [CommentModel createModelWithDic:tempDict];
             [self.commentArr addObject:model];
         }
+        self.tableView.tableFooterView = [self createTableviewFootViewWithCommentCount:[requestData[@"count"] integerValue]];
         NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:4];
         [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
         DLog(@"");
@@ -350,6 +373,7 @@
                 cell = [[CommentFirstCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:commentCell title:self.sessionTitleArr[indexPath.section]];
                 
             }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.model = self.commentArr[indexPath.row];
             return cell;
         }else{
@@ -359,6 +383,7 @@
                 cell = [[CommentOtherCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:commentCell];
                 
             }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.model = self.commentArr[indexPath.row];
             return cell;
         }
@@ -419,23 +444,31 @@
 }
 
 #pragma mark - 我要评论
-- (void)commentBtnClick{
-    if([GlobalTools userIsLogin]){
-        CommentViewController *cvc = [[CommentViewController alloc]init];
-        cvc.foodId = self.foodId;
-        [self.navigationController pushViewController:cvc animated:YES];
+- (void)commentBtnClick:(UIButton *)btn{
+    if (btn.tag == 10) {
+        if([GlobalTools userIsLogin]){
+            CommentViewController *cvc = [[CommentViewController alloc]init];
+            cvc.foodId = self.foodId;
+            [self.navigationController pushViewController:cvc animated:YES];
+        }else{
+            [GlobalTools presentLoginViewController];
+        }
     }else{
-        [MBProgressHUDTools showTipMessageHudWithtitle:@"请先登录"];
+        CommentListViewController *clvc = [[CommentListViewController alloc]init];
+        clvc.foodId = self.foodId;
+        [self.navigationController pushViewController:clvc animated:YES];
     }
-    
 }
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self wr_setNavBarBackgroundAlpha:0];
+    
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_STOP_COUNT_DOWN object:nil];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_COMMENT_SUCCESS object:nil];
 }
 @end

@@ -12,5 +12,6 @@ target "BanTangShop" do
     pod 'FMDB'
     pod 'mob_smssdk'
     pod 'WRNavigationBar','~>1.0.9’
+    pod 'PureCamera'
 
 end

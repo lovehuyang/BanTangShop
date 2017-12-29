@@ -14,6 +14,8 @@
 #define URL_EXISTPHONE @"/shop/existphone" //手机号是否可用
 #define URL_REGISTER @"/shop/registUser"//用户注册
 #define URL_LOGINUSER @"/shop/loginuser"// 登录
+#define URL_UPDATEUSERINFO @"/shop/updateUserInfo"// 修改用户基本信息
+#define URL_UPDATEHEADIMAGE @"/shop/updateHeadImage"// 修改用户头像
 #define URL_GETBANNERS @"/shop/getbanners"//获取banner轮播图
 #define URL_GETFOODCATAGORY @"/shop/getFoodCatagory"// 获取食品类别
 #define URL_GETFOODFLAVOUR @"/shop/getFoodFlavour"// 获取食品口味
@@ -32,6 +34,11 @@
 #define URL_GETSHOPCONTRACT @"/shop/getShopContacts"// 获取店铺联系人信息
 #define URL_GETNEWCOMMENTS @"/shop/getNewComments"// 获取最新评论
 #define URL_SUBMITCOMMENT @"/shop/submitComment"// 提交评论
+#define URL_GETCOMMENTLIST @"/shop/getCommentsByPages"// 分页获取最新评论
+#define URL_GETADDRESS @"/shop/getAddress" //获取收货地址
+#define URL_SETDEFAULTADDRESS @"/shop/setDefaultAddress"// 设置默认地址
+#define URL_ADDADDRESS @"/shop/addAddress"// 添加收货地址
+#define URL_DELADDRESS @"/shop/delAddress"// 删除收货地址
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色
@@ -48,5 +55,9 @@
 #define NOTIFICATION_LOGIN @"Notification_Login"// 登录成功
 #define NOTIFICATION_EXIT @"Notification_Exit"// 退出账号
 #define NOTIFICATION_STOP_COUNT_DOWN @"Notification_Stop_CountDown"// 停止计时
+#define NOTIFICATION_COMMENT_SUCCESS @"Notification_Comment_Success"// 发表评论成功
+#define NOTIFICATION_UPDATEUSERINFO @"Notification_UpdateUserInfo"// 更新用户信息成功
+#define NOTIFICATION_ADDRADDRESS @"Notification_AddAddress"// 添加收货地址
+
 
 #endif /* ConfigHeader_h */

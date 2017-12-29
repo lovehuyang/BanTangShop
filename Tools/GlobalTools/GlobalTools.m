@@ -7,6 +7,7 @@
 //
 
 #import "GlobalTools.h"
+#import "LoginViewController.h"
 
 @implementation GlobalTools
 
@@ -47,12 +48,23 @@
 + (BOOL)userIsLogin{
     NSString *userID = [self getData:USER_ID];
     if (!userID || userID.length == 0) {
+
         return NO; // 未登录
     }else{
         return YES;
     }
 }
 
+#pragma mark - 弹出登录页面
+
+/**
+ 弹出登录页面
+ */
++ (void)presentLoginViewController{
+    LoginViewController *lvc = [[LoginViewController alloc]init];
+    UIViewController *currentVC = [self getCurrentWindowVC];
+    [currentVC presentViewController:lvc animated:YES completion:nil];
+}
 #pragma mark - 获取状态栏的高度
 
 + (CGFloat)getStatusHight{

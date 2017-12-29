@@ -53,4 +53,16 @@ typedef void(^FailureBlock) (NSInteger errCode , NSString *msg);
  @param failureBlock 失败的回调
  */
 +(void)requestWithMethod:(RequestMethod)method ParamDict:(NSDictionary *)paramDict url:(NSString *)url successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock;
+
+
+/**
+ 更新用户头像
+
+ @param image 图片
+ @param url 地址
+ @param paramDict 参数
+ @param successBlock 成功
+ @param failureBlock 失败
+ */
++ (void)updateHeadImage:(UIImage *)image url:(NSString *)url paramDict:(NSDictionary *)paramDict  successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock;
 @end

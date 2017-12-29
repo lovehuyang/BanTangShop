@@ -61,7 +61,70 @@
     }
 }
 
-
+/**
+ 更新用户头像
+ 
+ @param image 图片
+ @param url 地址
+ @param paramDict 参数
+ @param successBlock 成功
+ @param failureBlock 失败
+ */
++ (void)updateHeadImage:(UIImage *)image url:(NSString *)url paramDict:(NSDictionary *)paramDict  successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock{
+    // 判断是否有网络链接
+    if(![[self alloc] isConnectionAvailable])
+    {
+        failureBlock(0,@"您已断开网络链接！");
+        return;
+    }
+    
+    // 请求地址
+    NSString * urlString = [NSString stringWithFormat:@"%@%@",URL_BASEIP,url];
+    
+    //1.创建管理者对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
+    
+    [manager POST:urlString parameters:paramDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSData *data =  UIImagePNGRepresentation(image);
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+        
+        //设置时区,这个对于时间的处理有时很重要
+        NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+        [formatter setTimeZone:timeZone];
+        NSDate *datenow = [NSDate date];//现在时间
+        
+        //时间转时间戳的方法:
+        NSInteger timeSp = [[NSNumber numberWithDouble:[datenow timeIntervalSince1970]] integerValue];
+        NSString *ts = [NSString stringWithFormat:@"%ld",(long)timeSp];//时间戳的值
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg",ts];
+        [formData appendPartWithFileData:data name:@"img" fileName:fileName mimeType:@"image/jpeg"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        //打印上传进度
+        CGFloat progress = 100.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
+        DLog(@"%.2lf%%", progress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //请求成功
+        DLog(@"请求成功：%@",responseObject);
+         [self dealwithreturnDataWithRequestData:responseObject successBlock:successBlock faileBlock:failureBlock];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //请求失败
+        DLog(@"请求失败：%@",error);
+        failureBlock(error.code,@"网络错误，请稍后重试");
+    }];
+}
 
 /**
  返回的数据统一处理

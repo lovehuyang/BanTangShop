@@ -14,6 +14,8 @@ typedef NS_ENUM(NSInteger , Sex) {
 };
 
 @interface SelectSexView : UIView
+@property (nonatomic ,strong)UIButton *girlBtn;
+@property (nonatomic ,strong)UIButton *boyBtn;
 
 @property (nonatomic, strong)void(^selectSex)(Sex sex);
 @end

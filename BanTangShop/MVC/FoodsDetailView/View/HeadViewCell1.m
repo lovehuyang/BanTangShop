@@ -82,7 +82,7 @@
             [self likeFood];// 收藏
         }
     }else{
-        [MBProgressHUDTools showTipMessageHudWithtitle:@"请先登录！"];
+        [GlobalTools presentLoginViewController];
     }
 }
 #pragma mark - 收藏食品

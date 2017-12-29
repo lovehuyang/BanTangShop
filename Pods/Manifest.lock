@@ -24,6 +24,7 @@ PODS:
   - mob_smssdk (3.1.0):
     - MOBFoundation
   - MOBFoundation (3.0.9)
+  - PureCamera (1.5)
   - Reachability (3.2)
   - SDAutoLayout (2.2.0)
   - SDCycleScrollView (1.75):
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - mob_smssdk
+  - PureCamera
   - Reachability
   - SDAutoLayout
   - SDCycleScrollView
@@ -56,12 +58,13 @@ SPEC CHECKSUMS:
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   mob_smssdk: 50a3c764232919f78578d911a60afc142ee7a405
   MOBFoundation: 82b27b95c37d5a6d874d58efa6365b465c8afcbf
+  PureCamera: 227000fb12f8900534cea7ecf168497249910683
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   WRNavigationBar: 8e02b9701431fa1ed7ae72bd4370103f0b5e4b5d
 
-PODFILE CHECKSUM: ed9a432677c196ecd0427c9229016166b42f47e4
+PODFILE CHECKSUM: 7b6f881b120e2c5ed63aeff70f4ac07d839d7cbe
 
 COCOAPODS: 1.4.0.beta.2

@@ -32,10 +32,10 @@
     [boyBtn setImage:[UIImage imageNamed:@"dl_selected"] forState:UIControlStateSelected];
     boyBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     boyBtn.selected = YES;
-    boyBtn.tag = 10;
     [boyBtn addTarget:self action:@selector(sexBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [boyBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self addSubview:boyBtn];
+    self.boyBtn = boyBtn;
+    [self addSubview:self.boyBtn];
     
     UIImageView *girlImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, img_W, img_W)];
     girlImgView.center = CGPointMake(2 *average_X, boyImgView.center.y);
@@ -49,10 +49,10 @@
     [girlBtn setImage:[UIImage imageNamed:@"dl_select"] forState:UIControlStateNormal];
     [girlBtn setImage:[UIImage imageNamed:@"dl_selected"] forState:UIControlStateSelected];
     girlBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    girlBtn.tag = 11;
     [girlBtn addTarget:self action:@selector(sexBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [girlBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self addSubview:girlBtn];
+    self.girlBtn = girlBtn;
+    [self addSubview:self.girlBtn];
     
     CGRect frame = [self frame];
     CGFloat hight = CGRectGetMaxY(girlBtn.frame);
@@ -61,15 +61,14 @@
 }
 
 - (void)sexBtnClick:(UIButton *)btn{
-    UIButton *boyBtn = (UIButton *)[self viewWithTag:10];
-    UIButton *girlBtn = (UIButton *)[self viewWithTag:11];
-    if (btn.tag == 10) {
-        boyBtn.selected = YES;
-        girlBtn.selected = NO;
+    
+    if (btn==self.boyBtn) {
+        self.boyBtn.selected = YES;
+        self.girlBtn.selected = NO;
         self.selectSex(Sex_Boy);
     }else{
-        boyBtn.selected = NO;
-        girlBtn.selected = YES;
+        self.boyBtn.selected = NO;
+        self.girlBtn.selected = YES;
         self.selectSex(Sex_Girl);
     }
 }

@@ -52,7 +52,6 @@
     }else{
         [MBProgressHUDTools showTipMessageHudWithtitle:@"请先登录！"];
     }
-    
 }
 #pragma mark - tableview重新加载数据
 - (void)tableViewReloadData{

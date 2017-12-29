@@ -70,6 +70,11 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.backView];
     [self.view addSubview:self.menuTableView];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
     [self getFoodListPage];
     [self addRefreashAndLoadMore];// 添加刷新和加载更多
     [MBProgressHUDTools showLoadingHudWithtitle:nil];

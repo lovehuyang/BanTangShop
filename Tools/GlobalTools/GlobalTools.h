@@ -72,6 +72,11 @@
  @return yes可用
  */
 + (BOOL)isValidPhone:(NSString *)phone;
+
+/**
+ 弹出登录页面
+ */
++ (void)presentLoginViewController;
 /**
  获取当前屏幕显示的viewcontroller
  

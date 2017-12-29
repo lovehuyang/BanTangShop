@@ -9,6 +9,8 @@
 #import "MineViewController.h"
 #import "CenterViewController.h"
 #import "LoginViewController.h"
+#import "MyInfoViewController.h"
+#import "AddressViewController.h"// 收货地址
 
 #define Height_TopBackImageView  220*ScaleX // 顶部背景图片的高度
 @interface MineViewController ()
@@ -41,6 +43,7 @@
     [self setData];// 添加数据
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setData) name:NOTIFICATION_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setData) name:NOTIFICATION_EXIT object:nil];
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setData) name:NOTIFICATION_UPDATEUSERINFO object:nil];
 }
 
 #pragma mark - 取数据、设置控件状态
@@ -166,7 +169,24 @@
     cell.textLabel.text = titleArr[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.imageView.image = [UIImage imageNamed:iconArr[indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            if([GlobalTools userIsLogin]){
+                MyInfoViewController *mvc = [[MyInfoViewController alloc]init];
+                [self.navigationController pushViewController:mvc animated:YES];
+            }else{
+                
+                [GlobalTools presentLoginViewController];
+            }
+        }else if (indexPath.row == 1){
+            AddressViewController *avc = [[AddressViewController alloc]init];
+            [self.navigationController pushViewController:avc animated:YES];
+        }
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray *tempArr = _titleArr[section];
@@ -229,16 +249,22 @@
             
             [MBProgressHUDTools showLoadingHudWithtitle:@"正在退出..."];
             
-            [NSTimer scheduledTimerWithTimeInterval:1 repeats:NO block:^(NSTimer * _Nonnull timer) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_EXIT object:nil];// 退出通知
-                [MBProgressHUDTools showTipMessageHudWithtitle:@"退出成功！"];
-            }];
+            if (@available(iOS 10.0, *)) {
+                [NSTimer scheduledTimerWithTimeInterval:1 repeats:NO block:^(NSTimer * _Nonnull timer) {
+                    [self exit];
+                }];
+            } else {
+                [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(exit) userInfo:nil repeats:NO];
+            }
         }
     };
     [WeakAlterView show];
     
 }
-
+- (void)exit{
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_EXIT object:nil];// 退出通知
+    [MBProgressHUDTools showTipMessageHudWithtitle:@"退出成功！"];
+}
 #pragma mark - 登录
 - (void)loginEvent{
     LoginViewController *lvc = [[LoginViewController alloc]init];
@@ -249,8 +275,8 @@
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_EXIT object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_UPDATEUSERINFO object:nil] ;
 }
-
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
