@@ -39,7 +39,7 @@
     
     //在view上添加一个ImageView
     UIImageView *image = [[UIImageView alloc] init];
-    [image sd_setImageWithURL:[NSURL URLWithString:_model.avatar] placeholderImage:[UIImage imageNamed:@"img_zhanweifu"]];
+    [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_BASEIP,_model.avatar]] placeholderImage:[UIImage imageNamed:@"img_zhanweifu"]];
     image.frame = CGRectMake(0, 0, ScrW, ScrW);
     self.imageView = image;
     self.imageView.center = CGPointMake(self.scrollView.frame.size.width/2, self.scrollView.frame.size.height/2 - High_NavAndStatus);

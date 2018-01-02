@@ -107,8 +107,8 @@
 #pragma mark - 更新用户信息
 - (void)updateUserInfo{
     [MBProgressHUDTools showLoadingHudWithtitle:@""];
-    NSDictionary *paramDict = @{@"username":self.model.username,@"nickname":self.model.nickname,@"realname":self.model.realname,@"sex":[self.model.sex isEqualToString:@"0"]?@"女士":@"先生",@"phone":self.model.phone,@"wx":self.model.wx,@"qq":self.model.qq};
-    [HLYNetWorkObject requestWithMethod:POST ParamDict:paramDict url:URL_UPDATEUSERINFO successBlock:^(id requestData, NSDictionary *dataDict) {
+    NSDictionary *paramDict = @{@"username":self.model.username,@"nickname":self.model.nickname,@"realname":self.model.realname,@"sex":self.model.sex,@"phone":self.model.phone,@"wx":self.model.wx,@"qq":self.model.qq};
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:paramDict url:URL_UPDATEUSERINFO successBlock:^(id requestData, NSDictionary *dataDict) {
         [[InfoDBAccess sharedInstance] databaseUserInfoTable:self.model];
         if([(NSString *)dataDict isEqualToString:@"1"] ){
             [MBProgressHUDTools showTipMessageHudWithtitle:@"修改信息成功！"];
@@ -128,7 +128,7 @@
 
 // 返回上一级页面
 - (void)returnViewController{
-    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEUSERINFO object:nil];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

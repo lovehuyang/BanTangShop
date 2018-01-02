@@ -28,6 +28,7 @@
 		092BBA5F1FE7C378009A1BE1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA5E1FE7C378009A1BE1 /* HomeTableViewCell.m */; };
 		092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */; };
 		092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA641FE7E41F009A1BE1 /* FoodModel.m */; };
+		0940BBAE1FFB53FF00ECB528 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0940BBAD1FFB53FF00ECB528 /* SuggestionViewController.m */; };
 		095303681FF22BB900D98EFF /* ExpressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 095303671FF22BB900D98EFF /* ExpressInfoCell.m */; };
 		0953036B1FF22DEE00D98EFF /* FoodInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953036A1FF22DEE00D98EFF /* FoodInfoCell.m */; };
 		0953036E1FF23CD600D98EFF /* NSString+HLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953036D1FF23CD600D98EFF /* NSString+HLY.m */; };
@@ -170,6 +171,8 @@
 		092BBA611FE7CBE1009A1BE1 /* FoodListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodListModel.m; sourceTree = "<group>"; };
 		092BBA631FE7E41F009A1BE1 /* FoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
 		092BBA641FE7E41F009A1BE1 /* FoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		0940BBAC1FFB53FF00ECB528 /* SuggestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
+		0940BBAD1FFB53FF00ECB528 /* SuggestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		095303661FF22BB900D98EFF /* ExpressInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressInfoCell.h; sourceTree = "<group>"; };
 		095303671FF22BB900D98EFF /* ExpressInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressInfoCell.m; sourceTree = "<group>"; };
 		095303691FF22DEE00D98EFF /* FoodInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodInfoCell.h; sourceTree = "<group>"; };
@@ -897,6 +900,8 @@
 				09BAFE471FF5F199006E3E2C /* AddressViewController.m */,
 				09BAFE521FF61BDF006E3E2C /* AddAddressViewController.h */,
 				09BAFE531FF61BDF006E3E2C /* AddAddressViewController.m */,
+				0940BBAC1FFB53FF00ECB528 /* SuggestionViewController.h */,
+				0940BBAD1FFB53FF00ECB528 /* SuggestionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1406,6 +1411,7 @@
 				092BBA561FE78783009A1BE1 /* HLYNetWorkObject.m in Sources */,
 				0993B2CA1FF4EEC9003E3948 /* ChangeSexViewController.m in Sources */,
 				097B72501FEE43E500775449 /* HeadViewCell2.m in Sources */,
+				0940BBAE1FFB53FF00ECB528 /* SuggestionViewController.m in Sources */,
 				0993B2C41FF4C83A003E3948 /* InfoTableViewCell.m in Sources */,
 				09BAFE671FF63A96006E3E2C /* BRAddressPickerView.m in Sources */,
 				09BAFE511FF607A7006E3E2C /* AddressCell.m in Sources */,

@@ -25,9 +25,7 @@
     [super viewDidLoad];
     self.title = @"我的资料";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self getModel];
     [self.view addSubview:self.tableView];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadData) name:NOTIFICATION_UPDATEUSERINFO object:nil];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -111,9 +109,11 @@
     
     _model = [[InfoDBAccess sharedInstance]getInfoFromUserInfoTable:[GlobalTools getData:USER_ID]];
 }
-#pragma mark - 接到通知，刷新页面数据
-- (void)reloadData{
+
+#pragma mark - 生命周期
+- (void)viewWillAppear:(BOOL)animated{
     [self getModel];
     [self.tableView reloadData];
 }
+
 @end

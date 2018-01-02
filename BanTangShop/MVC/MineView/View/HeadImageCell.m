@@ -44,6 +44,6 @@
 
 - (void)setModel:(UserModel *)model{
     _model = model;
-    [headImageView sd_setImageWithURL:[NSURL URLWithString:_model.avatar] placeholderImage:[UIImage imageNamed:@"img_zhanweifu"]];
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_BASEIP,_model.avatar]] placeholderImage:[UIImage imageNamed:@"img_zhanweifu"]];
 }
 @end

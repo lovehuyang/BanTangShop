@@ -39,6 +39,7 @@
 #define URL_SETDEFAULTADDRESS @"/shop/setDefaultAddress"// 设置默认地址
 #define URL_ADDADDRESS @"/shop/addAddress"// 添加收货地址
 #define URL_DELADDRESS @"/shop/delAddress"// 删除收货地址
+#define URL_ADDFEEDBACK @"/shop/addFeedback"// 提交意见反馈
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色
@@ -56,7 +57,6 @@
 #define NOTIFICATION_EXIT @"Notification_Exit"// 退出账号
 #define NOTIFICATION_STOP_COUNT_DOWN @"Notification_Stop_CountDown"// 停止计时
 #define NOTIFICATION_COMMENT_SUCCESS @"Notification_Comment_Success"// 发表评论成功
-#define NOTIFICATION_UPDATEUSERINFO @"Notification_UpdateUserInfo"// 更新用户信息成功
 #define NOTIFICATION_ADDRADDRESS @"Notification_AddAddress"// 添加收货地址
 
 

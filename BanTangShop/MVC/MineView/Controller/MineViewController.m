@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "MyInfoViewController.h"
 #import "AddressViewController.h"// 收货地址
+#import "SuggestionViewController.h"// 意见反馈
 
 #define Height_TopBackImageView  220*ScaleX // 顶部背景图片的高度
 @interface MineViewController ()
@@ -40,10 +41,8 @@
     self.view.backgroundColor = Color_Back_Gray;
     [self.view addSubview:self.tableView];
     [self createTableview];// 添加头像控件
-    [self setData];// 添加数据
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setData) name:NOTIFICATION_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setData) name:NOTIFICATION_EXIT object:nil];
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setData) name:NOTIFICATION_UPDATEUSERINFO object:nil];
 }
 
 #pragma mark - 取数据、设置控件状态
@@ -54,8 +53,7 @@
         self.tableviewFootView.hidden = NO;
         self.nameBtn.userInteractionEnabled = NO;
         [self.nameBtn setTitle:self.userModel.nickname forState:UIControlStateNormal];
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.userModel.avatar] placeholderImage:[UIImage imageNamed:@"img_zhanweifu"]];
-        
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_BASEIP,self.userModel.avatar]] placeholderImage:[UIImage imageNamed:@"img_zhanweifu"]];
     }else{
         self.tableviewFootView.hidden = YES;
         self.nameBtn.userInteractionEnabled = YES;
@@ -186,6 +184,11 @@
             AddressViewController *avc = [[AddressViewController alloc]init];
             [self.navigationController pushViewController:avc animated:YES];
         }
+    }else{
+        if (indexPath.row == 0) {
+            SuggestionViewController *svc = [[SuggestionViewController alloc]init];
+            [self.navigationController pushViewController:svc animated:YES];
+        }
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -275,11 +278,11 @@
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_EXIT object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_LOGIN object:nil];
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFICATION_UPDATEUSERINFO object:nil] ;
 }
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setData];
     [[self navigationController] setNavigationBarHidden:YES animated:animated];
 }
 - (void)viewWillDisappear:(BOOL)animated{

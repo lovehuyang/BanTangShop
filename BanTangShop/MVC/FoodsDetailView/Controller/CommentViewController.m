@@ -7,7 +7,6 @@
 //
 
 #import "CommentViewController.h"
-#import "CustomNavView.h"
 #define MAX_LIMIT_NUMS 100
 
 @interface CommentViewController ()<UITextViewDelegate>
