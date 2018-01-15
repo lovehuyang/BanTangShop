@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "ForgetViewController.h"
 #import "SetupTools.h"
 #import "systemTabbar.h"
 #import "LoginTextField.h"
@@ -73,6 +74,7 @@
     [forgetBtn setTitleColor:Color_Theme forState:UIControlStateNormal];
     forgetBtn.titleLabel.textAlignment = NSTextAlignmentRight;
     forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [forgetBtn addTarget:self action:@selector(forgetBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgetBtn];
     
     // 创建"系统登录"按钮
@@ -135,6 +137,14 @@
 - (void)registerBtnClick{
     RegisterViewController *rvc = [[RegisterViewController alloc]init];
     [self presentViewController:rvc animated:YES completion:nil];
+}
+
+#pragma mark - 忘记密码
+- (void)forgetBtnClick{
+    ForgetViewController *fvc  = [[ForgetViewController alloc]init];
+    [self presentViewController:fvc animated:YES completion:^{
+        
+    }];
 }
 #pragma mark - 生命周期函数
 -(void)viewWillAppear:(BOOL)animated{

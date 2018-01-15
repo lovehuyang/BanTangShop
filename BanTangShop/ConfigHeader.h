@@ -16,6 +16,7 @@
 #define URL_LOGINUSER @"/shop/loginuser"// 登录
 #define URL_UPDATEUSERINFO @"/shop/updateUserInfo"// 修改用户基本信息
 #define URL_UPDATEHEADIMAGE @"/shop/updateHeadImage"// 修改用户头像
+#define URL_UPDATEUSERPASSORD @"/shop/updateUserPassword"//修改用户密码
 #define URL_GETBANNERS @"/shop/getbanners"//获取banner轮播图
 #define URL_GETFOODCATAGORY @"/shop/getFoodCatagory"// 获取食品类别
 #define URL_GETFOODFLAVOUR @"/shop/getFoodFlavour"// 获取食品口味
