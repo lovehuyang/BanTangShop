@@ -11,4 +11,6 @@
 
 @interface FoodFootView : UIView
 @property (nonatomic ,strong)FoodModel *food;
+
+@property (nonatomic ,copy)void (^addtoShoppingCarClick)(UIButton *btn,NSString *buyCount,NSString *total_price,NSString *act_info);
 @end

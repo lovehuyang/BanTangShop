@@ -148,6 +148,7 @@
         [MBProgressHUDTools showWarningHudWithtitle:@"两次密码不一致，请重新输入！"];
     }
 }
+
 #pragma mark - 确定
 - (void)nextBtnClick{
     if (_phone_TF.text.length > 0 && _code_TF.text.length > 0 && _newPWD_TF1.text.length > 0 && _newPWD_TF2.text.length > 0) {

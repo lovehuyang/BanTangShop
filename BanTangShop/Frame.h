@@ -11,6 +11,8 @@
 
 // 状态栏高度
 #define High_Status [GlobalTools getStatusHight]
+// Tabbar的高度
+#define High_TabBar ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49) //底部tabbar高度
 // 状态栏 + 导航栏 高度
 #define High_NavAndStatus [GlobalTools getStatusAndNavHight]
 // 1.水平方向上的比例

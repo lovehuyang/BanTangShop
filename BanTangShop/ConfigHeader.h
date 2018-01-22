@@ -41,6 +41,8 @@
 #define URL_ADDADDRESS @"/shop/addAddress"// 添加收货地址
 #define URL_DELADDRESS @"/shop/delAddress"// 删除收货地址
 #define URL_ADDFEEDBACK @"/shop/addFeedback"// 提交意见反馈
+#define URL_ADDBUYCART @"/shop/addBuyCart"//加入购物车
+#define URL_GETCARLIST @"/shop/getCartList"//获取购车列表
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色

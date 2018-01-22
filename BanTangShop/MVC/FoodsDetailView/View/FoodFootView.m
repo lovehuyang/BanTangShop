@@ -122,8 +122,8 @@
     .leftSpaceToView(plusBtn, 2)
     .topEqualToView(minusBtn)
     .heightRatioToView(minusBtn, 1)
-    .widthIs(90 *ScaleX);
-//    totalPriceLab.backgroundColor = [UIColor orangeColor];
+    .widthIs(85 *ScaleX);
+    totalPriceLab.backgroundColor = [UIColor whiteColor];
     totalPriceLab.textColor = Color_Theme;
     totalPriceLab.font = [UIFont systemFontOfSize:15];
     [self totalPriceLabContext];// 设置总价显示
@@ -132,16 +132,35 @@
     UIButton *buyBtn = [UIButton new];
     [self addSubview:buyBtn];
     buyBtn.sd_layout
-    .rightSpaceToView(self, 10)
-    .topEqualToView(countField)
-    .bottomEqualToView(countField)
-    .widthIs(70 *ScaleX);
+    .rightSpaceToView(self, 0)
+    .topSpaceToView(line, 0)
+    .bottomSpaceToView(self, 0)
+    .widthIs(60 *ScaleX);
     buyBtn.backgroundColor = Color_Theme;
-    [buyBtn setTitle:@"立即购买" forState:UIControlStateNormal];
-    buyBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    buyBtn.sd_cornerRadius = @(3);
+    [buyBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
+    buyBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     buyBtn.tag = 12;
     [buyBtn addTarget: self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *shoppingcartBtn = [UIButton new];
+    [self addSubview:shoppingcartBtn];
+    shoppingcartBtn.sd_layout
+    .rightSpaceToView(buyBtn, 0)
+    .topSpaceToView(line, 0)
+    .bottomSpaceToView(self, 0)
+    .widthEqualToHeight();
+    shoppingcartBtn.tag = 13;
+    [shoppingcartBtn setImage:[UIImage imageNamed:@"nav_team"] forState:UIControlStateNormal];
+    [shoppingcartBtn addTarget: self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *lineLab = [UILabel new];
+    [self addSubview:lineLab];
+    lineLab.backgroundColor = Color_Theme;
+    lineLab.sd_layout
+    .rightSpaceToView(shoppingcartBtn, 0)
+    .topSpaceToView(line, 0)
+    .widthIs(0.5)
+    .bottomSpaceToView(self, 0);
 }
 
 - (void)totalPriceLabContext{
@@ -197,9 +216,15 @@
             }
         }
             break;
-        case 12:// 立即购买
+        case 12:// 点击了加入购物车
         {
+            self.addtoShoppingCarClick(btn, countField.text,totalPriceLab.text,messageLab.text);
+        }
+            break;
             
+        case 13:// 点击了购物车
+        {
+            self.addtoShoppingCarClick(btn, countField.text,totalPriceLab.text,messageLab.text);
         }
             break;
             

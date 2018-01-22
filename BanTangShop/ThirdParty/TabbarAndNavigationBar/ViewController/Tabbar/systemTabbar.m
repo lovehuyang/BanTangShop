@@ -90,11 +90,11 @@
     
     //
     FavoriteViewController *favoriteVC = [[FavoriteViewController alloc] init];
-    [self setupChildViewController:favoriteVC title:@"收藏" normalImage:[UIImage imageNamed:@"nav_team_x"] selectImage:[UIImage imageNamed:@"nav_team"]];
+    [self setupChildViewController:favoriteVC title:@"收藏" normalImage:[UIImage imageNamed:@"nav_activity_x"] selectImage:[UIImage imageNamed:@"nav_activity"]];
     self.patientManager = favoriteVC;
     
     RecommendViewController *recommendVC = [[RecommendViewController alloc] init];
-    [self setupChildViewController:recommendVC title:@"精品" normalImage:[UIImage imageNamed:@"nav_activity_x"] selectImage:[UIImage imageNamed:@"nav_activity"]];
+    [self setupChildViewController:recommendVC title:@"购物车" normalImage:[UIImage imageNamed:@"nav_team_x"] selectImage:[UIImage imageNamed:@"nav_team"]];
     self.recommend = recommendVC;
     
     MineViewController *mineVC = [[MineViewController alloc] init];

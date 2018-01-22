@@ -9,6 +9,7 @@
 #import "FoodsDetailController.h"
 #import "SDCycleScrollView.h"// 轮播图
 #import "CommentViewController.h"// 评论页面
+#import "RecommendViewController.h"// 购物车页面
 #import "WRNavigationBar.h"
 #import "CycleBottomView.h"
 #import "HeadViewCell1.h"// taleview头部显示价格的cell
@@ -123,6 +124,14 @@
 - (void)createFootView{
     if (!_footView) {
         _footView = [[FoodFootView alloc]init];
+        __weak __typeof (self)wealkSelf = self;
+        _footView.addtoShoppingCarClick = ^(UIButton *btn, NSString *buyCount,NSString *total_price,NSString *act_info) {
+            if(btn.tag == 12){
+                [wealkSelf addtoShoppingCar:buyCount total_price:total_price act_info:act_info];// 加入购物车
+            }else{
+                [wealkSelf clickShoppingCar];// 点击了购物车
+            }
+        };
         _footView.frame = CGRectMake(0, ScrH - H_FOOTVIEW, ScrW, H_FOOTVIEW);
     }
     _footView.food = self.food;
@@ -458,6 +467,48 @@
         clvc.foodId = self.foodId;
         [self.navigationController pushViewController:clvc animated:YES];
     }
+}
+
+#pragma mark - 加入购物车
+- (void)addtoShoppingCar:(NSString *)buyCount total_price:(NSString *)total_price act_info:(NSString *)act_info{
+    DLog(@"购买数量%@",buyCount);
+    [MBProgressHUDTools showLoadingHudWithtitle:@""];
+    Model *flavorModel = [[InfoDBAccess sharedInstance] getInfoFromTable:Table_FoodFlavour_ENUM andId:[self.food.flavor stringValue]];
+    Model *brandModel = [[InfoDBAccess sharedInstance] getInfoFromTable:Table_FoodBrand_ENUM andId:[self.food.brand stringValue]];
+    CGFloat weight = [self.food.weight floatValue] *[buyCount floatValue];
+    
+    NSDictionary *paramDict = @{
+                                @"username":[GlobalTools getData:USER_PHONE],
+                                @"foodName":self.food.foodName,
+                                @"weight": [NSString stringWithFormat:@"%f",weight],
+                                @"flavor":flavorModel.name,
+                                @"unit":self.food.unit,
+                                @"packages":self.food.packages,
+                                @"newPrice":self.food.price_New,
+                                @"delivery_info":@"",
+                                @"act_info":@"",
+                                @"buy_num":buyCount,
+                                @"total_price":total_price,
+                                @"food":self.food.ID,
+                                @"brand":brandModel.name};
+    [HLYNetWorkObject requestWithMethod:GET ParamDict:paramDict url:URL_ADDBUYCART successBlock:^(id requestData, NSDictionary *dataDict) {
+        DLog(@"");
+        
+        [MBProgressHUDTools hideHUD];
+        [MBProgressHUDTools showSuccessHudWithtitle:requestData[@"msg"]];
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        DLog(@"");
+        [MBProgressHUDTools hideHUD];
+        [MBProgressHUDTools showWarningHudWithtitle:msg];
+    }];
+}
+
+#pragma mark - 点击购物车
+- (void)clickShoppingCar{
+    DLog(@"购物车");
+    RecommendViewController *rvc = [[RecommendViewController alloc]init];
+    rvc.pageType = PageType_Other;
+    [self.navigationController pushViewController:rvc animated:YES];
 }
 #pragma mark - 生命周期
 - (void)viewWillAppear:(BOOL)animated{

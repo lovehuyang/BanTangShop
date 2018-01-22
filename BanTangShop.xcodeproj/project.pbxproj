@@ -30,6 +30,8 @@
 		092BBA651FE7E41F009A1BE1 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092BBA641FE7E41F009A1BE1 /* FoodModel.m */; };
 		09353DB4200C3F1300F5C666 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09353DB3200C3F1300F5C666 /* ForgetViewController.m */; };
 		09353DBD200C748E00F5C666 /* ResetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09353DBC200C748E00F5C666 /* ResetPWDViewController.m */; };
+		09353ECB2011DA8000F5C666 /* ShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09353ECA2011DA8000F5C666 /* ShoppingCarCell.m */; };
+		09353ECE2011E4F700F5C666 /* ShoppingCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09353ECD2011E4F700F5C666 /* ShoppingCarModel.m */; };
 		0940BBAE1FFB53FF00ECB528 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0940BBAD1FFB53FF00ECB528 /* SuggestionViewController.m */; };
 		095303681FF22BB900D98EFF /* ExpressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 095303671FF22BB900D98EFF /* ExpressInfoCell.m */; };
 		0953036B1FF22DEE00D98EFF /* FoodInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953036A1FF22DEE00D98EFF /* FoodInfoCell.m */; };
@@ -45,6 +47,9 @@
 		097C5C911FEBC322001C7723 /* CustomNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C901FEBC322001C7723 /* CustomNavView.m */; };
 		097C5C941FEBC6F1001C7723 /* SelectSexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C931FEBC6F1001C7723 /* SelectSexView.m */; };
 		097C5C971FEBD64D001C7723 /* RegisterTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C5C961FEBD64C001C7723 /* RegisterTextField.m */; };
+		09873D6B2015B6B200397AAE /* ShoppingCarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09873D6A2015B6B200397AAE /* ShoppingCarHeaderCell.m */; };
+		09873D6E2015D44900397AAE /* ShoppingCarBottonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09873D6D2015D44900397AAE /* ShoppingCarBottonView.m */; };
+		09873D712015E37300397AAE /* ConfirmOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09873D702015E37300397AAE /* ConfirmOrderController.m */; };
 		09885F2F1FF08F10000CC0F7 /* FoodDetailCountDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09885F2E1FF08F10000CC0F7 /* FoodDetailCountDownCell.m */; };
 		09885F321FF0E235000CC0F7 /* EventExplainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09885F311FF0E235000CC0F7 /* EventExplainCell.m */; };
 		0993B2BB1FF48503003E3948 /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0993B2BA1FF48503003E3948 /* CommentListViewController.m */; };
@@ -177,6 +182,10 @@
 		09353DB3200C3F1300F5C666 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
 		09353DBB200C748E00F5C666 /* ResetPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPWDViewController.h; sourceTree = "<group>"; };
 		09353DBC200C748E00F5C666 /* ResetPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPWDViewController.m; sourceTree = "<group>"; };
+		09353EC92011DA8000F5C666 /* ShoppingCarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCarCell.h; sourceTree = "<group>"; };
+		09353ECA2011DA8000F5C666 /* ShoppingCarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarCell.m; sourceTree = "<group>"; };
+		09353ECC2011E4F700F5C666 /* ShoppingCarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCarModel.h; sourceTree = "<group>"; };
+		09353ECD2011E4F700F5C666 /* ShoppingCarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarModel.m; sourceTree = "<group>"; };
 		0940BBAC1FFB53FF00ECB528 /* SuggestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
 		0940BBAD1FFB53FF00ECB528 /* SuggestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		095303661FF22BB900D98EFF /* ExpressInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressInfoCell.h; sourceTree = "<group>"; };
@@ -208,6 +217,12 @@
 		097C5C931FEBC6F1001C7723 /* SelectSexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectSexView.m; sourceTree = "<group>"; };
 		097C5C951FEBD64C001C7723 /* RegisterTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTextField.h; sourceTree = "<group>"; };
 		097C5C961FEBD64C001C7723 /* RegisterTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTextField.m; sourceTree = "<group>"; };
+		09873D692015B6B200397AAE /* ShoppingCarHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCarHeaderCell.h; sourceTree = "<group>"; };
+		09873D6A2015B6B200397AAE /* ShoppingCarHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarHeaderCell.m; sourceTree = "<group>"; };
+		09873D6C2015D44900397AAE /* ShoppingCarBottonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCarBottonView.h; sourceTree = "<group>"; };
+		09873D6D2015D44900397AAE /* ShoppingCarBottonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarBottonView.m; sourceTree = "<group>"; };
+		09873D6F2015E37300397AAE /* ConfirmOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderController.h; sourceTree = "<group>"; };
+		09873D702015E37300397AAE /* ConfirmOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderController.m; sourceTree = "<group>"; };
 		09885F2D1FF08F10000CC0F7 /* FoodDetailCountDownCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodDetailCountDownCell.h; sourceTree = "<group>"; };
 		09885F2E1FF08F10000CC0F7 /* FoodDetailCountDownCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodDetailCountDownCell.m; sourceTree = "<group>"; };
 		09885F301FF0E235000CC0F7 /* EventExplainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventExplainCell.h; sourceTree = "<group>"; };
@@ -768,6 +783,8 @@
 			children = (
 				099600641FE3CCE90090016B /* RecommendViewController.h */,
 				099600651FE3CCE90090016B /* RecommendViewController.m */,
+				09873D6F2015E37300397AAE /* ConfirmOrderController.h */,
+				09873D702015E37300397AAE /* ConfirmOrderController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -775,6 +792,8 @@
 		099600611FE3CCBE0090016B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09353ECC2011E4F700F5C666 /* ShoppingCarModel.h */,
+				09353ECD2011E4F700F5C666 /* ShoppingCarModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -789,6 +808,12 @@
 		099600631FE3CCBE0090016B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09353EC92011DA8000F5C666 /* ShoppingCarCell.h */,
+				09353ECA2011DA8000F5C666 /* ShoppingCarCell.m */,
+				09873D692015B6B200397AAE /* ShoppingCarHeaderCell.h */,
+				09873D6A2015B6B200397AAE /* ShoppingCarHeaderCell.m */,
+				09873D6C2015D44900397AAE /* ShoppingCarBottonView.h */,
+				09873D6D2015D44900397AAE /* ShoppingCarBottonView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1392,6 +1417,7 @@
 				0993B2C71FF4D42F003E3948 /* EditeUserInfoController.m in Sources */,
 				09BAFE3C1FF5CA68006E3E2C /* ShowBigPhotoViewController.m in Sources */,
 				09885F321FF0E235000CC0F7 /* EventExplainCell.m in Sources */,
+				09873D6E2015D44900397AAE /* ShoppingCarBottonView.m in Sources */,
 				0953036E1FF23CD600D98EFF /* NSString+HLY.m in Sources */,
 				092853E71FE89B6A00AD9437 /* Model.m in Sources */,
 				095303681FF22BB900D98EFF /* ExpressInfoCell.m in Sources */,
@@ -1429,8 +1455,10 @@
 				09BAFE511FF607A7006E3E2C /* AddressCell.m in Sources */,
 				09E20F4B1FEC8C6C00AD239C /* RegisterTextField2.m in Sources */,
 				09CAEFCE1FF337CC000D5DEF /* FoodFootView.m in Sources */,
+				09353ECE2011E4F700F5C666 /* ShoppingCarModel.m in Sources */,
 				097C5C8B1FEBB2F3001C7723 /* EnsureAlterView.m in Sources */,
 				09D956461FE4F4490012E309 /* JElasticPullToRefreshLoadingViewCircle.m in Sources */,
+				09873D712015E37300397AAE /* ConfirmOrderController.m in Sources */,
 				092BBA591FE7AEBA009A1BE1 /* MoreButton.m in Sources */,
 				097C5C811FEB632B001C7723 /* LoginTextField.m in Sources */,
 				09F541001FF2612300C3E153 /* ShopContractsCell2.m in Sources */,
@@ -1450,6 +1478,7 @@
 				09D956451FE4F4490012E309 /* JElasticPullToRefreshLoadingView.m in Sources */,
 				0996000F1FE3C6F50090016B /* MineViewController.m in Sources */,
 				092853EF1FE8D88F00AD9437 /* CenterViewController.m in Sources */,
+				09873D6B2015B6B200397AAE /* ShoppingCarHeaderCell.m in Sources */,
 				09E20F561FEC913F00AD239C /* UIImage+HLY.m in Sources */,
 				097C5C881FEBB230001C7723 /* UILabel+ContentSize.m in Sources */,
 				099600481FE3C7AC0090016B /* NSTimer+Addition.m in Sources */,
@@ -1483,6 +1512,7 @@
 				099600521FE3C7AD0090016B /* customNaviController.m in Sources */,
 				0996004E1FE3C7AD0090016B /* MBProgressHUD+NHAdd.m in Sources */,
 				092BBA621FE7CBE1009A1BE1 /* FoodListModel.m in Sources */,
+				09353ECB2011DA8000F5C666 /* ShoppingCarCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
