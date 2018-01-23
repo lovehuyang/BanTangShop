@@ -57,7 +57,7 @@
     _selectAllBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     [_selectAllBtn setImage:[UIImage imageNamed:@"bt_weixuan"] forState:UIControlStateNormal];
     [_selectAllBtn setImage:[UIImage imageNamed:@"bt_xuanzhong"] forState:UIControlStateSelected];
-    _selectAllBtn.selected = YES;
+    _selectAllBtn.selected = NO;
     [_selectAllBtn setTitle:@"全选" forState:UIControlStateNormal];
     [_selectAllBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_selectAllBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];

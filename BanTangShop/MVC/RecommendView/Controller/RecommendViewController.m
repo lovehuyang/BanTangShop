@@ -16,14 +16,27 @@
 
 #define H_BOTTOMVIEW 50
 @interface RecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    UIButton *deleteBtn;
+}
 @property (nonatomic ,copy)UITableView *tableView;
 @property (nonatomic ,copy)NSMutableArray *dataArr;
 @property (nonatomic ,copy)ShoppingCarBottonView *bottomView;
+
 @end
 
 @implementation RecommendViewController
-
+- (instancetype)init{
+    if (self = [super init]) {
+        deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [deleteBtn addTarget:self action:@selector(deleteBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *navItem = [[UIBarButtonItem alloc]initWithCustomView:deleteBtn];
+        deleteBtn.hidden = YES;
+        self.navigationItem.rightBarButtonItem = navItem;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"购物车";
@@ -138,7 +151,7 @@
             NSMutableArray *tempMutArr = [NSMutableArray array];
             for (NSDictionary *tempDict in (NSArray *)dataDict) {
                 ShoppingCarModel *model = [ShoppingCarModel createModelWithDic:tempDict];
-                model.isSelected = YES;
+                model.isSelected = NO;
                 [tempMutArr addObject:model];
             }
             
@@ -185,14 +198,22 @@
 }
 - (void)setBottomViewStatus{
     CGFloat totalPrice = 0.00f;
+    NSInteger selectCount = 0;// 选中的数量
     for (NSArray *tempArr in self.dataArr) {
         for (ShoppingCarModel *model in tempArr) {
             if(model.isSelected){
+                selectCount ++;
                 CGFloat total_price = [model.total_price floatValue];
                 totalPrice = totalPrice + total_price;
             }
         }
     }
+    if (selectCount >0) {
+        deleteBtn.hidden = NO;
+    }else{
+        deleteBtn.hidden = YES;
+    }
+    
     self.bottomView.totalLab.text = [NSString stringWithFormat:@"￥%.2f",totalPrice];
     for (NSArray *tempArr in self.dataArr) {
         for (ShoppingCarModel *model in tempArr) {
@@ -204,6 +225,25 @@
             }
         }
     }
+}
+
+#pragma mark - 删除
+- (void)deleteBtnClick{
+    DLog(@"删除");
+    NSMutableArray *deleArr = [NSMutableArray array];
+    for (NSArray *tempArr in self.dataArr) {
+        for (ShoppingCarModel *model in tempArr) {
+            if (model.isSelected == YES) {
+                [deleArr addObject:[model.ID stringValue]];
+            }
+        }
+    }
+    NSDictionary *paramDict = @{@"cartIds":deleArr};
+    [HLYNetWorkObject requestWithMethod:POST ParamDict:paramDict url:URL_DELCARTLIST successBlock:^(id requestData, NSDictionary *dataDict) {
+        DLog(@"");
+    } failureBlock:^(NSInteger errCode, NSString *msg) {
+        DLog(@"");
+    }];
 }
 
 #pragma mark - 生命周期

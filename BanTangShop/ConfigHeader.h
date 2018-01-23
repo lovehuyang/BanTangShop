@@ -43,6 +43,7 @@
 #define URL_ADDFEEDBACK @"/shop/addFeedback"// 提交意见反馈
 #define URL_ADDBUYCART @"/shop/addBuyCart"//加入购物车
 #define URL_GETCARLIST @"/shop/getCartList"//获取购车列表
+#define URL_DELCARTLIST @"/shop/delCartList"//删除购物车
 
 // 常用颜色
 #define Color_Theme HXYGetColor(@"#BD0220")// 主题色
